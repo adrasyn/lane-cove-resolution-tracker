@@ -1,10 +1,10 @@
-..........................
+.............................
 ----------------------------------------------------------------------
-Ran 26 tests in 0.716s
+Ran 29 tests in 0.734s
 
 OK
-/tmp/tmp_yjvp_6_/proposed/22102026-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-rows.json: 1 rows; 1 warnings
-/tmp/tmp_yjvp_6_/proposed/22102026-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-rows.json: 1 rows; 1 warnings
+/tmp/tmph8w_o3z6/proposed/22102026-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-rows.json: 1 rows; 1 warnings
+/tmp/tmph8w_o3z6/proposed/22102026-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-rows.json: 1 rows; 1 warnings
 Proposals only: accepted catalogue, baseline and website were not changed.
 221 resolutions; 165 issues; 1014 dated updates; 901 source rows
 Compiled 165 issues; 0 decision summaries and 0 note summaries pending
