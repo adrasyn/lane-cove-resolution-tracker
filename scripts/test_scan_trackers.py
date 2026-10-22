@@ -2,6 +2,7 @@ import copy
 import importlib.util
 from pathlib import Path
 import tempfile
+import subprocess
 import unittest
 from unittest.mock import patch
 
@@ -27,6 +28,40 @@ class FakeFetcher:
 
 
 class ScannerTests(unittest.TestCase):
+    def test_proxy_timeout_is_reported_and_host_deferred_without_hiding_errors(self):
+        with tempfile.TemporaryDirectory() as temp:
+            fetcher=scanner.Fetcher(temp)
+            def timeout(command, **kwargs):
+                Path(command[command.index('--output')+1]).write_bytes(b'upstream connect error or disconnect/reset before headers. reset reason: connection timeout')
+                return subprocess.CompletedProcess(command,22,'503\n'+SOURCE,'')
+            with patch.object(scanner.subprocess,'run',side_effect=timeout) as run:
+                with self.assertRaisesRegex(scanner.FetchError,'proxy upstream connection timed out'):
+                    fetcher.get(SOURCE)
+                with self.assertRaisesRegex(scanner.FetchError,'not checked: host deferred'):
+                    fetcher.get(SOURCE.replace('80371','7554'))
+                self.assertEqual(run.call_count,1)
+                self.assertNotIn('lanecove.infocouncil.biz',fetcher.unreachable)
+
+    def test_origin_503_is_not_misclassified_as_proxy_timeout(self):
+        with tempfile.TemporaryDirectory() as temp:
+            fetcher=scanner.Fetcher(temp)
+            def unavailable(command, **kwargs):
+                Path(command[command.index('--output')+1]).write_bytes(b'<html>Service Unavailable</html>')
+                return subprocess.CompletedProcess(command,22,'503\n'+SOURCE,'')
+            with patch.object(scanner.subprocess,'run',side_effect=unavailable):
+                with self.assertRaises(scanner.FetchError) as error:fetcher.get(SOURCE)
+                self.assertFalse(error.exception.upstream_timeout)
+                self.assertFalse(fetcher.unreachable)
+
+    def test_successful_fetch_preserves_verified_redirect_url(self):
+        with tempfile.TemporaryDirectory() as temp:
+            fetcher=scanner.Fetcher(temp)
+            def ok(command, **kwargs):
+                Path(command[command.index('--output')+1]).write_bytes(b'content')
+                return subprocess.CompletedProcess(command,0,'200\n'+SOURCE,'')
+            with patch.object(scanner.subprocess,'run',side_effect=ok):
+                self.assertEqual(fetcher.get(SOURCE),(b'content',SOURCE))
+
     def test_all_agenda_variants_including_extraordinary(self):
         extra = PATH.replace('_AGN_WEB', '_AGN_AT_SUP_WEB')
         self.assertEqual(scanner.agenda_paths(INDEX + extra, 2026), [extra, PATH])

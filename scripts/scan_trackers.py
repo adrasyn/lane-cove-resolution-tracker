@@ -65,27 +65,52 @@ def safe_url(url):
     return url
 
 
+class FetchError(RuntimeError):
+    """Safe actionable failure details without dumping response headers or credentials."""
+    def __init__(self, url, status, exit_code, upstream_timeout=False, deferred=False):
+        self.url, self.status, self.exit_code = url, status, exit_code
+        self.upstream_timeout, self.deferred = upstream_timeout, deferred
+        detail = 'proxy upstream connection timed out before origin response headers' if upstream_timeout else 'HTTPS request failed'
+        if deferred: detail = 'not checked: host deferred after ' + detail
+        super().__init__(f'{detail}; HTTP {status}; curl exit {exit_code}; {url}')
+
+
 class Fetcher:
     def __init__(self, directory):
         self.directory = Path(directory)
         self.cookies = self.directory / 'cookies'
+        self.unreachable = {}
 
     def get(self, url, fields=None):
         url = safe_url(url)
+        host = urlsplit(url).hostname
+        if host in self.unreachable:
+            failure = self.unreachable[host]
+            raise FetchError(url, failure.status, failure.exit_code, True, deferred=True)
         output = self.directory / 'response'
-        command = ['curl', '--fail', '--silent', '--show-error', '--location',
+        output.unlink(missing_ok=True)
+        command = ['curl', '--fail-with-body', '--silent', '--show-error', '--location',
                    '--proto', '=https', '--proto-redir', '=https',
                    '--connect-timeout', '20', '--max-time', '90', '--retry', '2',
                    '--retry-delay', '2', '--max-filesize', '52428800',
                    '--cookie', str(self.cookies), '--cookie-jar', str(self.cookies),
-                   '--output', str(output), '--write-out', '%{url_effective}', url]
+                   '--output', str(output), '--write-out', '%{http_code}\n%{url_effective}', url]
         if fields is not None:
             form = self.directory / 'form'
             form.write_text(urlencode(fields))
             command += ['--data-binary', '@' + str(form)]
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
-        safe_url(result.stdout.strip())
-        return output.read_bytes(), result.stdout.strip()
+        result = subprocess.run(command, capture_output=True, text=True)
+        status, separator, final = result.stdout.strip().partition('\n')
+        if result.returncode:
+            # Envoy's connect-timeout response is not an HTTP response from Council.
+            body = output.read_bytes() if output.exists() else b''
+            upstream = status == '503' and b'upstream connect error' in body and b'connection timeout' in body
+            failure = FetchError(url, status if status.isdigit() else 'unknown', result.returncode, upstream)
+            if upstream: self.unreachable[host] = failure
+            raise failure
+        if not separator or not status.isdigit(): raise ValueError('Malformed HTTPS fetch metadata')
+        safe_url(final)
+        return output.read_bytes(), final
 
 
 def agenda_paths(text, year):
