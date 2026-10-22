@@ -18,5 +18,6 @@ jobs:
       - run: node scripts/verify-catalogue.cjs
       - run: node scripts/verify-route-motion.cjs
       - run: node scripts/verify-source-links.cjs
+      - run: node scripts/verify-browsing.cjs
       - run: node --check dist/app.js
       - run: git diff --exit-code -- dist

@@ -30,6 +30,8 @@ const readStorage = key => {try{return localStorage.getItem(key);}catch{return n
 const saveStorage = (key,value) => {try{localStorage.setItem(key,String(value));}catch{}};
 let manualReduction = readStorage('lanecove-reduce-motion')==='true';
 let query = '';
+const CATEGORIES = [...new Set(ISSUES.map(issue=>issue.category))].sort((a,b)=>a.localeCompare(b));
+let selectedCategories = new Set(CATEGORIES);
 let activeIssue = null;
 let selectedIndex = -1;
 let cleanupView = () => {};
@@ -68,34 +70,57 @@ function routeIssue(){
 }
 function announce(text){announcement.textContent=text;}
 function focusHeading(){document.querySelector('#page-heading')?.focus({preventScroll:true});}
+function renderCategoryFilter(){
+  return `<details class="category-filter" id="category-filter"><summary><span>Categories</span><span id="category-selection">All selected</span></summary><div class="category-panel"><div class="category-actions"><button type="button" id="select-categories">Select all</button><button type="button" id="deselect-categories">Deselect all</button></div><fieldset><legend class="sr-only">Issue categories</legend>${CATEGORIES.map((category,index)=>`<label for="category-${index}"><input type="checkbox" id="category-${index}" value="${escapeText(category)}" ${selectedCategories.has(category)?'checked':''} aria-controls="issue-grid"><span>${escapeText(category)}</span></label>`).join('')}</fieldset></div></details>`;
+}
+function updateCategoryControls(){
+  document.querySelectorAll('.category-panel input').forEach(input=>{input.checked=selectedCategories.has(input.value);});
+  document.querySelector('#category-selection').textContent=selectedCategories.size===CATEGORIES.length?'All selected':selectedCategories.size===0?'None selected':`${selectedCategories.size} of ${CATEGORIES.length} selected`;
+  document.querySelector('#select-categories').disabled=selectedCategories.size===CATEGORIES.length;
+  document.querySelector('#deselect-categories').disabled=selectedCategories.size===0;
+}
+function bindCategoryFilter(){
+  document.querySelectorAll('.category-panel input').forEach(input=>input.addEventListener('change',()=>{
+    cancelRouteMotion();input.checked?selectedCategories.add(input.value):selectedCategories.delete(input.value);renderTiles();
+  }));
+  document.querySelector('#select-categories').addEventListener('click',()=>{cancelRouteMotion();selectedCategories=new Set(CATEGORIES);renderTiles();});
+  document.querySelector('#deselect-categories').addEventListener('click',()=>{cancelRouteMotion();selectedCategories.clear();renderTiles();});
+}
 function renderHome(focus=false){
   cleanupView();cleanupTiles();activeIssue=null;selectedIndex=-1;
   document.title='Lane Cove Council Resolution Tracker';
-  app.innerHTML=`<div class="page-width"><section class="landing-intro" aria-labelledby="page-heading"><h1 id="page-heading" tabindex="-1">Follow updates from Council’s Resolution Tracker</h1></section><div class="search-area"><label for="issue-search">Find an issue</label><div class="search-field">${icon('search')}<input id="issue-search" type="search" name="issue-search" autocomplete="off" placeholder="Try lifts, food bins or Karilla Avenue" value="${escapeText(query)}" aria-controls="issue-grid"><button type="button" class="clear-search" id="clear-search" ${query?'':'hidden'}>Clear</button></div></div><section class="collection" aria-labelledby="collection-heading"><div class="collection-heading"><h2 id="collection-heading">All issues <span id="result-count"></span></h2><div class="recency-key"><span class="shade-key" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Darker = more recently updated</span></div></div><div class="issue-grid" id="issue-grid"></div></section></div>`;
+  app.innerHTML=`<div class="page-width"><section class="landing-intro" aria-labelledby="page-heading"><h1 id="page-heading" tabindex="-1">Follow updates from Council’s Resolution Tracker</h1></section><div class="search-area"><label for="issue-search">Find an issue</label><div class="search-field">${icon('search')}<input id="issue-search" type="search" name="issue-search" autocomplete="off" placeholder="Try lifts, food bins or Karilla Avenue" value="${escapeText(query)}" aria-controls="issue-grid"><button type="button" class="clear-search" id="clear-search" ${query?'':'hidden'}>Clear</button></div>${renderCategoryFilter()}</div><section class="collection" aria-labelledby="collection-heading"><div class="collection-heading"><h2 id="collection-heading">All issues <span id="result-count"></span></h2><div class="recency-key"><span class="shade-key" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Darker = more recently updated</span></div></div><div class="issue-grid" id="issue-grid"></div></section></div>`;
   const search=document.querySelector('#issue-search');
   search.addEventListener('input',()=>{cancelRouteMotion();query=search.value;renderTiles();});
   document.querySelector('#clear-search').addEventListener('click',clearSearch);
+  bindCategoryFilter();
   renderTiles();
   cleanupView=()=>{};
   if(focus){focusHeading();window.scrollTo({top:0,behavior:'instant'});}
 }
 function clearSearch(){cancelRouteMotion();query='';document.querySelector('#issue-search').value='';renderTiles();document.querySelector('#issue-search').focus();}
-function renderTiles(){
-  cleanupTiles();
-  const words=query.trim().toLocaleLowerCase('en-AU').split(/\s+/).filter(Boolean);
-  const issues=ISSUES.filter(issue=>{
+function resetFilters(){selectedCategories=new Set(CATEGORIES);clearSearch();}
+function filterIssues(issues,search,categories){
+  const words=search.trim().toLocaleLowerCase('en-AU').split(/\s+/).filter(Boolean);
+  return issues.filter(issue=>{
+    if(!categories.has(issue.category))return false;
     const haystack=[issue.title,issue.short,issue.category,issue.nav,META[issue.id].description,issue.summary,issue.resolutions,...issue.events.map(item=>item.title)].join(' ').toLocaleLowerCase('en-AU');
     const numbers=[...issue.resolutions.split(' → '),...(issue.aliases||[])];
     return words.every(word=>/^\d+\/\d{4}$/.test(word)?numbers.some(number=>number===word||number.split('/')[0].split('+').some(minute=>minute+'/'+number.split('/')[1]===word)):haystack.includes(word));
   }).sort((a,b)=>META[b.id].latest.localeCompare(META[a.id].latest));
+}
+function renderTiles(){
+  cleanupTiles();
+  const issues=filterIssues(ISSUES,query,selectedCategories);
+  updateCategoryControls();
   document.querySelector('#clear-search').hidden=!query;
   document.querySelector('#result-count').textContent=`${issues.length} ${issues.length===1?'issue':'issues'}`;
   const grid=document.querySelector('#issue-grid');
   grid.innerHTML=issues.length?issues.map(issue=>{
     const meta=META[issue.id];
     return `<a href="${issueUrl(issue.id)}" class="tile-link" data-issue="${issue.id}" aria-label="${escapeText(issue.short)}. ${escapeText(issue.nav.replace(/\.$/,''))}. Latest update ${formatDate(meta.latest)}. Open issue history."><article class="issue-tile" style="${tilePalette(issue)}"><div class="tile-sheen" aria-hidden="true"></div><div class="tile-top"><span class="tile-symbol">${icon(meta.symbol)}</span><span>${escapeText(issue.category)}</span></div><h3>${escapeText(issue.short)}</h3><p class="tile-description">${escapeText(issue.nav)}</p><div class="tile-bottom"><p>Updated <time datetime="${meta.latest}">${formatDate(meta.latest,true)}</time></p><span class="tile-arrow">${icon('external')}</span></div></article></a>`;
-  }).join(''):`<div class="empty-results"><h3>No issues match “${escapeText(query)}”.</h3><p>Try a place or a simple word, like “lifts” or “bins”. You can also search by a Council decision number.</p><button type="button" id="reset-results">Show all issues</button></div>`;
-  grid.querySelector('#reset-results')?.addEventListener('click',clearSearch);
+  }).join(''):`<div class="empty-results"><h3>${selectedCategories.size===0?'No categories selected.':'No issues match your search and categories.'}</h3><p>Select a category or change your search.</p><button type="button" id="reset-results">Show all issues</button></div>`;
+  grid.querySelector('#reset-results')?.addEventListener('click',resetFilters);
   grid.querySelectorAll('[data-issue]').forEach(link=>link.addEventListener('click',event=>{
     if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
     event.preventDefault();navigateTo(ISSUES.find(issue=>issue.id===link.dataset.issue),event.detail>0?link:null);
@@ -107,7 +132,7 @@ function renderDetail(issue,focus=false){
   cleanupView();cleanupTiles();activeIssue=issue;selectedIndex=-1;
   const meta=META[issue.id];
   document.title=issue.short+' · Lane Cove Council Resolution Tracker';
-  app.innerHTML=`<div class="page-width detail-page"><div class="back-row"><a href="${homeUrl()}" data-home>${icon('back')}All issues</a><span>${escapeText(issue.category)}</span></div><section class="detail-hero" style="${tilePalette(issue)}" aria-labelledby="page-heading"><div class="tile-sheen" aria-hidden="true"></div><div class="hero-heading"><h1 id="page-heading" tabindex="-1">${escapeText(issue.title)}</h1></div><p class="hero-description">${escapeText(meta.description)}</p><dl class="hero-meta"><div><dt>First appeared</dt><dd><time datetime="${meta.first}">${formatDate(meta.first,true)}</time></dd></div><div><dt>Latest update</dt><dd><time datetime="${meta.latest}">${formatDate(meta.latest,true)}</time></dd></div><div><dt>Status</dt><dd class="hero-status">${icon(issue.tone==='amber'?'wait':'update')}${escapeText(meta.status)}</dd></div></dl></section><section class="story-section" aria-labelledby="timeline-heading"><div class="story-heading"><div><h2 id="timeline-heading">Update history</h2><p class="desktop-timeline-hint">Select a dot or label.</p><p class="mobile-timeline-hint">Select a dated update to read the details.</p></div>${issue.events.length>12?`<div class="update-picker"><label for="update-picker">Choose an update</label><select id="update-picker"><option value="">Choose an update</option>${issue.events.map((item,index)=>`<option value="${index}">${formatDate(item.date,true)} · ${escapeText(item.title)}</option>`).join('')}</select></div>`:''}</div><div class="timeline-viewport" id="timeline-viewport"><div class="timeline-scale" aria-hidden="true"></div><svg class="timeline-guides" aria-hidden="true"></svg><ol class="timeline-rail">${issue.events.map((item,index)=>`<li class="timeline-point"><button type="button" class="update-button" id="update-${index}" aria-expanded="false" aria-controls="update-reader" data-index="${index}"><span class="node-dot" aria-hidden="true"></span><span class="node-copy"><time class="node-date" datetime="${item.date}">${formatDate(item.date,true)}</time><span class="node-label">${escapeText(meta.labels[index]||item.title)}</span></span></button></li>`).join('')}</ol></div><div class="detail-reader-slot" id="reader-slot"><div class="reader-placeholder" id="reader-placeholder">${icon('pointer')}Select an update to read the summary and Council’s original wording.</div><section class="update-reader" id="update-reader" aria-labelledby="reader-heading" hidden></section></div><details class="issue-context"><summary>How Council records this issue &amp; source documents</summary><div class="context-body"><p>Council’s Resolution Tracker gives each decision its own row and status. This page includes the decisions and available tracker updates for this issue. Several records on the same date share a dot; their original wording stays separate.</p><p>${escapeText(issue.caution)}</p><p>Decision numbers in the Council documents: ${escapeText(issue.resolutions)}.</p>${(issue.extraSources||[]).map(source=>`<p><a href="${escapeText(source.url)}" target="_blank" rel="noopener">${escapeText(source.label)}<span class="sr-only">; opens in a new tab</span></a></p>`).join('')}${issue.extraSource?`<p>${escapeText(issue.extraSource.note)}</p><a href="${escapeText(issue.extraSource.url)}" target="_blank" rel="noopener">${escapeText(issue.extraSource.label)}<span class="sr-only">; opens in a new tab</span></a>`:''}<details class="monthly-checks"><summary>All tracker entries (${issue.checks.length})</summary><p>Each entry below is a row from a Council tracker. Repeated comments, the reported status and target date are retained. A missing entry does not confirm that work finished.</p>${issue.checks.map(renderCheck).join('')}</details></div></details></section></div>`;
+  app.innerHTML=`<div class="page-width detail-page"><div class="back-row"><a href="${homeUrl()}" data-home>${icon('back')}All issues</a><span>${escapeText(issue.category)}</span></div><section class="detail-hero" style="${tilePalette(issue)}" aria-labelledby="page-heading"><div class="tile-sheen" aria-hidden="true"></div><div class="hero-heading"><h1 id="page-heading" tabindex="-1">${escapeText(issue.title)}</h1></div><p class="hero-description">${escapeText(meta.description)}</p><dl class="hero-meta"><div><dt>First appeared</dt><dd><time datetime="${meta.first}">${formatDate(meta.first,true)}</time></dd></div><div><dt>Latest update</dt><dd><time datetime="${meta.latest}">${formatDate(meta.latest,true)}</time></dd></div><div><dt>Status</dt><dd class="hero-status">${icon(issue.tone==='amber'?'wait':'update')}${escapeText(meta.status)}</dd></div></dl></section><section class="story-section" aria-labelledby="timeline-heading"><div class="story-heading"><div><h2 id="timeline-heading">Update history</h2><p class="desktop-timeline-hint">Select a dot or label.</p><p class="mobile-timeline-hint">Select a dated update to read the details.</p></div>${issue.events.length>12?`<div class="update-picker"><label for="update-picker">Choose an update</label><select id="update-picker"><option value="">Choose an update</option>${issue.events.map((item,index)=>`<option value="${index}">${formatDate(item.date,true)}</option>`).join('')}</select></div>`:''}</div><div class="timeline-viewport" id="timeline-viewport"><div class="timeline-scale" aria-hidden="true"></div><svg class="timeline-guides" aria-hidden="true"></svg><ol class="timeline-rail">${issue.events.map((item,index)=>`<li class="timeline-point"><button type="button" class="update-button" id="update-${index}" aria-expanded="false" aria-controls="update-reader" data-index="${index}"><span class="node-dot" aria-hidden="true"></span><span class="node-copy"><time class="node-date" datetime="${item.date}">${formatDate(item.date,true)}</time><span class="node-label">${escapeText(meta.labels[index]||item.title)}</span></span></button></li>`).join('')}</ol></div><div class="detail-reader-slot" id="reader-slot"><div class="reader-placeholder" id="reader-placeholder">${icon('pointer')}Select an update to read the summary and Council’s original wording.</div><section class="update-reader" id="update-reader" aria-labelledby="reader-heading" hidden></section></div><details class="issue-context"><summary>How Council records this issue &amp; source documents</summary><div class="context-body"><p>Council’s Resolution Tracker gives each decision its own row and status. This page includes the decisions and available tracker updates for this issue. Several records on the same date share a dot; their original wording stays separate.</p><p>${escapeText(issue.caution)}</p><p>Decision numbers in the Council documents: ${escapeText(issue.resolutions)}.</p>${(issue.extraSources||[]).map(source=>`<p><a href="${escapeText(source.url)}" target="_blank" rel="noopener">${escapeText(source.label)}<span class="sr-only">; opens in a new tab</span></a></p>`).join('')}${issue.extraSource?`<p>${escapeText(issue.extraSource.note)}</p><a href="${escapeText(issue.extraSource.url)}" target="_blank" rel="noopener">${escapeText(issue.extraSource.label)}<span class="sr-only">; opens in a new tab</span></a>`:''}<details class="monthly-checks"><summary>All tracker entries (${issue.checks.length})</summary><p>Each entry below is a row from a Council tracker. Repeated comments, the reported status and target date are retained. A missing entry does not confirm that work finished.</p>${issue.checks.map(renderCheck).join('')}</details></div></details></section></div>`;
   document.querySelector('#update-picker')?.addEventListener('change',event=>{if(event.target.value!=='')selectUpdate(Number(event.target.value));});
   document.querySelectorAll('.update-button').forEach(button=>{
     button.addEventListener('click',event=>selectUpdate(Number(button.dataset.index),event.detail===0));
@@ -158,7 +183,31 @@ function closeUpdate(restoreFocus=false){
   if(restoreFocus&&previous>=0)document.querySelector(`#update-${previous}`).focus({preventScroll:true});
   announce('Update closed');
 }
-// All event positions use elapsed UTC time. Labels can move vertically; dots never move in time.
+// Place every label above or below a fixed date axis; close dates keep their true positions.
+function placeTimelineLabels(positions,width,labelWidth,heights,fontScale){
+  const lanes={above:[],below:[]},gap=12*fontScale;
+  const labels=positions.map((x,index)=>{
+    const left=Math.max(0,Math.min(width-labelWidth,x-labelWidth/2));
+    const preferred=index%2===0?'above':'below';
+    const candidates=['above','below'].map(side=>{
+      const available=lanes[side].findIndex(row=>row.right+gap<=left);
+      const lane=available<0?lanes[side].length:available;
+      return {side,lane,score:lane*2+(side===preferred?0:1)};
+    }).sort((a,b)=>a.score-b.score);
+    const {side,lane}=candidates[0];
+    if(!lanes[side][lane])lanes[side].push({right:0,height:0});
+    const row=lanes[side][lane];row.right=left+labelWidth;row.height=Math.max(row.height,heights[index]);
+    return {x,left,side,lane,height:heights[index]};
+  });
+  const aboveHeight=lanes.above.reduce((sum,row,index)=>sum+row.height+(index?gap:0),0);
+  const axisY=34*fontScale+aboveHeight+28*fontScale;
+  let cursor=axisY-28*fontScale;
+  lanes.above.forEach(row=>{row.top=cursor-row.height;cursor=row.top-gap;});
+  cursor=axisY+28*fontScale;
+  lanes.below.forEach(row=>{row.top=cursor;cursor+=row.height+gap;});
+  labels.forEach(label=>{label.top=lanes[label.side][label.lane].top;});
+  return {axisY,height:cursor+4*fontScale,labels};
+}
 function layoutTimeline(){
   const viewport=document.querySelector('#timeline-viewport');
   if(!viewport||!activeIssue)return;
@@ -172,32 +221,15 @@ function layoutTimeline(){
   const end=Date.UTC(last.getUTCFullYear(),last.getUTCMonth()+1,1);
   const xFor=date=>padding+(date-start)/(end-start)*usable;
   const fontScale=parseFloat(getComputedStyle(document.documentElement).fontSize)/18;
-  const labelWidth=Math.min((points.length>18?118:142)*fontScale,usable/3),axisY=43;
-  const lanes=[],placements=[];
-  const labelled=new Set(points.length<=12?points.map((_,i)=>i):Array.from({length:8},(_,i)=>Math.round(i*(points.length-1)/7)));
-  viewport.classList.toggle('timeline-overview',points.length>12);
+  const labelWidth=Math.min(146*fontScale,usable/3);
   const positions=activeIssue.events.map(item=>xFor(Date.parse(item.date)));
   points.forEach((point,index)=>{
-    const x=positions[index];
-    point.classList.toggle('minor-point',!labelled.has(index));
-    point.querySelector('.update-button').title=formatDate(activeIssue.events[index].date,true)+' · '+activeIssue.events[index].title;
-    const hitWidth=Math.max(4,Math.min(28,x-(positions[index-1]??-Infinity),(positions[index+1]??Infinity)-x));
-    const left=Math.max(0,Math.min(width-labelWidth,x-labelWidth/2));
-    const dotY=axisY;
-    point.style.setProperty('--dot-hit',hitWidth+'px');
-    point.style.setProperty('--event-x',x+'px');point.style.setProperty('--dot-y',dotY+'px');
-    point.style.setProperty('--label-offset',(left-x+hitWidth/2)+'px');
     point.style.setProperty('--label-width',labelWidth+'px');
-    point.style.setProperty('--tooltip-left',(Math.max(0,Math.min(width-200,x-100))-x+hitWidth/2)+'px');
-    if(!labelled.has(index)){point.style.setProperty('--label-y','-100px');return;}
-    let lane=lanes.findIndex(row=>row.right+12<=left);
-    if(lane<0){lane=lanes.length;lanes.push({right:0,height:0});}
-    const labelHeight=point.querySelector('.node-copy').getBoundingClientRect().height;
-    lanes[lane].right=left+labelWidth;lanes[lane].height=Math.max(lanes[lane].height,labelHeight);
-    placements.push({point,x,lane,dotY});
+    point.querySelector('.update-button').title=formatDate(activeIssue.events[index].date,true)+' · '+activeIssue.events[index].title;
   });
-  let nextY=92;lanes.forEach(row=>{row.top=nextY;nextY+=row.height+16;});
-  viewport.style.height=(nextY+4)+'px';
+  const heights=points.map(point=>point.querySelector('.node-copy').getBoundingClientRect().height);
+  const layout=placeTimelineLabels(positions,width,labelWidth,heights,fontScale);
+  viewport.style.height=layout.height+'px';viewport.style.setProperty('--axis-y',layout.axisY+'px');
   const monthCount=(last.getUTCFullYear()-first.getUTCFullYear())*12+last.getUTCMonth()-first.getUTCMonth()+1;
   const step=Math.max(1,Math.ceil(monthCount*70*fontScale/usable));
   const ticks=[];
@@ -207,10 +239,16 @@ function layoutTimeline(){
     ticks.push(`<span class="month-tick" style="left:${xFor(date.getTime())}px">${escapeText(label)}</span>`);
   }
   scale.innerHTML=ticks.join('');
-  guides.setAttribute('viewBox',`0 0 ${width} ${nextY+4}`);
-  guides.innerHTML=`<path class="time-axis" d="M${padding} ${axisY}H${width-padding}"/>`+placements.map(({point,x,lane,dotY})=>{
-    const top=lanes[lane].top;point.style.setProperty('--label-y',(top-dotY+14)+'px');
-    return `<path d="M${x} ${axisY}V${top-3}"/>`;
+  guides.setAttribute('viewBox',`0 0 ${width} ${layout.height}`);
+  guides.innerHTML=`<path class="time-axis" d="M${padding} ${layout.axisY}H${width-padding}"/>`+layout.labels.map((label,index)=>{
+    const point=points[index],x=label.x;
+    const hitWidth=Math.max(4,Math.min(28,x-(positions[index-1]??-Infinity),(positions[index+1]??Infinity)-x));
+    point.style.setProperty('--dot-hit',hitWidth+'px');
+    point.style.setProperty('--event-x',x+'px');point.style.setProperty('--dot-y',layout.axisY+'px');
+    point.style.setProperty('--label-offset',(label.left-x+hitWidth/2)+'px');
+    point.style.setProperty('--label-y',(label.top-layout.axisY+14)+'px');
+    const edge=label.side==='above'?label.top+label.height+3:label.top-3;
+    return `<path d="M${x} ${layout.axisY}V${edge}"/>`;
   }).join('');
 }
 function attachTimeline(){

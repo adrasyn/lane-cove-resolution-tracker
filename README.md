@@ -19,12 +19,13 @@ python3 catalogue/build_catalogue.py
 node scripts/verify-catalogue.cjs
 node scripts/verify-route-motion.cjs
 node scripts/verify-source-links.cjs
+node scripts/verify-browsing.cjs
 node --check dist/app.js
 ```
 
 `catalogue/structured/` retains extracted physical table columns and source metadata. Editorial files contain resident-facing summaries. `catalogue/historical-links.json` records explicit earlier-phase links; minutes verification records document source-number corrections and adoption checks. `dist/coverage.json` is the downloadable coverage inventory. PDFs are linked directly from Council rather than bundled in the website. Rebuilding does not fetch new editions.
 
-The interface keeps compact glossy tiles, live search, date-based shading, pointer tilt and reversible two-face flip transitions. Only visible tiles participate in navigation animation. Desktop timelines use elapsed calendar time, share one dot for records on the same day and show an overview plus an accessible update selector for long histories. Phones keep the vertical list and an inline update reader. Original wording and PDF links accompany every summary; complete repeated monthly rows remain under the source disclosure.
+The interface keeps compact glossy tiles, live search, date-based shading, pointer tilt and reversible two-face flip transitions. Only visible tiles participate in navigation animation. Desktop timelines use elapsed calendar time, share one dot for records on the same day, and label every update above or below the axis without overlapping text. Long histories also have a date-only update selector. Category checkboxes start with all categories selected and combine with the search; selections survive opening and returning from an issue. Phones keep the vertical list and an inline update reader. Original wording and PDF links accompany every summary; complete repeated monthly rows remain under the source disclosure.
 
 ## Source limits and rules
 
