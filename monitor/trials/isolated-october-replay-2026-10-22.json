@@ -1,6 +1,10 @@
 {
-  "status": "partial; physical extraction and visual PDF review blocked by Council HTTP 503",
-  "replay": "actual October structured source; no invented edition",
+  "status": "historical real-PDF extraction/editorial/release rehearsal passed; live Council transport and scheduler binding remain blocked",
+  "replay": "actual October PDF fixture physically extracted in this cloud; no invented edition",
+  "pdfSha256": "17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4",
+  "extractedRows": 64,
+  "extractionWarnings": [],
+  "physicalFieldDifferences": [],
   "newMinuteItems": [
     "1/2026",
     "198/2026",
@@ -45,8 +49,10 @@
     "staleInventoryRejected": true,
     "allPriorRoutesRetained": true,
     "allPriorPhysicalRowsEqual": true,
-    "realPdfExtraction": false,
-    "visualReview": false,
+    "realPdfExtraction": true,
+    "visualReview": true,
+    "liveCouncilTransport": false,
+    "schedulerEnvironmentRetained": false,
     "scheduleActivationAllowed": false
   }
 }

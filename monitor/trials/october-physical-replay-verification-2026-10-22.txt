@@ -1,0 +1,22 @@
+..........................
+----------------------------------------------------------------------
+Ran 26 tests in 0.716s
+
+OK
+/tmp/tmp_yjvp_6_/proposed/22102026-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-rows.json: 1 rows; 1 warnings
+/tmp/tmp_yjvp_6_/proposed/22102026-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-rows.json: 1 rows; 1 warnings
+Proposals only: accepted catalogue, baseline and website were not changed.
+221 resolutions; 165 issues; 1014 dated updates; 901 source rows
+Compiled 165 issues; 0 decision summaries and 0 note summaries pending
+{
+  "passed": true,
+  "resolutions2026": 221,
+  "issues": 165,
+  "datedUpdates": 1014,
+  "summaryRecords": 1110,
+  "sourceRows": 901,
+  "editions": 37
+}
+Route motion checks passed: direct scroll restoration, height-only resize, width cancellation and keyboard/reduced-motion focus.
+Source link regression checks passed for 37 tracker editions.
+Browsing checks passed: filters, elapsed-time overview, update rows and visible desktop dot hints.
