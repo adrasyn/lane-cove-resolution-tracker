@@ -32,4 +32,40 @@ const rows=renderRows(square);
 assert.equal((rows.match(/class="update-row"/g)||[]).length,19);
 assert.ok(rows.indexOf('2026-10-14')<rows.indexOf('2026-09-17'),'Latest updates must come first');
 assert.ok(rows.indexOf('id="row-18"')<rows.indexOf('id="row-0"'),'Row indices must still match chronological dots');
-console.log('Browsing checks passed: category/search intersection, elapsed-time overview and complete newest-first update rows.');
+// Exercise the production animation lifecycle with controllable visibility and motion preferences.
+function dotMotionHarness({mobile=false,reduced=false}={}){
+ const mobileLayout={matches:mobile,addEventListener:(name,fn)=>events.set('layout:'+name,fn)};
+ const events=new Map(),timers=new Map(),played=[];let visibility,disconnected=false,signal;
+ const rings=Array.from({length:3},()=>({
+  animate:(frames,timing)=>{const animation={frames,timing,cancelled:false,finished:new Promise(()=>{}),cancel(){this.cancelled=true;}};played.push(animation);return animation;}
+ }));
+ // Each dot gets its own pointer handler, just as it does in the browser.
+ rings.forEach((ring,index)=>ring.closest=()=>({addEventListener:(name,fn,options)=>{events.set('hover:'+index,fn);signal=options.signal;}}));
+ const doc={documentElement:{},hidden:false,addEventListener:(name,fn)=>events.set(name,fn)};
+ const attach=productionFunction('attachDotRipples',{
+  AbortController,mobileLayout,motionEnabled:()=>!reduced,pointerMotionEnabled:()=>!reduced,
+  document:doc,window:{addEventListener:(name,fn)=>events.set(name,fn)},
+  getComputedStyle:()=>({getPropertyValue:()=> 'cubic-bezier(.23,1,.32,1)'}),
+  setTimeout:(fn,delay)=>{timers.set(1,{fn,delay});return 1;},clearTimeout:id=>timers.delete(id),
+  IntersectionObserver:class{constructor(fn){visibility=fn;}observe(){}disconnect(){disconnected=true;}}
+ });
+ const cleanup=attach({querySelectorAll:()=>rings});
+ return {events,timers,played,doc,mobileLayout,cleanup,visible:()=>visibility([{isIntersecting:true}]),
+  get signal(){return signal;},get disconnected(){return disconnected;}};
+}
+const ripple=dotMotionHarness();ripple.visible();
+assert.equal(ripple.timers.get(1).delay,900,'Hint waits for the card transition');
+ripple.timers.get(1).fn();
+assert.equal(ripple.played.length,3);
+assert.deepEqual(ripple.played.map(animation=>animation.timing.delay),[0,40,80]);
+assert.ok(ripple.played.every(animation=>!animation.timing.iterations),'Hints must not loop');
+ripple.events.get('tracker-motion-change')();
+assert.ok(ripple.played.every(animation=>animation.cancelled),'Reduce motion must stop running hints');
+ripple.cleanup();assert.equal(ripple.signal.aborted,true);assert.equal(ripple.disconnected,true);
+for(const settings of [{mobile:true},{reduced:true}]){
+ const quiet=dotMotionHarness(settings);quiet.visible();quiet.events.get('hover:0')({pointerType:'mouse'});
+ assert.equal(quiet.timers.size,0);assert.equal(quiet.played.length,0);quiet.cleanup();
+}
+const departing=dotMotionHarness();departing.visible();departing.cleanup();
+assert.equal(departing.timers.size,0,'Leaving the page must cancel the pending hint');
+console.log('Browsing checks passed: filters, elapsed-time overview, update rows and cancellable desktop dot hints.');

@@ -125,6 +125,7 @@ svg { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .timeline-point { position: absolute; left: var(--event-x); top: var(--dot-y); width: 0; }
 .update-button { position: absolute; left: calc(var(--dot-hit) / -2); top: -14px; display: grid; place-items: center; width: var(--dot-hit); height: 28px; min-height: 28px; border: none; padding: 0; border-radius: 50%; background: var(--bg); }
 .node-dot { display: block; width: 12px; height: 12px; border: 2px solid var(--brand); border-radius: 50%; background: var(--bg); }
+.dot-ripple { display: none; }
 .node-copy { position: absolute; top: var(--label-y); left: var(--label-offset); width: var(--label-width); padding: 4px 6px; text-align: left; border-radius: 5px; background: var(--bg); }
 .node-date { font-size: .69rem; color: var(--muted); display: block; white-space: nowrap; }
 .node-label { display: block; font-size: .77rem; font-weight: 550; line-height: 1.4; margin-top: 4px; }
@@ -313,6 +314,15 @@ html.large-text { font-size: 21px; }
 @media (max-width: 760px) { .story-heading { display: block; } .update-picker { display: none; } }
 @media (max-width: 380px) { .category-panel fieldset { grid-template-columns: minmax(0,1fr); } }
 @media (min-width: 761px) {
+  .ai-summary { font-size: .88rem; line-height: 1.55; }
+  .source-actions { position: relative; border-top: 1px solid var(--line); margin-top: 14px; font-size: .73rem; }
+  .source-actions .exact-wording { border: 0; margin: 0; }
+  .source-actions .exact-wording > summary { width: fit-content; max-width: 17em; font-size: inherit; }
+  .source-actions .reader-source { display: block; margin: 0; }
+  .source-actions .reader-source > a { position: absolute; top: 0; left: 18em; min-height: 44px; }
+  .source-actions .reader-source > span { display: block; text-align: right; }
+  .node-dot { position: relative; }
+  .dot-ripple { display: block; position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; border: 1px solid var(--brand); border-radius: 50%; pointer-events: none; opacity: 0; transform: translate(-50%,-50%) scale(.9); }
   .timeline-viewport .node-copy { top: 0; left: 0; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); clip-path: inset(50%); white-space: nowrap; }
   .update-button:focus-visible .node-dot { outline: 2px solid var(--focus); outline-offset: 3px; }
   .detail-reader-slot { display: none; }
