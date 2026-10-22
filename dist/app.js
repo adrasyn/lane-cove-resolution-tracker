@@ -11,6 +11,8 @@ const paths = {
   arrow:'M5 12h14m-6-6 6 6-6 6', back:'M19 12H5m6-6-6 6 6 6',
   external:'M7 17 17 7M7 7h10v10', close:'m6 6 12 12M6 18 18 6',
   building:'M4 21V8h16v13M2 21h20M8 8V3h8v5M8 12h1m6 0h1m-8 4h1m6 0h1m-5 5v-4h2v4',
+  council:'M3 9h18L12 3 3 9ZM6 12v5m6-5v5m6-5v5M4 18h16M2 21h20',
+  community:'M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M15 3.13a4 4 0 0 1 0 7.75M12 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z',
   road:'m8 3-4 18M16 3l4 18M12 3v3m0 4v4m0 4v3',
   leaf:'M20 4C9 2 3 8 5 15c2 7 13 7 15-11ZM5 20 16 9',
   decision:'m6 5 5-3 7 10-5 3ZM3 16l8-6m1 11h10m-8-3h6',

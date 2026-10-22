@@ -6,6 +6,7 @@ flat=lambda s:' '.join(s.split())
 fingerprint=lambda s:re.sub(r'[^a-z0-9]','',s.lower())
 iso=lambda ed:ed[4:]+'-'+ed[2:4]+'-'+ed[:2]
 load=lambda p:json.loads(p.read_text())
+CATEGORY_SYMBOLS={'Council & governance':'council','Community & services':'community'}
 # Related decisions are grouped explicitly; nothing is joined solely by a title match.
 GROUPS=[
  ('market-square',['224/2025','290/2025','45/2026','130/2026']),
@@ -296,7 +297,7 @@ def compile_site(m):
   if '199/2023' in keys:context.append('The tracker labels the October 2023 Canberra Avenue closure decision 199/2023. The adopted minutes identify it as 200/2023; 199 is a procedural motion. The original tracker wording is retained.')
   if any(k.endswith('/2023') for k in keys):context.append('The September 2023 tracker attachment is unavailable from Council’s official link. December 2023 links to the same PDF as November. Available later records retain some earlier dated comments; no missing update has been invented.')
   if any(normal_status(r['status'])=='notified' for r in latest_by_key.values()):context.append('Council’s latest available label is “Notified”. This site does not interpret that label as confirmation that the underlying work is finished.')
-  issue={'id':item['id'],'short':short,'title':short,'category':lead['category'],'nav':nav,'summary':description,'status':status,'tone':'green' if 'Completed' in status else 'amber','resolutions':' → '.join(keys),'caution':' '.join(context) or 'The status shown is the latest available status for each decision. A decision disappearing from later trackers is not evidence that work finished. A completed report or policy task may still lead to further work.','meta':{'first':item['first'],'latest':item['latest'],'status':status,'symbol':lead['symbol'],'description':description,'labels':[TIMELINE_LABELS.get(item['id'],{}).get(e['date'],e['title']) for e in events]},'events':events,'checks':[r['edition']+':'+r['key'] for r in sorted(rows,key=lambda r:(iso(r['edition']),r['key']),reverse=True)]}
+  issue={'id':item['id'],'short':short,'title':short,'category':lead['category'],'nav':nav,'summary':description,'status':status,'tone':'green' if 'Completed' in status else 'amber','resolutions':' → '.join(keys),'caution':' '.join(context) or 'The status shown is the latest available status for each decision. A decision disappearing from later trackers is not evidence that work finished. A completed report or policy task may still lead to further work.','meta':{'first':item['first'],'latest':item['latest'],'status':status,'symbol':CATEGORY_SYMBOLS.get(lead['category'],lead['symbol']),'description':description,'labels':[TIMELINE_LABELS.get(item['id'],{}).get(e['date'],e['title']) for e in events]},'events':events,'checks':[r['edition']+':'+r['key'] for r in sorted(rows,key=lambda r:(iso(r['edition']),r['key']),reverse=True)]}
   issue['aliases']=[k for v in verification for k in v.get('canonicalKeys',[])]
   issue['extraSources']=[{'url':v['minutes_pdf']+'#page='+str(v['pages'][0]),'label':'Adopted minutes: '+v['meeting']+' (pages '+', '.join(map(str,v['pages']))+')'} for v in verification]
   issues.append(issue)
