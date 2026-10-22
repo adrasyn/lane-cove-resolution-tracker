@@ -32,7 +32,8 @@
     "targetThreadId": "01a15ec0-f120-7f12-bfc7-0a39f5f3e45a",
     "timezone": "Australia/Sydney",
     "time": "07:17",
-    "dispatchTest": "Live workflow tested manually in this local chat; first timer-triggered run not yet observed."
+    "dispatchTest": "Live workflow tested manually in this local chat; first timer-triggered run not yet observed.",
+    "timezoneVerification": "Pending computed next-run verification; native API persisted TZID but treated its DTSTART as UTC. Do not infer daylight-saving support."
   },
   "cloudSchedule": {
     "id": "6ad9bfafcb008191bb370849b46a3f47",

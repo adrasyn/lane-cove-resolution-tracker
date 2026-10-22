@@ -7,7 +7,7 @@ The complete daily workflow runs in ChatGPT on James's laptop. Discovery, PDF do
 - Configuration: `monitor/execution.json`, currently `location: local`.
 - Checkout: `~/Documents/Claude/Projects/lanecovetracker/github-repo` on macOS. The outer project folder is not the Git checkout.
 - Native desktop schedule: **Lane Cove tracker daily update — local**, ID `lane-cove-tracker-daily-update-local`.
-- Daily **07:17 Australia/Sydney**, with an explicit `DTSTART;TZID=Australia/Sydney` recurrence saved through the native scheduler API. This follows Sydney daylight saving.
+- Intended daily time: **07:17 Australia/Sydney**. Activation requires checking the computed next nominal run, not merely the saved recurrence text. A native API test persisted an explicit timezone but calculated the wrong UTC instant; timezone/daylight-saving behavior remains under verification. The temporary one-off dispatch test uses a verified UTC instant.
 - The heartbeat continues local thread `01a15ec0-f120-7f12-bfc7-0a39f5f3e45a`; its prompt explicitly changes to the checkout above and reads the shared workflow from fresh main.
 - The previous cloud automation `6ad9bfafcb008191bb370849b46a3f47` must remain **paused**. Do not enable both publishers.
 
