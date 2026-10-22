@@ -7,13 +7,14 @@ The complete daily workflow runs in ChatGPT on James's laptop. Discovery, PDF do
 - Configuration: `monitor/execution.json`, currently `location: local`.
 - Checkout: `~/Documents/Claude/Projects/lanecovetracker/github-repo` on macOS. The outer project folder is not the Git checkout.
 - Native desktop schedule: **Lane Cove tracker daily update — local**, ID `lane-cove-tracker-daily-update-local`.
-- Intended daily time: **07:17 Australia/Sydney**. Activation requires checking the computed next nominal run, not merely the saved recurrence text. A native API test persisted an explicit timezone but calculated the wrong UTC instant; timezone/daylight-saving behavior remains under verification. The temporary one-off dispatch test uses a verified UTC instant.
+- **Active daily at 07:17**, using the native app’s plain local wall-clock recurrence. The Mac is configured to **Australia/Sydney**. Readback confirms the next nominal run is **23 October 2026, 07:17 AEDT**, queued at 07:17:57 with native scheduler jitter. The actual one-off dispatch test passed at 20:17:28 AEDT on 22 October.
+- Use the app’s plain daily recurrence, not an explicit timezone DTSTART: the latter persisted but calculated eleven hours late in testing. Check computed next nominal time after edits. The first daily production run and future daylight-saving/device-timezone changes have not yet been observed; keep the Mac timezone set to Sydney.
 - The heartbeat continues local thread `01a15ec0-f120-7f12-bfc7-0a39f5f3e45a`; its prompt explicitly changes to the checkout above and reads the shared workflow from fresh main.
 - The previous cloud automation `6ad9bfafcb008191bb370849b46a3f47` must remain **paused**. Do not enable both publishers.
 
 Manage the local schedule in **Scheduled in the desktop app**. Its heartbeat belongs to this local chat; the separate web/cloud Scheduled view may not list it. The automation is configured using the app's supported API, not a hand-written launch agent, crontab or daemon.
 
-The computer must be on, the desktop app running, the project available, and network/GitHub access working. Sleep, offline operation and missed-run catch-up have not been verified; do not assume a missed run will be replayed. No wake, security or permission settings were changed. Review the first timer-triggered result in this chat before relying on unattended operation. Manual workflow testing does not prove that a future scheduled wake occurred.
+The computer must be on, the desktop app running, the project available, and network/GitHub access working. Sleep, offline operation and missed-run catch-up have not been verified; do not assume a missed run will be replayed. No wake, security or permission settings were changed. A real timer-triggered diagnostic has passed in this chat. Review the first daily production result as well; successful dispatch while the laptop is available does not prove wake or missed-run behavior.
 
 ## Shared workflow and preflight
 
@@ -47,6 +48,7 @@ Follow the daily workflow after preflight. Scanner/extractor output remains prop
 - The real October PDF downloaded locally matches the accepted SHA-256. Physical extraction returns 64 rows across 65 pages, zero warnings and zero physical field differences. Only Council's temporary resolved download URL changed; its permanent record and bytes match.
 - The isolated historical October acceptance rehearsal in PR #1 exercised 25 new minute items, retained 837 earlier rows and all prior routes, checked item-specific summaries and issue links, and rejected a stale inventory. The same processing code is used locally.
 - 33 unit tests and all catalogue, route, source-link, browsing and JavaScript checks pass. No simulated edition or changed tracker data was published.
+- The native scheduler dispatched this local chat at **20:17:28 AEDT**. Its saved `last_run_at` agrees with the actual heartbeat message. Preflight verified Darwin, exact checkout, clean main and existing adrasyn push access. The dispatched scan again checked 36 agendas/20 PDFs with zero errors or changes, and production matched the verified website. The same schedule entry was restored to its production prompt and enabled; no duplicate job was created.
 
 The cloud PDF failure was a proxy upstream connection timeout; local access succeeds. The existing manual GitHub diagnostic scan was cancelled and is not a production schedule. Keep the cloud worker's rehearsal branch/PR as historical evidence.
 

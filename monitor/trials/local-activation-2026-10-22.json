@@ -32,11 +32,44 @@
     "targetThreadId": "01a15ec0-f120-7f12-bfc7-0a39f5f3e45a",
     "timezone": "Australia/Sydney",
     "time": "07:17",
-    "dispatchTest": "Live workflow tested manually in this local chat; first timer-triggered run not yet observed.",
-    "timezoneVerification": "Pending computed next-run verification; native API persisted TZID but treated its DTSTART as UTC. Do not infer daylight-saving support."
+    "dispatchTest": "Passed actual native timer dispatch at 20:17:28 Sydney; live local scan/preflight/production checks passed.",
+    "timezoneVerification": "Plain local-wall-clock recurrence computes next nominal 2026-10-23T07:17:00+11:00. Explicit TZID DTSTART had been interpreted incorrectly and is not used. Mac timezone is Australia/Sydney; future daylight-saving/device-timezone changes have not been separately rehearsed.",
+    "status": "ACTIVE",
+    "nextNominalRun": "2026-10-23T07:17:00+11:00",
+    "nextQueuedRun": "2026-10-23T07:17:57+11:00",
+    "schedulerJitter": "The native scheduler may queue the run shortly after the nominal minute."
   },
   "cloudSchedule": {
     "id": "6ad9bfafcb008191bb370849b46a3f47",
     "status": "paused"
+  },
+  "nativeDispatch": {
+    "status": "passed",
+    "scheduledNominal": "2026-10-22T20:17:00+11:00",
+    "observedDispatch": "2026-10-22T20:17:28.606000+11:00",
+    "nativeHeartbeatMessageTime": "2026-10-22T09:17:28.652Z",
+    "proof": "Native heartbeat user message in this local chat matches saved last_run_at; no separate automation_runs row is emitted for this heartbeat.",
+    "localPreflight": {
+      "status": "passed",
+      "platform": "darwin",
+      "checkout": "/Users/James/Documents/Claude/Projects/lanecovetracker/github-repo",
+      "branch": "main",
+      "commit": "93fbe60585a7bde7dce15a83c6cec56c0ddbd670",
+      "githubIdentity": "adrasyn",
+      "pushPermission": true
+    },
+    "liveScan": {
+      "checkedAt": "2026-10-22T09:17:53.611433+00:00",
+      "agendas": 36,
+      "pdfs": 20,
+      "changes": 0,
+      "errors": []
+    },
+    "acceptedData": "git diff HEAD is empty for monitor/baseline.json, catalogue and dist",
+    "baselineSha256": "8dab61da1f37f62f23c3ee8d28a4a5c70ddaf4e80330519941a2c6005de9ec67",
+    "ci": "https://github.com/adrasyn/lane-cove-resolution-tracker/actions/runs/39753945560",
+    "ciAndPages": "success",
+    "production": "HTTPS index matches verified dist/index.html",
+    "cloudSchedule": "Confirmed paused in cloud Scheduled UI during this dispatch test."
   }
 }
