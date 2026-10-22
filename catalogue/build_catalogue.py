@@ -306,7 +306,7 @@ def compile_site(m):
  for ed,s in sorted(m['sources'].items(),key=lambda kv:iso(kv[0])):
   if s.get('duplicate_of'):continue
   date=dt.date.fromisoformat(iso(ed))
-  trackers[ed]={'iso':date.isoformat(),'label':f'{date.day} {date.strftime("%B %Y")}','url':s['pdf_url'],'record':s['source'],'pages':s['pages']}
+  trackers[ed]={'iso':date.isoformat(),'label':f'{date.day} {date.strftime("%B %Y")}','url':s['source'],'record':s['source'],'pages':s['pages']}
  def js(name,variable,value):
   (SITE/name).write_text('// Generated from official Council tracker PDFs; see coverage.json.\nconst '+variable+' = '+json.dumps(value,ensure_ascii=False,separators=(',',':'))+';\n')
  js('sources.js','TRACKERS',trackers);js('data.js','ISSUES',issues);js('evidence.js','VERBATIM',evidence)

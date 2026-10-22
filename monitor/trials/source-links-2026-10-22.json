@@ -1,0 +1,302 @@
+{
+  "checked_at": "2026-10-22T04:37:45.278373+00:00",
+  "method": "GET old PDF address; resolve permanent Council record; download new address; validate PDF bytes and compare SHA-256 with the accepted catalogue baseline.",
+  "results": [
+    {
+      "edition": "11122025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651422/TRIM_Resolution%20Tracker%20for%2011%20December%202025%20Council%20meeting_1958850.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "12122024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651423/TRIM_Council%20Resolution%20Tracker%20for%2012%20December%20Council%20Meeting_1857236.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "18042024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651424/TRIM_Resolution%20Tracker%20Report%20for%2018%20April%202024%20Council%20Meeting_1791204.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "18052023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651425/TRIM_Council%20Resolution%20Tracker%20for%2018%20May%202023%20Council%20Meeting_1712084.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "18062026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651426/TRIM_Resolution%20Tracker%20for%2018%20June%202026%20Council%20meeting_2015484.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "18072024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651428/TRIM_Resolution%20Tracker%20for%2018%20July%20Council%20Meeting_1816002.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "18092025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651427/TRIM_Resolution%20Tracker%20for%2018%20September%202025%20Council%20meeting_1934297.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "19022026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651429/TRIM_Resolution%20Tracker%20for%2019%20February%202026%20Council%20meeting_1977920.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "19032026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651430/TRIM_Resolution%20Tracker%20for%2019%20March%202026%20Council%20Meeting_1986570.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "19062025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651431/TRIM_Resolution%20Tracker%20for%2019%20June%202025%20Council%20meeting_1905006.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "19102023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651432/TRIM_Council%20Resolution%20Tracker%20for%2019%20October%202023%20Council%20Meeting_1751776.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20022025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651433/TRIM_Resolution%20Tracker%20for%20the%2020%20February%202025%20Council%20Meeting_1871627.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20032025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651434/TRIM_Resolution%20Tracker%20for%2020%20March%202025%20Council%20meeting_1879674.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20042023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651435/TRIM_Council%20Resolution%20Tracker%20for%2020%20April%202023%20Council%20Meeting_1706583.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20062024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651436/TRIM_Resolution%20Tracker%20for%2020%20June%202024%20Council%20Meeting_1806652.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20072023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651437/TRIM_Council%20Resolution%20Tracker%20for%2020%20July%202023%20Council%20Meeting_1729311.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20082026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651438/TRIM_Resolution%20Tracker%20for%2020%20August%202026%20Council%20meeting_2036859.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "20112025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651439/TRIM_Resolution%20Tracker%20for%2020%20November%202025%20Council%20meeting_1952252.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "21032024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651440/TRIM_Resolution%20Tracker%20Report%20for%2021%20March%202024%20Council%20Meeting_1785247.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "21052026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651441/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2021%20May%202026_2007639.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "21082025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651452/TRIM_Resolution%20Tracker%20for%2021%20August%202025%20Council%20meeting_1923146.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "21112024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651442/TRIM_Resolution%20Tracker%20for%2021%20November%202024%20Council%20Meeting_1848719.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "22022024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651443/TRIM_Resolution%20Tracker%20Report%20for%2022%20February%202024%20Council%20Meeting_1778559.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "22052025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651444/TRIM_Resolution%20Tracker%20for%2022%20May%202025%20Council%20meeting_1897836.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "22062023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651445/TRIM_Council%20Resolution%20Tracker%20for%2022%20June%202023%20Council%20Meeting_1721215.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "22082024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651446/TRIM_Resolution%20Tracker%20for%2022%20August%20Council%20Meeting_1825935.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "22102026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651447/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "23042026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651448/TRIM_Resolution%20Tracker%20for%2023%20April%202026%20Council%20meeting_1997720.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "23052024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651449/TRIM_Resolution%20Tracker%20for%20the%2023%20May%202024%20Council%20Meeting_1798556.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "23072026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651450/TRIM_Resolution%20Tracker%20for%2023%20July%202026%20Council%20meeting_2028259.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "23102025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651451/TRIM_Resolution%20Tracker%20for%2023%20October%202025%20Council%20meeting_1943891.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "23112023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651453/TRIM_Resolution%20Tracker%20Report%20for%2023%20November%202023%20Council%20Meeting_1759588.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "24042025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651454/TRIM_Resolution%20Tracker%20for%2024%20April%202025%20Council%20Meeting_1890789.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "24072025",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651455/TRIM_Resolution%20Tracker%20for%2024%20July%202025%20Council%20meeting_1915113.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "24082023",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651456/TRIM_Council%20Resolution%20Tracker%20for%2024%20August%202023%20Council%20Meeting_1737179.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "24092026",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651457/TRIM_Resolution%20Tracker%20for%2024%20September%202026%20Council%20meeting_2045918.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    },
+    {
+      "edition": "24102024",
+      "old_status": "404",
+      "old_pdf": false,
+      "resolved_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651458/TRIM_Resolution%20Tracker%20for%2024%20October%202024%20Council%20Meeting_1843419.PDF",
+      "current_pdf": true,
+      "matches_baseline": true
+    }
+  ]
+}

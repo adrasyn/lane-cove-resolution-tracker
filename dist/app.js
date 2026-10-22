@@ -60,8 +60,7 @@ function shadeForDate(date){
 function tilePalette(issue){const shade=shadeForDate(META[issue.id].latest);return `--tile-bg:${shade.background};--tile-ink:${shade.ink}`;}
 function sourceLink(edition,pages,label='Read the original Council document'){
   const doc=TRACKERS[edition];
-  const pageText=pages.length?`${pages.length===1?'page':'pages'} ${pages.join(', ')}`:'';
-  return `<a href="${escapeText(doc.url+(pages.length?'#page='+pages[0]:''))}" target="_blank" rel="noopener">${escapeText(label)}${pageText?` (PDF, ${pageText})`:' (PDF)'} ${icon('external')}<span class="sr-only">; opens in a new tab</span></a>`;
+  return `<a href="${escapeText(doc.url)}" target="_blank" rel="noopener">${escapeText(label)} (PDF) ${icon('external')}<span class="sr-only">; opens in a new tab</span></a>`;
 }
 function routeIssue(){
   const hash=location.hash.slice(1),parameter=new URLSearchParams(location.search).get('issue');

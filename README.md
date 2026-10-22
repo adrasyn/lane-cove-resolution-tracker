@@ -18,12 +18,13 @@ Rebuild the data and check source coverage:
 python3 catalogue/build_catalogue.py
 node scripts/verify-catalogue.cjs
 node scripts/verify-route-motion.cjs
+node scripts/verify-source-links.cjs
 node --check dist/app.js
 ```
 
 `catalogue/structured/` retains extracted physical table columns and source metadata. Editorial files contain resident-facing summaries. `catalogue/historical-links.json` records explicit earlier-phase links; minutes verification records document source-number corrections and adoption checks. `dist/coverage.json` is the downloadable coverage inventory. PDFs are linked directly from Council rather than bundled in the website. Rebuilding does not fetch new editions.
 
-The interface keeps compact glossy tiles, live search, date-based shading, pointer tilt and reversible two-face flip transitions. Only visible tiles participate in navigation animation. Desktop timelines use elapsed calendar time, share one dot for records on the same day and show an overview plus an accessible update selector for long histories. Phones keep the vertical list and an inline update reader. Original wording and PDF page links accompany every summary; complete repeated monthly rows remain under the source disclosure.
+The interface keeps compact glossy tiles, live search, date-based shading, pointer tilt and reversible two-face flip transitions. Only visible tiles participate in navigation animation. Desktop timelines use elapsed calendar time, share one dot for records on the same day and show an overview plus an accessible update selector for long histories. Phones keep the vertical list and an inline update reader. Original wording and PDF links accompany every summary; complete repeated monthly rows remain under the source disclosure.
 
 ## Source limits and rules
 
@@ -49,5 +50,7 @@ The interface keeps compact glossy tiles, live search, date-based shading, point
 The site uses local HTML/CSS/JavaScript assets and requires JavaScript. No framework, backend, API key or external font is needed. Links to original records open Council's external websites. Python 3 builds catalogue data; Node runs the verification scripts. The optional source scanner uses curl and the pinned Python dependency in `requirements-monitor.txt`; it contacts Council's public servers.
 
 The original PDF research archive is not bundled. `catalogue/structured/` contains the source rows needed to reproduce the site, and `monitor/baseline.json` records hashes of the original PDFs. Preserve accepted future PDFs in a durable archive as described in the update proposal.
+
+Website tracker links use Council's permanent `GenDocLink.asp?RecId=...` document records. Council resolves those records to its current PDF location; saved `documents_TE/` download paths can expire. Page references remain in the source data, but the website opens the whole PDF without a page fragment. A live audit of all 37 cited editions is recorded in `monitor/trials/source-links-2026-10-22.json`.
 
 No reuse license has been selected. Council source material retains its original provenance. This package was exported from the reviewed site source at commit `99e3c0ced388865f17594dbd893f5b721dab3137`; hosting-specific metadata, deployment credentials and source history are excluded.
