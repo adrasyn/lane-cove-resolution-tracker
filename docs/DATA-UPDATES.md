@@ -1,90 +1,63 @@
 # Keeping the tracker current
 
-## Recommendation
+## Chosen workflow
 
-Use GitHub Actions to check Council's public agenda index once a day. Discovery can be automatic; changes to residents' timelines should initially arrive as a reviewed data update. Publishing the website is a separate step.
+ChatGPT Cloud performs the complete daily data workflow: discovery, PDF extraction, comparison, connecting minute items into issues, AI summaries, source checks, building and pushing accepted content. GitHub Actions checks the resulting commit and publishes the verified `dist/` files to https://lanecovetracker.wlsn.me/. Actions does not perform AI processing or run a daily scan schedule.
 
-The repository contains a **working read-only scanner and a manual Actions workflow**. There is no daily schedule, automatic summary generation, automatic merge, or Pages deployment enabled.
+See [CLOUD-SETUP.md](CLOUD-SETUP.md) for environment settings, allowed domains, dependencies, credentials and the first-run prompt. [DAILY-TASK.md](DAILY-TASK.md) is the durable scheduled-task prompt. The cloud environment and schedule still need to be created, tested and activated.
 
-The first live test on 22 October 2026 checked all 17 listed 2026 agendas (ordinary, supplementary and extraordinary) and all nine tracker PDFs. The downloaded PDF hashes matched the reviewed source archive; there were no errors or pending changes. A second test covered both 2025 and 2026: 36 agendas and 20 PDFs, again with no differences or errors. Its full report is saved in `monitor/trials/2026-10-22.json`. See `monitor/baseline.json` for the accepted source identities and SHA-256 hashes.
+## What is implemented
 
-## Daily process
+The scanner checks all listed Council agendas for the current and previous years, including supplementary and extraordinary agendas. It finds Resolution Tracker attachments, follows Council redirects, validates PDF identity and compares full-byte SHA-256 hashes with `monitor/baseline.json`. New documents, changed bytes at an existing address and reused PDFs are distinguished. Errors, missing known agendas and missing expected attachments fail visibly rather than being reported as no changes.
 
-1. Search the Council agenda index for the current and previous calendar years. Include supplementary and extraordinary agendas, and do not assume a particular monthly meeting date. Checking the previous year also covers late publication across New Year.
-2. Find **all** Resolution Tracker attachments in each agenda. Follow Council's document redirect, verify that the result opens as a PDF and contains tracker text, then hash the complete bytes.
-3. Compare with the accepted baseline. Report a new attachment, revised bytes at an existing address, or an old PDF linked by another agenda. An HTTP error, missing known agenda or broken attachment must be visible as a failure, not “nothing new”.
-4. Keep a report and changed PDFs for review. The trial stores these as private repository workflow artifacts for 30 days. Download and preserve accepted source files before they expire; artifacts alone are not a permanent evidence archive.
-5. Extract proposed row changes, check them, draft summaries, and open a data pull request. This ingestion/PR stage is **a proposed next step, not implemented by the scanner**.
-6. Review the source comparison and preview, then merge. Once Pages is separately approved and configured, a deployment workflow can publish the accepted `dist/` files.
+The portable extractor separates the seven physical table columns and joins page continuations. It validates the downloaded hash and page count against the scan report. It stages proposed rows, including warnings, without changing the accepted catalogue or baseline. Exit code 2 means source review is needed. It is a research-derived extractor, not a general PDF-table guarantee.
 
-```mermaid
-flowchart LR
-  A[Daily Council check] --> B[Validate PDF and compare hash]
-  B --> C{Changed?}
-  C -->|No| D[Record successful check]
-  C -->|Yes| E[Archive source and propose row changes]
-  E --> F[Draft summaries and preview]
-  F --> G[Review data pull request]
-  G --> H[Merge accepted data]
-  H --> I[Publish when Pages is enabled]
-  B -->|Source error| J[Failed check for investigation]
-```
+The catalogue builder retains complete rows, quoted wording, dates and source references. Reviewed officer-comment summaries must match minute item, dated update and exact source wording with whitespace normalised; missing or ambiguous bindings stop the build. This prevents the earlier cross-item summary-reuse error.
 
-## What is already testable
+The Pages workflow runs after checks pass on main. It publishes only `dist/`, not research scripts, credentials or archived PDFs. PRs receive checks without deployment. The manual scan workflow remains available as a diagnostic; it is not the daily scheduler.
 
-From the repository root, with Python 3.12 and curl installed:
+## Trial evidence
 
-```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements-monitor.txt
-.venv/bin/python -m unittest discover -s scripts -p 'test_*.py'
-.venv/bin/python scripts/scan_trackers.py
-```
+On 22 October 2026 the original trial checked 17 listed 2026 agendas and all nine tracker PDFs, matching the reviewed archive. The two-year trial checked 36 agendas and 20 PDFs with no errors or changes; its report is in `monitor/trials/2026-10-22.json`. The cloud-readiness live check on the same day again checked 36 agendas and 20 PDFs with no differences or errors.
 
-The scan produces `scan-output/report.json`, a readable `summary.md`, and hash-named copies of changed PDFs. It never edits `catalogue/`, `dist/` or `monitor/baseline.json`. Source errors return a nonzero exit code. New/revised/reused PDFs set `needs_review: true` in the report; these are successful discoveries, not network failures. The manual workflow can be run from GitHub's Actions tab and needs no Council credentials or AI API key.
+## What must be rehearsed before unattended updates
 
-This is comparison against the **accepted catalogue**, not the previous scan. An unreviewed change will be reported again until it is accepted. There is deliberately no automatic baseline advance that could cause a pending change to disappear.
+A no-change scan does not exercise a new edition. In the cloud environment, replay a changed edition on a disposable branch and test extraction warnings, row comparison, new minute items, evidence-based issue grouping, historical links, source-bound summaries, complete-history preservation and release inventory/coverage updates. There is no one-command automatic acceptance/import stage yet; the cloud agent must do and verify this editorial work.
 
-## What needs review before a data update
+Coverage date and counts are explicit in the current release. The checked inventory has nine 2026 editions and 221 minute items. A new edition must update the independently derived inventory, coverage date, visible source date and asset cache versions together. Do not remove source-completeness checks to bypass a changed count. Retain existing 2026 issues across New Year; decide scope for new 2027 items explicitly.
+
+After the changed-edition rehearsal passes, activate a cloud task, suggested daily at 07:17 Australia/Sydney. Routine unambiguous updates may be pushed after full validation under that task's authorization. Ambiguity must produce a review proposal without changing accepted production data. Deduplicate pending work by edition and PDF hash.
+
+## Evidence and interpretation rules
 
 | Change | Treatment |
 | --- | --- |
-| New resolution | Add a new issue or link to an existing issue only with evidence; retain number and year. |
-| New dated officer comment | Add the dated note; distinguish its date from publication and decision dates. |
-| Repeated unchanged comment | Retain the monthly source row without manufacturing a new progress event. |
-| Status or target changed | Show the change as observed in that edition. A target is not a delivery promise. |
-| Resolution marked Completed | Explain what that resolution required; do not automatically close the wider issue. |
-| Row missing | Flag the difference. Do not infer completion. |
-| Blank/malformed/duplicated number | Stop automatic matching for that row and request source review. |
-| Different PDF at the same URL | Preserve both revisions, with hashes and first-seen timestamps; review corrections. |
-| Same PDF under a later agenda | Record the duplicate reference; do not count it as a fresh edition. |
-| Source unavailable or layout changed | Report the problem and leave published data intact. |
+| New minute item | Retain number and meeting year; link to an existing issue only with evidence. |
+| Dated officer comment | Retain its date separately from decision and publication dates. |
+| Repeated unchanged comment | Preserve the monthly row without inventing a progress event. |
+| Status or target changed | Date the observation to the edition; do not infer a delivery promise. |
+| Completed item | Explain the specific task; do not automatically close the broader issue. |
+| Row missing | Flag it; do not infer completion. |
+| Blank, malformed or duplicated identifier | Inspect the source and adopted minutes; do not guess. |
+| Different bytes at the same URL | Preserve both versions, hashes and first-seen metadata. |
+| Same PDF under another agenda | Record the reference without inventing a fresh edition. |
+| Unavailable source or changed layout | Report the error and preserve published data. |
 
-The existing extractor required manual corrections for table continuations, blank identifiers and source inconsistencies. A production ingestion step should keep raw columns, page references and confidence/errors, rather than letting an AI read a PDF and rewrite the whole catalogue. AI can draft short factual summaries from verified row differences. Those drafts should retain source citations and be reviewed before publication.
+Preserve accepted future PDFs under `monitor/accepted/<sha256>.pdf`, with a change/source report outside `dist/`. Preserve unresolved evidence on its review branch. Do not leave the only copy in a temporary cloud workspace or an expiring artifact. The original historical PDF research archive is not bundled; structured rows and source hashes remain in the repository.
 
-The catalogue builder currently fixes membership to the nine 2026 editions (221 resolutions). Before accepting the next edition, make that scope explicit and update the coverage checks with an independently derived inventory. At the 2027 rollover, retain existing issue histories and decide whether to expand membership to every new year's tracker; do not silently drop 2026 issues.
+The scanner compares against the accepted catalogue, not the previous scan. Pending changes remain visible until actually incorporated. Advance the baseline only when acceptance and validation are complete. The website's “Records through” date means the latest accepted source edition; a successful scan date is a separate fact.
 
-## Turning on the daily scan later
+## Limits
 
-After a successful GitHub-hosted trial and agreement on notifications, add a daily `schedule` trigger to `.github/workflows/scan-trackers.yml`. A proposed time is 07:17 Australia/Sydney. Use GitHub's documented timezone-aware scheduling, or a documented UTC equivalent; verify the supported syntax when enabling it. GitHub schedules can be delayed and only run from the default branch, so this is a daily check, not a guaranteed delivery time. Public repositories' schedules may be disabled after 60 days without repository activity.
-
-The next useful addition is one deduplicated review pull request per source edition/revision, with a link to the report, changed rows and a preview. It should remain open until reviewed, rather than generating a fresh alert every day. Choose the notification destination before implementing it; the manual trial only has an Actions summary/artifact and normal failed-workflow notifications according to the account's GitHub settings. Successful discovery currently does **not** send a dedicated change notification.
-
-The current workflow uses `contents: read` only. Creating pull requests later needs narrowly scoped write permissions and repository settings that permit the chosen mechanism. Do not add a personal access token or AI key to the static website. A paid AI service, if selected later, belongs in Actions secrets and needs a defined usage limit. The scanner itself uses no AI service; GitHub-hosted runner usage depends on the account's Actions allowance.
-
-Before publication, also choose a permanent PDF evidence archive and a stale-data display policy. The website's “Records through” date should mean the latest accepted source edition, while “Last checked” should be separate and only advance after a successful scan. Never show today's date as if the underlying data were refreshed.
-
-## Trial limits
-
-- Rechecks current/previous-year PDFs to detect same-address revisions; this costs more downloads than metadata-only checks but avoids trusting unreliable modification headers.
-- Does not monitor revisions to every historical PDF forever, search for unlinked attachments, or inspect non-Council committee agendas.
-- Depends on Council's ASP.NET index form, agenda HTML and document redirect conventions. Tests cover known shapes, not future redesigns; missing expected structures fail visibly.
-- Checks basic PDF readability and tracker identity; it does not yet extract, compare or approve rows.
-- Reports changed files in expiring artifacts until a durable review/archive stage is implemented.
+- Rechecks current/previous-year PDFs for revisions; it does not perpetually re-audit every historic source or find unlinked attachments.
+- Depends on Council's ASP.NET form, agenda HTML and document redirects; a source redesign requires investigation.
+- Extraction warnings and warning-free output both need source-aware review; AI copy still requires factual checking.
+- The cloud task needs tested write access and durable GitHub state. Each new workspace must begin from fresh main content.
+- GitHub Pages and the original ChatGPT Sites preview are separate deployments. Production updates target Pages.
 
 ## Sources
 
 - [Council agenda archive](https://lanecove.infocouncil.biz/)
-- [GitHub workflow events, manual runs and schedule behaviour](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)
-- [GitHub workflow permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions)
-- [GitHub artifact action and retention](https://github.com/actions/upload-artifact)
+- [Cloud environment setup](https://learn.chatgpt.com/docs/environments/cloud-environments)
+- [Scheduled tasks](https://learn.chatgpt.com/docs/automations)
+- [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)

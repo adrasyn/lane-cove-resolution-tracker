@@ -1,0 +1,13 @@
+{
+  "edition": "20082026",
+  "acceptedRows": 59,
+  "replayedRows": 59,
+  "fieldDifferences": [],
+  "warnings": [
+    {
+      "warning": "Unexpected status",
+      "key": "156/2026",
+      "status": "Comleted"
+    }
+  ]
+}

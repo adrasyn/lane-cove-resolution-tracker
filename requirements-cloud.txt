@@ -1,0 +1,3 @@
+-r requirements-monitor.txt
+# Same extractor version used for the reviewed research catalogue.
+pdfplumber==0.11.8

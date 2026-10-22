@@ -1,7 +1,8 @@
 name: Check Council trackers (manual trial)
 on:
   workflow_dispatch:
-# No schedule or deployment is enabled. See docs/DATA-UPDATES.md before activation.
+# Diagnostic only. Daily scanning and AI processing belong to ChatGPT Cloud.
+# Website deployment is handled by checks.yml after verification.
 permissions:
   contents: read
 concurrency:

@@ -4,7 +4,7 @@ An independent website covering every resolution listed in the nine 2026 Resolut
 
 ![The issue browser on desktop](docs/assets/desktop.png)
 
-Not affiliated with Lane Cove Council. GitHub Pages is not enabled. This repository contains the static website, reviewed source data and a manual trial for detecting new or revised Council trackers. Read [the data update proposal](docs/DATA-UPDATES.md) for the daily scan design, evidence rules and remaining work.
+Not affiliated with Lane Cove Council. Production website: **https://lanecovetracker.wlsn.me/**. GitHub Pages publishes the verified `dist/` files after successful checks on `main`. This repository contains the static website, reviewed source data, a source scanner and a portable PDF row extractor. Read [the cloud setup guide](docs/CLOUD-SETUP.md) and [daily task instructions](docs/DAILY-TASK.md) before enabling scheduled updates. ChatGPT Cloud performs scanning, extraction and AI processing; GitHub Actions checks and deploys the committed result. The daily cloud schedule is not yet active.
 
 Run the buildless site locally:
 
@@ -41,16 +41,18 @@ The interface keeps compact glossy tiles, live search, date-based shading, point
 
 | Directory | Purpose |
 | --- | --- |
-| `dist/` | Complete buildless website; this is the future Pages artifact. |
+| `dist/` | Complete buildless website; the verified Pages artifact. |
 | `catalogue/` | Normalized source rows, reviewed summaries, provenance and reproducible builder. |
 | `monitor/` | Accepted PDF identity/hash baseline. |
 | `scripts/` | Catalogue, animation regression and scanner checks. |
-| `.github/workflows/` | Verification on pushes/PRs and a manual source scan. No schedule or deployment. |
+| `.github/workflows/` | Verification on pushes/PRs, Pages deployment after checks on main, and an optional manual diagnostic scan. No daily scan schedule or AI processing. |
 | `docs/` | Update architecture and screenshot. |
 
 The site uses local HTML/CSS/JavaScript assets and requires JavaScript. No framework, backend, API key or external font is needed. Links to original records open Council's external websites. Python 3 builds catalogue data; Node runs the verification scripts. The optional source scanner uses curl and the pinned Python dependency in `requirements-monitor.txt`; it contacts Council's public servers.
 
 The original PDF research archive is not bundled. `catalogue/structured/` contains the source rows needed to reproduce the site, and `monitor/baseline.json` records hashes of the original PDFs. Preserve accepted future PDFs in a durable archive as described in the update proposal.
+
+For cloud setup, install `requirements-cloud.txt` in `.venv` and run `bash scripts/verify.sh`. The cloud agent still needs to rehearse acceptance of a changed edition before unattended publication: row extraction is staged for review, and the release coverage date/inventory are explicit. Details and the first-run prompt are in [CLOUD-SETUP.md](docs/CLOUD-SETUP.md).
 
 Website tracker links use Council's permanent `GenDocLink.asp?RecId=...` document records. Council resolves those records to its current PDF location; saved `documents_TE/` download paths can expire. Page references remain in the source data, but the website opens the whole PDF without a page fragment. A live audit of all 37 cited editions is recorded in `monitor/trials/source-links-2026-10-22.json`.
 
