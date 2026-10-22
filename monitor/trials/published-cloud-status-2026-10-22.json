@@ -1,0 +1,29 @@
+{
+  "environment": "lane-cove-resolution-tracker",
+  "environmentId": "ccarenv_b64_Y2NhcmVudl9hOTJjMDI3NTQ2OTA4MTkxYWIxOGRmMDUwNDcwNTIxYg",
+  "configurationRevision": 3,
+  "repository": "adrasyn/lane-cove-resolution-tracker",
+  "implementationMainCommit": "d5ad30e6279119613dec2ca2d0dbc101bdf3e162",
+  "pagesWorkflow": "https://github.com/adrasyn/lane-cove-resolution-tracker/actions/runs/39742610672",
+  "pagesResult": "success; fetched production index bytes match committed dist/index.html",
+  "tests": "26 passed plus all site checks",
+  "scan": {
+    "agendas": 36,
+    "pdfs": 0,
+    "errors": 20
+  },
+  "rehearsal": "Partial structured replay only; real PDF extraction and visual review blocked by HTTP 503",
+  "savedTask": {
+    "id": "6ad9bfafcb008191bb370849b46a3f47",
+    "title": "Lane Cove tracker daily update",
+    "status": "paused",
+    "timezone": "Australia/Sydney",
+    "time": "07:17 daily",
+    "threadId": "01a1628a-cafb-77d0-91d9-7958cdecf0a5",
+    "cloudEnvironmentSpecifiedInPrompt": true,
+    "futureRuntimeRetentionVerified": false,
+    "manualRun": "not run; physical rehearsal incomplete"
+  },
+  "baselineAdvanced": false,
+  "draftPR": "not created; automatic approval review rejected external PR publication"
+}

@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-22T08:39:15.636423+00:00",
+  "configurationRevision": 20,
+  "probes": [
+    {
+      "name": "permanent-default",
+      "result": "503 https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26 5.337767",
+      "exitCode": 0,
+      "error": "",
+      "body": "upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
+    },
+    {
+      "name": "permanent-http1",
+      "result": "503 https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26 5.337593",
+      "exitCode": 0,
+      "error": "",
+      "body": "upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
+    }
+  ]
+}

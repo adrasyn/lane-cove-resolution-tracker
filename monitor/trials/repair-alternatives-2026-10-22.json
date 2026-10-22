@@ -1,0 +1,47 @@
+{
+  "existingDailyAutomation": "6ad9bfafcb008191bb370849b46a3f47",
+  "existingDailyStatus": "paused",
+  "existingDailyThread": "01a1628a-cafb-77d0-91d9-7958cdecf0a5",
+  "savedConfigurationForOneShotTest": "e344c273-ec6f-4487-a267-77b2c632c9db~asenvcfg_11f61bdf41248191a62e52d8282c4f87",
+  "configurationBindingVerified": false,
+  "schedulerApiCanChangeDestinationOrEnvironment": false,
+  "parentDotOneShotTest": "created by parent for 2026-10-22T08:43:17Z; parent owns inspection; no duplicate test created here",
+  "requiredNextStep": "Parent-owned one-shot scheduled diagnostic launches one saved-config child, does no generic-worker tracker processing, and inspects actual completed configuration/repository/transport evidence.",
+  "cloudTransportAlternatives": {
+    "currentConfigurationRevision": 20,
+    "defaultHttps": "Envoy upstream connection timeout",
+    "http1_1": "Envoy upstream connection timeout",
+    "officialCouncilMeetingPage": "Resolution Tracker quick link points to ecouncil.lanecove.nsw.gov.au; no independently verified alternate tracker download found",
+    "officialAgendaPdf": "downloads from agenda host but omits external tracker attachment",
+    "noProxyOrTlsBypassUsed": true,
+    "tls12Http1_1": "Proxy CONNECT succeeds, TLS1.2 negotiates, hostname matches and certificate verifies; request then receives Envoy upstream connection timeout before origin response headers.",
+    "webRetrieval": "Official permanent-link fetch also unavailable through web retrieval; no original PDF bytes available from that tool.",
+    "tcpOrVpnAlternative": "No TCP grants and no VPN configured; not used as a bypass or expanded without supported configuration review."
+  },
+  "sourceFixImplemented": false,
+  "scheduleFixImplemented": false,
+  "historicalPdfRehearsal": "passed on branch c893dca; unchanged",
+  "productionChangedDuringThisInvestigation": false,
+  "newRecurringSchedulesCreated": 0,
+  "approvalRequests": [],
+  "blockedActions": [
+    {
+      "action": "Select saved environment or existing-chat destination on existing automation via exposed API",
+      "target": "6ad9bfafcb008191bb370849b46a3f47",
+      "state": "unavailable",
+      "reason": "Create/update schemas expose neither environmentConfigId nor destination/thread/owner fields; prompt wording does not set execution configuration."
+    },
+    {
+      "action": "Run parent-dot saved-cloud orchestration diagnostic from this implementation worker",
+      "target": "e344c273-ec6f-4487-a267-77b2c632c9db~asenvcfg_11f61bdf41248191a62e52d8282c4f87",
+      "state": "pending in parent",
+      "reason": "This worker has no supported saved-config task-launch tool; coordinator's parent can attempt the diagnostic in its own scheduled context."
+    },
+    {
+      "action": "Repair cloud upstream connection to official document host through exposed configuration workflow",
+      "target": "ecouncil.lanecove.nsw.gov.au:443",
+      "state": "unavailable here",
+      "reason": "Host already allowed and enforced. Runtime tools are read-only for configuration; no permitted source alternative has been verified. New bound saved-config child may have a different transport outcome, which must be measured."
+    }
+  ]
+}
