@@ -130,14 +130,19 @@ function renderTiles(){
   cleanupTiles=attachTileMotion(grid);
   announce(`${issues.length} ${issues.length===1?'issue':'issues'} found`);
 }
+function renderDesktopUpdates(issue){
+  const labels=META[issue.id].labels;
+  return `<ol class="desktop-updates" aria-label="Updates, newest first">${issue.events.map((item,index)=>`<li class="desktop-update" id="update-row-${index}"><button type="button" class="update-row" id="row-${index}" data-index="${index}" aria-expanded="false" aria-controls="update-reader"><time datetime="${item.date}">${formatDate(item.date,true)}</time><span class="row-title">${escapeText(labels[index]||item.title)}</span><span class="row-toggle" aria-hidden="true">+</span></button></li>`).reverse().join('')}</ol>`;
+}
 function renderDetail(issue,focus=false){
   cleanupView();cleanupTiles();activeIssue=issue;selectedIndex=-1;
   const meta=META[issue.id];
   document.title=issue.short+' · Lane Cove Council Resolution Tracker';
-  app.innerHTML=`<div class="page-width detail-page"><div class="back-row"><a href="${homeUrl()}" data-home>${icon('back')}All issues</a><span>${escapeText(issue.category)}</span></div><section class="detail-hero" style="${tilePalette(issue)}" aria-labelledby="page-heading"><div class="tile-sheen" aria-hidden="true"></div><div class="hero-heading"><h1 id="page-heading" tabindex="-1">${escapeText(issue.title)}</h1></div><p class="hero-description">${escapeText(meta.description)}</p><dl class="hero-meta"><div><dt>First appeared</dt><dd><time datetime="${meta.first}">${formatDate(meta.first,true)}</time></dd></div><div><dt>Latest update</dt><dd><time datetime="${meta.latest}">${formatDate(meta.latest,true)}</time></dd></div><div><dt>Status</dt><dd class="hero-status">${icon(issue.tone==='amber'?'wait':'update')}${escapeText(meta.status)}</dd></div></dl></section><section class="story-section" aria-labelledby="timeline-heading"><div class="story-heading"><div><h2 id="timeline-heading">Update history</h2><p class="desktop-timeline-hint">Select a dot or label.</p><p class="mobile-timeline-hint">Select a dated update to read the details.</p></div>${issue.events.length>12?`<div class="update-picker"><label for="update-picker">Choose an update</label><select id="update-picker"><option value="">Choose an update</option>${issue.events.map((item,index)=>`<option value="${index}">${formatDate(item.date,true)}</option>`).join('')}</select></div>`:''}</div><div class="timeline-viewport" id="timeline-viewport"><div class="timeline-scale" aria-hidden="true"></div><svg class="timeline-guides" aria-hidden="true"></svg><ol class="timeline-rail">${issue.events.map((item,index)=>`<li class="timeline-point"><button type="button" class="update-button" id="update-${index}" aria-expanded="false" aria-controls="update-reader" data-index="${index}"><span class="node-dot" aria-hidden="true"></span><span class="node-copy"><time class="node-date" datetime="${item.date}">${formatDate(item.date,true)}</time><span class="node-label">${escapeText(meta.labels[index]||item.title)}</span></span></button></li>`).join('')}</ol></div><div class="detail-reader-slot" id="reader-slot"><div class="reader-placeholder" id="reader-placeholder">${icon('pointer')}Select an update to read the summary and Council’s original wording.</div><section class="update-reader" id="update-reader" aria-labelledby="reader-heading" hidden></section></div><details class="issue-context"><summary>How Council records this issue &amp; source documents</summary><div class="context-body"><p>Council’s Resolution Tracker gives each decision its own row and status. This page includes the decisions and available tracker updates for this issue. Several records on the same date share a dot; their original wording stays separate.</p><p>${escapeText(issue.caution)}</p><p>Decision numbers in the Council documents: ${escapeText(issue.resolutions)}.</p>${(issue.extraSources||[]).map(source=>`<p><a href="${escapeText(source.url)}" target="_blank" rel="noopener">${escapeText(source.label)}<span class="sr-only">; opens in a new tab</span></a></p>`).join('')}${issue.extraSource?`<p>${escapeText(issue.extraSource.note)}</p><a href="${escapeText(issue.extraSource.url)}" target="_blank" rel="noopener">${escapeText(issue.extraSource.label)}<span class="sr-only">; opens in a new tab</span></a>`:''}<details class="monthly-checks"><summary>All tracker entries (${issue.checks.length})</summary><p>Each entry below is a row from a Council tracker. Repeated comments, the reported status and target date are retained. A missing entry does not confirm that work finished.</p>${issue.checks.map(renderCheck).join('')}</details></div></details></section></div>`;
-  document.querySelector('#update-picker')?.addEventListener('change',event=>{if(event.target.value!=='')selectUpdate(Number(event.target.value));});
-  document.querySelectorAll('.update-button').forEach(button=>{
-    button.addEventListener('click',event=>selectUpdate(Number(button.dataset.index),event.detail===0));
+  app.innerHTML=`<div class="page-width detail-page"><div class="back-row"><a href="${homeUrl()}" data-home>${icon('back')}All issues</a><span>${escapeText(issue.category)}</span></div><section class="detail-hero" style="${tilePalette(issue)}" aria-labelledby="page-heading"><div class="tile-sheen" aria-hidden="true"></div><div class="hero-heading"><h1 id="page-heading" tabindex="-1">${escapeText(issue.title)}</h1></div><p class="hero-description">${escapeText(meta.description)}</p><dl class="hero-meta"><div><dt>First appeared</dt><dd><time datetime="${meta.first}">${formatDate(meta.first,true)}</time></dd></div><div><dt>Latest update</dt><dd><time datetime="${meta.latest}">${formatDate(meta.latest,true)}</time></dd></div><div><dt>Status</dt><dd class="hero-status">${icon(issue.tone==='amber'?'wait':'update')}${escapeText(meta.status)}</dd></div></dl></section><section class="story-section" aria-labelledby="timeline-heading"><div class="story-heading"><div><h2 id="timeline-heading">Update history</h2><p class="desktop-timeline-hint">Select a dot or an update below.</p><p class="mobile-timeline-hint">Select a dated update to read the details.</p></div>${issue.events.length>12?`<div class="update-picker"><label for="update-picker">Choose an update</label><select id="update-picker"><option value="">Choose an update</option>${issue.events.map((item,index)=>`<option value="${index}">${formatDate(item.date,true)}</option>`).join('')}</select></div>`:''}</div><div class="timeline-viewport" id="timeline-viewport"><div class="timeline-scale" aria-hidden="true"></div><svg class="timeline-guides" aria-hidden="true"></svg><ol class="timeline-rail">${issue.events.map((item,index)=>`<li class="timeline-point"><button type="button" class="update-button" id="update-${index}" aria-expanded="false" aria-controls="update-reader" data-index="${index}"><span class="node-dot" aria-hidden="true"></span><span class="node-copy"><time class="node-date" datetime="${item.date}">${formatDate(item.date,true)}</time><span class="node-label">${escapeText(meta.labels[index]||item.title)}</span></span></button></li>`).join('')}</ol></div>${renderDesktopUpdates(issue)}<div class="detail-reader-slot" id="reader-slot"><div class="reader-placeholder" id="reader-placeholder">${icon('pointer')}Select an update to read the summary and Council’s original wording.</div><section class="update-reader" id="update-reader" aria-labelledby="reader-heading" hidden></section></div><details class="issue-context"><summary>How Council records this issue &amp; source documents</summary><div class="context-body"><p>Council’s Resolution Tracker gives each decision its own row and status. This page includes the decisions and available tracker updates for this issue. Several records on the same date share a dot; their original wording stays separate.</p><p>${escapeText(issue.caution)}</p><p>Decision numbers in the Council documents: ${escapeText(issue.resolutions)}.</p>${(issue.extraSources||[]).map(source=>`<p><a href="${escapeText(source.url)}" target="_blank" rel="noopener">${escapeText(source.label)}<span class="sr-only">; opens in a new tab</span></a></p>`).join('')}${issue.extraSource?`<p>${escapeText(issue.extraSource.note)}</p><a href="${escapeText(issue.extraSource.url)}" target="_blank" rel="noopener">${escapeText(issue.extraSource.label)}<span class="sr-only">; opens in a new tab</span></a>`:''}<details class="monthly-checks"><summary>All tracker entries (${issue.checks.length})</summary><p>Each entry below is a row from a Council tracker. Repeated comments, the reported status and target date are retained. A missing entry does not confirm that work finished.</p>${issue.checks.map(renderCheck).join('')}</details></div></details></section></div>`;
+  document.querySelector('#update-picker')?.addEventListener('change',event=>{if(event.target.value!=='')selectUpdate(Number(event.target.value),false,true);});
+  document.querySelectorAll('.update-button,.update-row').forEach(button=>{
+    button.addEventListener('click',event=>selectUpdate(Number(button.dataset.index),event.detail===0,button.classList.contains('update-button')));
+    if(!button.classList.contains('update-button'))return;
     button.addEventListener('keydown',event=>{
       if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
       event.preventDefault();
@@ -148,11 +153,12 @@ function renderDetail(issue,focus=false){
     });
   });
   cleanupView=attachTimeline();
+  if(!mobileLayout.matches)selectUpdate(issue.events.length-1);
   if(focus){focusHeading();window.scrollTo({top:0,behavior:'instant'});}
 }
 function placeReader(){
   const reader=document.querySelector('#update-reader');if(!reader)return;
-  const parent=mobileLayout.matches&&selectedIndex>=0?document.querySelector(`#update-${selectedIndex}`).parentElement:document.querySelector('#reader-slot');
+  const parent=selectedIndex<0?document.querySelector('#reader-slot'):mobileLayout.matches?document.querySelector(`#update-${selectedIndex}`).parentElement:document.querySelector(`#update-row-${selectedIndex}`);
   parent.appendChild(reader);
 }
 function renderCheck(id){
@@ -163,17 +169,27 @@ function renderReaderEntry(entry,multiple=false){
   const evidence=VERBATIM[entry.evidence];
   return `<div class="reader-entry">${multiple?`<h4>${escapeText(entry.title)}</h4>`:''}<p class="ai-label">${entry.kind==='decision'?'Decision':'Update'} ${escapeText(entry.resolution)} · AI summary</p><p class="ai-summary">${escapeText(entry.text)}</p>${evidence.dateNote?`<p class="source-date-note">${escapeText(evidence.dateNote)}</p>`:''}<details class="exact-wording"><summary>Read the exact Council wording</summary><p class="verbatim-label">${escapeText(evidence.label)}</p><blockquote>${escapeText(evidence.text)}</blockquote><p class="wording-note">Original wording and punctuation; PDF line breaks have been normalised.</p>${evidence.versions?.length?`<details class="earlier-wording"><summary>Wording in earlier trackers (${evidence.versions.length})</summary>${evidence.versions.map(version=>`<p>${sourceLink(version.edition,version.pages,TRACKERS[version.edition].label)}</p><blockquote>${escapeText(version.text)}</blockquote>`).join('')}</details>`:''}</details><div class="reader-source">${sourceLink(evidence.edition,evidence.pages)}<span>${escapeText(TRACKERS[evidence.edition].label)} tracker</span></div></div>`;
 }
-function selectUpdate(index,keyboard=false){
-  if(index===selectedIndex){closeUpdate();return;}
+function scrollToUpdateRow(index){
+  document.querySelector(`#update-row-${index}`)?.scrollIntoView({block:'nearest',behavior:motionEnabled()?'smooth':'instant'});
+}
+function selectUpdate(index,keyboard=false,fromTimeline=false){
+  if(index===selectedIndex){
+    if(fromTimeline&&!mobileLayout.matches)scrollToUpdateRow(index);else closeUpdate();
+    return;
+  }
   selectedIndex=index;const item=activeIssue.events[index],reader=document.querySelector('#update-reader');
   const entries=item.entries;
   const picker=document.querySelector('#update-picker');if(picker)picker.value=String(index);
-  document.querySelectorAll('.update-button').forEach(button=>button.setAttribute('aria-expanded',String(Number(button.dataset.index)===index)));
+  document.querySelectorAll('.update-button,.update-row').forEach(button=>{
+    const expanded=Number(button.dataset.index)===index;button.setAttribute('aria-expanded',String(expanded));
+    const toggle=button.querySelector('.row-toggle');if(toggle)toggle.textContent=expanded?'−':'+';
+  });
   reader.innerHTML=`<div class="reader-top"><span class="reader-kind">${entries.length===1&&entries[0].kind==='decision'?'Council decision':'Council update'} <span aria-hidden="true">·</span> ${formatDate(item.date,true)}${entries.length>1?` · ${entries.length} records`:''}</span><button type="button" class="close-update" aria-label="Close this update">${icon('close')}</button></div><h3 id="reader-heading" tabindex="-1">${entries.length>1?formatDate(item.date):escapeText(item.title)}</h3>${entries.map(entry=>renderReaderEntry(entry,entries.length>1)).join('')}`;
   reader.hidden=false;document.querySelector('#reader-placeholder').hidden=true;placeReader();
   reader.querySelector('.close-update').addEventListener('click',()=>closeUpdate(true));
   if(motionEnabled()&&!keyboard)reader.animate([{opacity:.45,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'cubic-bezier(.23,1,.32,1)'});
   if(keyboard)reader.querySelector('#reader-heading').focus({preventScroll:true});
+  if(fromTimeline&&!mobileLayout.matches)scrollToUpdateRow(index);
   announce(`Opened update ${index+1} of ${activeIssue.events.length}: ${item.title}`);
 }
 function closeUpdate(restoreFocus=false){
@@ -181,84 +197,62 @@ function closeUpdate(restoreFocus=false){
   const picker=document.querySelector('#update-picker');if(picker)picker.value='';
   const reader=document.querySelector('#update-reader');reader.hidden=true;placeReader();
   document.querySelector('#reader-placeholder').hidden=false;
-  document.querySelectorAll('.update-button').forEach(button=>button.setAttribute('aria-expanded','false'));
-  if(restoreFocus&&previous>=0)document.querySelector(`#update-${previous}`).focus({preventScroll:true});
+  document.querySelectorAll('.update-button,.update-row').forEach(button=>{button.setAttribute('aria-expanded','false');const toggle=button.querySelector('.row-toggle');if(toggle)toggle.textContent='+';});
+  if(restoreFocus&&previous>=0)document.querySelector(mobileLayout.matches?`#update-${previous}`:`#row-${previous}`).focus({preventScroll:true});
   announce('Update closed');
 }
-// Place every label above or below a fixed date axis; close dates keep their true positions.
-function placeTimelineLabels(positions,width,labelWidth,heights,fontScale){
-  const lanes={above:[],below:[]},gap=12*fontScale;
-  const labels=positions.map((x,index)=>{
-    const left=Math.max(0,Math.min(width-labelWidth,x-labelWidth/2));
-    const preferred=index%2===0?'above':'below';
-    const candidates=['above','below'].map(side=>{
-      const available=lanes[side].findIndex(row=>row.right+gap<=left);
-      const lane=available<0?lanes[side].length:available;
-      return {side,lane,score:lane*2+(side===preferred?0:1)};
-    }).sort((a,b)=>a.score-b.score);
-    const {side,lane}=candidates[0];
-    if(!lanes[side][lane])lanes[side].push({right:0,height:0});
-    const row=lanes[side][lane];row.right=left+labelWidth;row.height=Math.max(row.height,heights[index]);
-    return {x,left,side,lane,height:heights[index]};
-  });
-  const aboveHeight=lanes.above.reduce((sum,row,index)=>sum+row.height+(index?gap:0),0);
-  const axisY=34*fontScale+aboveHeight+28*fontScale;
-  let cursor=axisY-28*fontScale;
-  lanes.above.forEach(row=>{row.top=cursor-row.height;cursor=row.top-gap;});
-  cursor=axisY+28*fontScale;
-  lanes.below.forEach(row=>{row.top=cursor;cursor+=row.height+gap;});
-  labels.forEach(label=>{label.top=lanes[label.side][label.lane].top;});
-  return {axisY,height:cursor+4*fontScale,labels};
+// Keep the overview proportional to elapsed time; desktop update text lives in the list below.
+function timelineGeometry(dates,width,fontScale){
+  const padding=16,usable=width-padding*2;
+  const first=new Date(dates[0]+'T00:00:00Z'),last=new Date(dates.at(-1)+'T00:00:00Z');
+  const start=Date.UTC(first.getUTCFullYear(),first.getUTCMonth(),1);
+  const end=Date.UTC(last.getUTCFullYear(),last.getUTCMonth()+1,1);
+  return {start,end,axisY:43*fontScale,height:80*fontScale,
+    positions:dates.map(date=>padding+(Date.parse(date)-start)/(end-start)*usable)};
 }
 function layoutTimeline(){
   const viewport=document.querySelector('#timeline-viewport');
   if(!viewport||!activeIssue)return;
-  const scale=viewport.querySelector('.timeline-scale'),guides=viewport.querySelector('.timeline-guides');
-  const points=[...viewport.querySelectorAll('.timeline-point')];
   if(mobileLayout.matches){viewport.style.height='';return;}
-  const width=viewport.clientWidth,padding=16,usable=width-padding*2;
-  const first=new Date(activeIssue.events[0].date+'T00:00:00Z');
-  const last=new Date(activeIssue.events.at(-1).date+'T00:00:00Z');
-  const start=Date.UTC(first.getUTCFullYear(),first.getUTCMonth(),1);
-  const end=Date.UTC(last.getUTCFullYear(),last.getUTCMonth()+1,1);
-  const xFor=date=>padding+(date-start)/(end-start)*usable;
+  const scale=viewport.querySelector('.timeline-scale'),guides=viewport.querySelector('.timeline-guides');
+  const points=[...viewport.querySelectorAll('.timeline-point')],width=viewport.clientWidth,padding=16;
   const fontScale=parseFloat(getComputedStyle(document.documentElement).fontSize)/18;
-  const labelWidth=Math.min(146*fontScale,usable/3);
-  const positions=activeIssue.events.map(item=>xFor(Date.parse(item.date)));
+  const geometry=timelineGeometry(activeIssue.events.map(event=>event.date),width,fontScale);
+  const first=new Date(geometry.start),last=new Date(geometry.end-1);
+  viewport.style.height=geometry.height+'px';viewport.style.setProperty('--axis-y',geometry.axisY+'px');
   points.forEach((point,index)=>{
-    point.style.setProperty('--label-width',labelWidth+'px');
+    const x=geometry.positions[index];
+    const hitWidth=Math.max(4,Math.min(28,x-(geometry.positions[index-1]??-Infinity),(geometry.positions[index+1]??Infinity)-x));
+    point.style.setProperty('--dot-hit',hitWidth+'px');
+    point.style.setProperty('--event-x',x+'px');point.style.setProperty('--dot-y',geometry.axisY+'px');
     point.querySelector('.update-button').title=formatDate(activeIssue.events[index].date,true)+' · '+activeIssue.events[index].title;
   });
-  const heights=points.map(point=>point.querySelector('.node-copy').getBoundingClientRect().height);
-  const layout=placeTimelineLabels(positions,width,labelWidth,heights,fontScale);
-  viewport.style.height=layout.height+'px';viewport.style.setProperty('--axis-y',layout.axisY+'px');
   const monthCount=(last.getUTCFullYear()-first.getUTCFullYear())*12+last.getUTCMonth()-first.getUTCMonth()+1;
-  const step=Math.max(1,Math.ceil(monthCount*70*fontScale/usable));
+  const step=Math.max(1,Math.ceil(monthCount*70*fontScale/(width-padding*2)));
   const ticks=[];
   for(let month=0;month<monthCount;month+=step){
     const date=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth()+month,1));
+    const x=padding+(date.getTime()-geometry.start)/(geometry.end-geometry.start)*(width-padding*2);
     const label=new Intl.DateTimeFormat('en-AU',{month:'short',year:'numeric',timeZone:'UTC'}).format(date);
-    ticks.push(`<span class="month-tick" style="left:${xFor(date.getTime())}px">${escapeText(label)}</span>`);
+    ticks.push(`<span class="month-tick" style="left:${x}px">${escapeText(label)}</span>`);
   }
   scale.innerHTML=ticks.join('');
-  guides.setAttribute('viewBox',`0 0 ${width} ${layout.height}`);
-  guides.innerHTML=`<path class="time-axis" d="M${padding} ${layout.axisY}H${width-padding}"/>`+layout.labels.map((label,index)=>{
-    const point=points[index],x=label.x;
-    const hitWidth=Math.max(4,Math.min(28,x-(positions[index-1]??-Infinity),(positions[index+1]??Infinity)-x));
-    point.style.setProperty('--dot-hit',hitWidth+'px');
-    point.style.setProperty('--event-x',x+'px');point.style.setProperty('--dot-y',layout.axisY+'px');
-    point.style.setProperty('--label-offset',(label.left-x+hitWidth/2)+'px');
-    point.style.setProperty('--label-y',(label.top-layout.axisY+14)+'px');
-    const edge=label.side==='above'?label.top+label.height+3:label.top-3;
-    return `<path d="M${x} ${layout.axisY}V${edge}"/>`;
-  }).join('');
+  guides.setAttribute('viewBox',`0 0 ${width} ${geometry.height}`);
+  guides.innerHTML=`<path class="time-axis" d="M${padding} ${geometry.axisY}H${width-padding}"/>`;
 }
 function attachTimeline(){
   const viewport=document.querySelector('#timeline-viewport');
-  const observer=new ResizeObserver(()=>{layoutTimeline();placeReader();});observer.observe(viewport);
-  const onLayout=()=>{layoutTimeline();placeReader();};
-  mobileLayout.addEventListener('change',onLayout);
-  layoutTimeline();
+  let previousMobile=mobileLayout.matches;
+  const onLayout=()=>{
+    layoutTimeline();
+    if(previousMobile!==mobileLayout.matches){
+      previousMobile=mobileLayout.matches;
+      if(!previousMobile&&selectedIndex<0)selectUpdate(activeIssue.events.length-1);
+    }
+    placeReader();
+  };
+  const observer=new ResizeObserver(onLayout);observer.observe(viewport);
+  mobileLayout.addEventListener('change',onLayout);layoutTimeline();
   return ()=>{observer.disconnect();mobileLayout.removeEventListener('change',onLayout);};
 }
 function attachTileMotion(grid){

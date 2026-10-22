@@ -121,6 +121,7 @@ svg { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .timeline-guides path { fill: none; stroke: var(--line); stroke-width: 1; }
 .timeline-guides .time-axis { stroke: oklch(.68 .035 188); }
 .timeline-rail { list-style: none; margin: 0; padding: 0; }
+.desktop-updates { display: none; }
 .timeline-point { position: absolute; left: var(--event-x); top: var(--dot-y); width: 0; }
 .update-button { position: absolute; left: calc(var(--dot-hit) / -2); top: -14px; display: grid; place-items: center; width: var(--dot-hit); height: 28px; min-height: 28px; border: none; padding: 0; border-radius: 50%; background: var(--bg); }
 .node-dot { display: block; width: 12px; height: 12px; border: 2px solid var(--brand); border-radius: 50%; background: var(--bg); }
@@ -311,3 +312,18 @@ html.large-text { font-size: 21px; }
 .update-picker select { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 7px; padding: 8px 30px 8px 10px; background: var(--bg); color: var(--ink); font: inherit; font-size: .78rem; }
 @media (max-width: 760px) { .story-heading { display: block; } .update-picker { display: none; } }
 @media (max-width: 380px) { .category-panel fieldset { grid-template-columns: minmax(0,1fr); } }
+@media (min-width: 761px) {
+  .timeline-viewport .node-copy { top: 0; left: 0; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); clip-path: inset(50%); white-space: nowrap; }
+  .update-button:focus-visible .node-dot { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .detail-reader-slot { display: none; }
+  .desktop-updates { display: block; list-style: none; padding: 0; margin: 0; }
+  .desktop-update { border-top: 1px solid var(--line); }
+  .desktop-update:last-child { border-bottom: 1px solid var(--line); }
+  .update-row { display: grid; grid-template-columns: 140px minmax(0,1fr) 20px; gap: 16px; align-items: center; width: 100%; min-height: 58px; border: 0; border-radius: 0; padding: 12px 14px; text-align: left; }
+  .update-row:hover { background: var(--surface); }
+  .update-row[aria-expanded="true"] { background: var(--pale); }
+  .update-row time { color: var(--muted); font-size: .76rem; }
+  .row-title { font-size: .88rem; line-height: 1.45; font-weight: 550; }
+  .row-toggle { color: var(--brand); text-align: center; font-size: 1.1rem; line-height: 1; }
+  .desktop-update .update-reader { margin: 0; padding: 14px 16px 20px; border: 0; border-radius: 0; }
+}

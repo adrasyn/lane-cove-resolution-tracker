@@ -17,25 +17,19 @@ assert.ok(facilities.every(issue=>issue.category==='Facilities & places'));
 assert.ok(filter(issues,'market square',new Set(['Facilities & places'])).some(issue=>issue.id==='market-square'));
 assert.equal(filter(issues,'market square',new Set(['Roads & transport'])).length,0);
 assert.ok(filter(issues,'224/2025',categories).some(issue=>issue.id==='market-square'));
-const place=productionFunction('placeTimelineLabels');
-for(const width of [700,1158,1240]){
- // Close dates must stay close, even while every label gets its own readable space.
- const positions=[16,23,30,120,150,155,160,200,230,240,350,400,405,410,500,520,525,550,600];
- const heights=positions.map((_,i)=>i%3===0?80:60);
- const result=place(positions,width,138,heights,1);
- assert.equal(result.labels.length,19);
- assert.ok(result.labels.some(label=>label.side==='above'));
- assert.ok(result.labels.some(label=>label.side==='below'));
- result.labels.forEach((label,i)=>{
-  assert.equal(label.x,positions[i]);
-  assert.ok(label.left>=0&&label.left+138<=width);
-  assert.ok(label.top>=30&&label.top+heights[i]<=result.height);
-  assert.ok(label.side==='above'?label.top+heights[i]<result.axisY:label.top>result.axisY);
- });
- for(let i=0;i<result.labels.length;i++)for(let j=i+1;j<result.labels.length;j++){
-  const a=result.labels[i],b=result.labels[j];
-  const overlap=a.left<b.left+138&&a.left+138>b.left&&a.top<b.top+heights[j]&&a.top+heights[i]>b.top;
-  assert.ok(!overlap,`Labels ${i} and ${j} must not overlap at width ${width}`);
- }
-}
-console.log('Browsing checks passed: category/search intersection, decision search, and complete labels above/below the timeline.');
+const geometry=productionFunction('timelineGeometry');
+const sample=geometry(['2026-03-01','2026-03-11','2026-03-31'],1000,1);
+assert.equal(sample.positions.length,3);
+assert.equal(sample.positions[0],16);
+assert.ok(Math.abs((sample.positions[2]-sample.positions[1])/(sample.positions[1]-sample.positions[0])-2)<1e-9,'20 days must occupy twice the space of 10 days');
+assert.ok(sample.height<120,'Desktop overview must stay compact regardless of update count');
+assert.ok(sample.positions.every(x=>x>=16&&x<=984));
+const yearBoundary=geometry(['2025-12-31','2026-01-01','2026-01-03'],1000,1);
+assert.ok(Math.abs((yearBoundary.positions[2]-yearBoundary.positions[1])/(yearBoundary.positions[1]-yearBoundary.positions[0])-2)<1e-9);
+const renderRows=productionFunction('renderDesktopUpdates',{META:meta,escapeText:s=>String(s),formatDate:d=>d});
+const square=issues.find(issue=>issue.id==='market-square');
+const rows=renderRows(square);
+assert.equal((rows.match(/class="update-row"/g)||[]).length,19);
+assert.ok(rows.indexOf('2026-10-14')<rows.indexOf('2026-09-17'),'Latest updates must come first');
+assert.ok(rows.indexOf('id="row-18"')<rows.indexOf('id="row-0"'),'Row indices must still match chronological dots');
+console.log('Browsing checks passed: category/search intersection, elapsed-time overview and complete newest-first update rows.');
