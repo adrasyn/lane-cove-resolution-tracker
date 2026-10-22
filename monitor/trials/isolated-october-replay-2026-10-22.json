@@ -1,0 +1,52 @@
+{
+  "status": "partial; physical extraction and visual PDF review blocked by Council HTTP 503",
+  "replay": "actual October structured source; no invented edition",
+  "newMinuteItems": [
+    "1/2026",
+    "198/2026",
+    "199/2026",
+    "200/2026",
+    "201/2026",
+    "202/2026",
+    "203/2026",
+    "209/2026",
+    "210/2026",
+    "213/2026",
+    "214/2026",
+    "216/2026",
+    "217/2026",
+    "218/2026",
+    "219/2026",
+    "220/2026",
+    "221/2026",
+    "222/2026",
+    "223/2026",
+    "224/2026",
+    "225/2026",
+    "226/2026",
+    "228/2026",
+    "229/2026",
+    "230/2026"
+  ],
+  "priorCoverage": "2026-09-24",
+  "replayedCoverage": "2026-10-22",
+  "preservedPriorPhysicalRows": 837,
+  "priorIssues": 153,
+  "replayedIssues": 165,
+  "summaryBinding": {
+    "minuteItem": "230/2026",
+    "date": "2026-10-15",
+    "sourceText": "Staff exploring next steps for implementation of resolution, noting that there are multiple steps required to advance the resolution.",
+    "title": "Anglo Road closure: implementation steps being explored",
+    "text": "Staff are exploring the next steps to implement the resolution and note that several steps are required."
+  },
+  "associationEvidence": "228/2026 and 229/2026 explicitly concern adoption of the Burns Bay Reserve Masterplan; retained with the earlier 165/2026 masterplan issue. No grouping from matching comments.",
+  "gates": {
+    "staleInventoryRejected": true,
+    "allPriorRoutesRetained": true,
+    "allPriorPhysicalRowsEqual": true,
+    "realPdfExtraction": false,
+    "visualReview": false,
+    "scheduleActivationAllowed": false
+  }
+}
