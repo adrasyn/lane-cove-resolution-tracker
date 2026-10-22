@@ -1,0 +1,99 @@
+{
+  "checkedAt": "2026-10-22T08:04:37.293589+00:00",
+  "environmentId": "ccarenv_b64_Y2NhcmVudl9hOTJjMDI3NTQ2OTA4MTkxYWIxOGRmMDUwNDcwNTIxYg",
+  "observedConfigurationRevision": 9,
+  "diagnosis": "Envoy upstream connection timeout before origin headers, not evidence of an origin application HTTP 503. Root cause within cloud-egress-to-origin path remains unlocalized.",
+  "probes": [
+    {
+      "name": "permanent",
+      "url": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26",
+      "exit": 0,
+      "result": "503 https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26 0.001510 5.534278",
+      "error": "",
+      "headers": [
+        "HTTP/1.1 200 OK",
+        "date: Thu, 22 Oct 2026 07:59:03 GMT",
+        "server: envoy",
+        "HTTP/2 503 ",
+        "content-length: 91",
+        "content-type: text/plain",
+        "date: Thu, 22 Oct 2026 07:59:09 GMT",
+        "server: envoy"
+      ],
+      "bodyPreview": "upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
+    },
+    {
+      "name": "resolved",
+      "url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249322/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+      "exit": 0,
+      "result": "503 https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249322/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF 0.001483 5.534419",
+      "error": "",
+      "headers": [
+        "HTTP/1.1 200 OK",
+        "date: Thu, 22 Oct 2026 07:59:03 GMT",
+        "server: envoy",
+        "HTTP/2 503 ",
+        "content-length: 91",
+        "content-type: text/plain",
+        "date: Thu, 22 Oct 2026 07:59:09 GMT",
+        "server: envoy"
+      ],
+      "bodyPreview": "upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
+    },
+    {
+      "name": "agenda",
+      "url": "https://lanecove.infocouncil.biz/Open/2026/10/CNL_22102026_AGN.HTM",
+      "exit": 0,
+      "result": "200 https://lanecove.infocouncil.biz/Open/2026/10/CNL_22102026_AGN.HTM 0.001472 1.229273",
+      "error": "",
+      "headers": [
+        "HTTP/1.1 200 OK",
+        "date: Thu, 22 Oct 2026 07:59:09 GMT",
+        "server: envoy",
+        "HTTP/2 200 ",
+        "date: Thu, 22 Oct 2026 07:59:10 GMT",
+        "content-type: text/html",
+        "server: envoy"
+      ]
+    },
+    {
+      "name": "document-home",
+      "url": "https://ecouncil.lanecove.nsw.gov.au/",
+      "exit": 0,
+      "result": "503 https://ecouncil.lanecove.nsw.gov.au/ 0.001008 5.335261",
+      "error": "",
+      "headers": [
+        "HTTP/1.1 200 OK",
+        "date: Thu, 22 Oct 2026 07:59:09 GMT",
+        "server: envoy",
+        "HTTP/2 503 ",
+        "content-length: 91",
+        "content-type: text/plain",
+        "date: Thu, 22 Oct 2026 07:59:14 GMT",
+        "server: envoy"
+      ],
+      "bodyPreview": "upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
+    }
+  ],
+  "currentResolvedUrl": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651763/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+  "currentResolvedCloudResult": "HTTP 503; Envoy upstream connection timeout before headers at 2026-10-22T08:00:31Z",
+  "localComparisonReportedByJames": "Permanent link and current resolved PDF returned 200; 633836 bytes; SHA256 17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4. Local bytes were not substituted for a successful cloud download.",
+  "officialAgendaPdfAlternative": {
+    "url": "https://lanecove.infocouncil.biz/RedirectToDoc.aspx?URL=Open/2026/10/CNL_22102026_AGN.PDF",
+    "cloudDownloadSucceeded": true,
+    "bytes": 1369081,
+    "pages": 52,
+    "containsTrackerAttachment": false,
+    "suitableForRehearsal": false
+  },
+  "safeRemediation": "Report connection failure and defer same-host requests for this run; do not change baseline or pretend the rehearsal passed. Managed egress/origin reachability must be repaired outside the repository.",
+  "scheduler": {
+    "id": "6ad9bfafcb008191bb370849b46a3f47",
+    "state": "paused",
+    "manualToolAttempt": "404 Action not found before invocation",
+    "observedSavedRunId": "fba1656a-6724-832f-ac3f-d18da174b1a6",
+    "observedSavedResult": "BLOCKED: worker attached environment ccarenv_b64_Y2NhcmVudl82YWI5YzhiYmQ4OTg4MTkxOWY3Zjc3M2I1Yjg2OGQ1Ng, not required environment. No repository changes or ingestion.",
+    "bindingSchema": "Available create/update parameters do not accept environment_id, target_thread_id, execution_environment or existing-chat continuation. Returned thread_id is not proof of runtime retention.",
+    "activationPermitted": false
+  }
+}
