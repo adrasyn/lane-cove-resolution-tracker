@@ -8,6 +8,11 @@
   --surface: oklch(.98 .004 188);
   --line: oklch(.87 .012 188);
   --focus: oklch(.46 .16 260);
+  --resolution-1: oklch(.44 .10 250);
+  --resolution-2: oklch(.44 .12 305);
+  --resolution-3: oklch(.44 .08 65);
+  --resolution-4: oklch(.44 .12 15);
+  --resolution-5: oklch(.44 .09 155);
   --ease-out: cubic-bezier(.23,1,.32,1);
   --ease-in-out: cubic-bezier(.77,0,.175,1);
   font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
@@ -145,7 +150,7 @@ svg { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .close-update { position: absolute; top: 7px; right: 10px; border: none; padding: 8px; min-width: 44px; display: grid; place-items: center; color: var(--muted); }
 .close-update svg { width: 18px; height: 18px; }
 .update-reader h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -.02em; margin-top: 4px; padding-right: 28px; max-width: 58ch; }
-.ai-label { color: var(--brand); font-size: .73rem; margin: 12px 0 4px; display: flex; align-items: center; gap: 7px; }
+.ai-label { flex-wrap: wrap; color: var(--brand); font-size: .73rem; margin: 12px 0 4px; display: flex; align-items: center; gap: 7px; }
 .ai-label svg { width: 15px; height: 15px; }
 .ai-summary { font-size: 1rem; max-width: 73ch; line-height: 1.65; }
 .exact-wording { margin-top: 10px; }
@@ -349,3 +354,14 @@ html.large-text { font-size: 21px; }
 }
 @media (prefers-reduced-motion: reduce) { .dot-hints-active .dot-ripple { animation: none; } }
 html.reduce-motion .dot-hints-active .dot-ripple { animation: none; }
+
+.resolution-tag { display: inline-block; max-width: 100%; border: 1px solid currentColor; border-radius: 5px; padding: 2px 7px; color: var(--resolution-color,var(--brand)); background: var(--bg); font-size: .68rem; line-height: 1.5; font-weight: 500; }
+.ai-label .resolution-tag { font-size: inherit; }
+.resolution-tags { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 5px; }
+.resolution-tags .resolution-tag { font-size: .62rem; }
+.resolution-color-0 { --resolution-color: var(--resolution-1); }
+.resolution-color-1 { --resolution-color: var(--resolution-2); }
+.resolution-color-2 { --resolution-color: var(--resolution-3); }
+.resolution-color-3 { --resolution-color: var(--resolution-4); }
+.resolution-color-4 { --resolution-color: var(--resolution-5); }
+@media (max-width:760px) { .resolution-tag { font-size: .65rem; } }

@@ -271,17 +271,17 @@ def compile_site(m):
      if not copy:
       missing_decisions[e['key']]={'key':e['key'],'resolution':e['text'],'title':latest_by_key[e['key']]['title']}
       copy={'title':latest_by_key[e['key']]['title'],'decisionSummary':e['text']}
-     title=copy['title'];text=copy['decisionSummary'];kind='decision';label=f'Resolution {e["key"]} — Council wording'
+     title=copy['title'];text=copy['decisionSummary'];kind='decision';label=f'Minute item {e["key"]} — Council wording'
     elif e['type']=='note':
      copy=note_editorial.get(fingerprint(e['text']))
      if not copy:
       missing_notes[fingerprint(e['text'])]={'key':e['key'],'text':e['text']}
       sentences=re.split(r'(?<=[.!?])\s+',e['text'])
       copy={'title':sentences[0] if len(sentences[0])<=65 else 'Council update','text':e['text']}
-     title,text=copy['title'],copy['text'];kind='update';label=f'Resolution {e["key"]} — officer comment'
+     title,text=copy['title'],copy['text'];kind='update';label=f'Minute item {e["key"]} — officer comment'
     else:
      title='Target date changed' if 'target date from' in e['text'] else 'Tracker status changed'
-     text=e['text'];kind='update';label=f'Resolution {e["key"]} — tracker status and target date'
+     text=e['text'];kind='update';label=f'Minute item {e["key"]} — tracker status and target date'
     evidence[eid]={'text':e['evidenceText'],'label':label,'edition':e['edition'],'pages':e['pages'],'dateNote':e['dateNote'],'versions':[{'text':v['raw'],'edition':v['edition'],'pages':v['pages']} for v in e.get('versions',[])]}
     entries.append({'title':title,'text':text,'kind':kind,'evidence':eid,'resolution':e['key']})
    # Status and target changes use reporting dates; the date stays visible and never implies completion of a whole issue.

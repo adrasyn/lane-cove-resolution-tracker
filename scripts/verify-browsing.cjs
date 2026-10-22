@@ -26,12 +26,28 @@ assert.ok(sample.height<120,'Desktop overview must stay compact regardless of up
 assert.ok(sample.positions.every(x=>x>=16&&x<=984));
 const yearBoundary=geometry(['2025-12-31','2026-01-01','2026-01-03'],1000,1);
 assert.ok(Math.abs((yearBoundary.positions[2]-yearBoundary.positions[1])/(yearBoundary.positions[1]-yearBoundary.positions[0])-2)<1e-9);
-const renderRows=productionFunction('renderDesktopUpdates',{META:meta,escapeText:s=>String(s),formatDate:d=>d});
+const badge=productionFunction('resolutionBadge',{escapeText:s=>String(s)});
+const tags=productionFunction('renderResolutionTags',{resolutionBadge:badge});
+const renderRows=productionFunction('renderDesktopUpdates',{META:meta,escapeText:s=>String(s),formatDate:d=>d,renderResolutionTags:tags});
 const square=issues.find(issue=>issue.id==='market-square');
 const rows=renderRows(square);
 assert.equal((rows.match(/class="update-row"/g)||[]).length,19);
 assert.ok(rows.indexOf('2026-10-14')<rows.indexOf('2026-09-17'),'Latest updates must come first');
 assert.ok(rows.indexOf('id="row-18"')<rows.indexOf('id="row-0"'),'Row indices must still match chronological dots');
+const food=issues.find(issue=>issue.id==='food-scraps');
+const foodRows=renderRows(food);
+for(const number of ['159/2024','60/2025','185/2025','71/2026'])assert.ok(foodRows.includes('Minute item '+number));
+const sameDay=food.events.find(event=>event.date==='2026-10-22');
+assert.equal((tags(food,sameDay).match(/class="resolution-tag /g)||[]).length,2,'A shared date must show both resolutions');
+const classes=food.resolutions.split(' → ').map(number=>badge(food,number).match(/resolution-color-\d+/)[0]);
+assert.equal(new Set(classes).size,4,'Each resolution within a group must have its own outline colour');
+assert.equal(tags({resolutions:'1/2026'}, {entries:[{resolution:'1/2026'}]}),'','Single-resolution rows need no repeated badge');
+const renderEntry=productionFunction('renderReaderEntry',{
+ VERBATIM:{sample:{text:'Council source text',label:'Minute item',edition:'sample',pages:[]}},
+ activeIssue:food,resolutionBadge:badge,escapeText:s=>String(s),sourceLink:()=>'<a>Source PDF</a>'
+});
+assert.ok(renderEntry({evidence:'sample',resolution:'60/2025',title:'Report',text:'Summary',kind:'decision'}).includes('New minute item 60/2025'));
+assert.ok(renderEntry({evidence:'sample',resolution:'159/2024',title:'Update',text:'Summary',kind:'update'}).includes('Update on minute item 159/2024'));
 // Exercise the actual lifecycle: visible desktop only, preferences and route cleanup.
 function dotMotionHarness({mobile=false,reduced=false}={}){
  const events=new Map(),classes=new Set(),timers=new Map();let timerId=0,draw=0;
