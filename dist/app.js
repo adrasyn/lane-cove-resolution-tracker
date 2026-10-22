@@ -256,15 +256,28 @@ function attachTimeline(){
   mobileLayout.addEventListener('change',onLayout);layoutTimeline();
   return ()=>{cleanupRipples();observer.disconnect();mobileLayout.removeEventListener('change',onLayout);};
 }
-// Keep the affordance visible after entry, with a quiet pause between each wave.
+// Each dot draws a fresh 1–1.3 second interval after every pulse starts.
 function attachDotRipples(viewport){
-  const controller=new AbortController(),options={signal:controller.signal};
-  let visible=false;
-  viewport.querySelectorAll('.dot-ripple').forEach((ring,index)=>{
-    ring.style.animationDelay=(900+Math.min(index*60,1100))+'ms';
-  });
+  const controller=new AbortController(),options={signal:controller.signal},timers=new Map();
+  const rings=[...viewport.querySelectorAll('.dot-ripple')];
+  let visible=false,active=false;
+  rings.forEach(ring=>ring.addEventListener('animationend',()=>ring.classList.remove('is-rippling'),options));
+  function schedule(ring){
+    timers.set(ring,setTimeout(()=>{
+      timers.delete(ring);
+      if(!active)return;
+      ring.classList.add('is-rippling');schedule(ring);
+    },1000+Math.random()*300));
+  }
+  function stop(){
+    timers.forEach(timer=>clearTimeout(timer));timers.clear();
+    rings.forEach(ring=>ring.classList.remove('is-rippling'));
+  }
   function sync(){
-    viewport.classList.toggle('dot-hints-active',visible&&!mobileLayout.matches&&motionEnabled()&&!document.hidden);
+    const next=visible&&!mobileLayout.matches&&motionEnabled()&&!document.hidden;
+    if(next===active)return;
+    active=next;viewport.classList.toggle('dot-hints-active',active);
+    if(active)rings.forEach(schedule);else stop();
   }
   const observer=new IntersectionObserver(entries=>{
     visible=entries.some(entry=>entry.isIntersecting);sync();
@@ -273,7 +286,7 @@ function attachDotRipples(viewport){
   window.addEventListener('tracker-motion-change',sync,options);
   mobileLayout.addEventListener('change',sync,options);
   document.addEventListener('visibilitychange',sync,options);
-  return ()=>{observer.disconnect();controller.abort();viewport.classList.remove('dot-hints-active');};
+  return ()=>{active=false;stop();observer.disconnect();controller.abort();viewport.classList.remove('dot-hints-active');};
 }
 function attachTileMotion(grid){
   const controller=new AbortController(),options={signal:controller.signal},states=[];

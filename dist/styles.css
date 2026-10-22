@@ -322,7 +322,7 @@ html.large-text { font-size: 21px; }
   .source-actions .reader-source > a { position: absolute; top: 0; left: 18em; min-height: 44px; }
   .node-dot { position: relative; }
   .dot-ripple { display: block; position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; border: 1px solid var(--brand); border-radius: 50%; pointer-events: none; opacity: 0; transform: translate(-50%,-50%) scale(.9); }
-  .dot-hints-active .dot-ripple { animation: dot-radiate 6s linear infinite; }
+  .dot-hints-active .dot-ripple.is-rippling { animation: dot-radiate 600ms linear; }
   .timeline-viewport .node-copy { top: 0; left: 0; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); clip-path: inset(50%); white-space: nowrap; }
   .update-button:focus-visible .node-dot { outline: 2px solid var(--focus); outline-offset: 3px; }
   .detail-reader-slot { display: none; }
@@ -338,10 +338,10 @@ html.large-text { font-size: 21px; }
   .desktop-update .update-reader { margin: 0; padding: 14px 16px 20px; border: 0; border-radius: 0; }
 }
 
-/* The ring expands for 1.2 seconds, then rests for the remainder of each cycle. */
+/* Independent pulses leave a short rest before the next random interval. */
 @keyframes dot-radiate {
   0% { transform: translate(-50%,-50%) scale(.9); opacity: .5; }
-  20%,100% { transform: translate(-50%,-50%) scale(2); opacity: 0; }
+  100% { transform: translate(-50%,-50%) scale(2); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .dot-hints-active .dot-ripple { animation: none; } }
 html.reduce-motion .dot-hints-active .dot-ripple { animation: none; }
