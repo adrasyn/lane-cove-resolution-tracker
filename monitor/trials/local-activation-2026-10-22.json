@@ -1,0 +1,41 @@
+{
+  "testedAt": "2026-10-22T09:05:38.465134+00:00",
+  "executionLocation": "local",
+  "scan": {
+    "agendas": 36,
+    "pdfs": 20,
+    "changes": 0,
+    "errors": []
+  },
+  "physicalReplay": {
+    "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26",
+    "sha256": "17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4",
+    "pages": 65,
+    "rows": 64,
+    "warnings": [],
+    "physicalFieldDifferences": [],
+    "metadataDifference": "Only the currently resolved temporary documents_TE URL differs from the accepted historical download URL; permanent link, hash and physical rows match."
+  },
+  "historicalAcceptanceReplay": {
+    "pullRequest": "https://github.com/adrasyn/lane-cove-resolution-tracker/pull/1",
+    "commit": "c893dca4bf44f90026421ad83df3c544c662190a",
+    "newMinuteItems": 25,
+    "priorPhysicalRowsPreserved": 837,
+    "priorRoutesPreserved": true,
+    "staleInventoryRejected": true
+  },
+  "publication": "No tracker data or accepted baseline changed; no simulated edition published.",
+  "verification": "33 unit tests plus catalogue, route, source-link, browsing and JavaScript checks.",
+  "nativeSchedule": {
+    "id": "lane-cove-tracker-daily-update-local",
+    "kind": "heartbeat",
+    "targetThreadId": "01a15ec0-f120-7f12-bfc7-0a39f5f3e45a",
+    "timezone": "Australia/Sydney",
+    "time": "07:17",
+    "dispatchTest": "Live workflow tested manually in this local chat; first timer-triggered run not yet observed."
+  },
+  "cloudSchedule": {
+    "id": "6ad9bfafcb008191bb370849b46a3f47",
+    "status": "paused"
+  }
+}

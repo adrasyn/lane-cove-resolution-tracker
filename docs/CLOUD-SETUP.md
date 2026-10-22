@@ -1,5 +1,7 @@
 # Cloud environment and daily update setup
 
+**Current operation is all-local.** See [LOCAL-SETUP.md](LOCAL-SETUP.md). This guide retains the future cloud configuration; its older cloud-only schedule instructions are superseded by `monitor/execution.json`. Do not activate the cloud schedule while local execution is selected. Real-PDF rehearsal passed, but cloud access to Council’s document host still returns proxy upstream timeouts. Before migrating, verify source transport in the saved environment and scheduler-launched child, pause the local schedule, review `location: cloud`, run the common preflight/workflow and verify the cloud binding before enabling it. Never run both production schedules.
+
 Production: <https://lanecovetracker.wlsn.me/>. Repository: <https://github.com/adrasyn/lane-cove-resolution-tracker>, branch `main`.
 
 ## Architecture and current readiness

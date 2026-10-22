@@ -2,9 +2,9 @@
 
 ## Chosen workflow
 
-ChatGPT Cloud performs the complete daily data workflow: discovery, PDF extraction, comparison, connecting minute items into issues, AI summaries, source checks, building and pushing accepted content. GitHub Actions checks the resulting commit and publishes the verified `dist/` files to https://lanecovetracker.wlsn.me/. Actions does not perform AI processing or run a daily scan schedule.
+The local ChatGPT task performs the complete daily data workflow: discovery, PDF extraction, comparison, connecting minute items into issues, AI summaries, source checks, building and pushing accepted content. GitHub Actions checks the resulting commit and publishes the verified `dist/` files to https://lanecovetracker.wlsn.me/. Actions does not perform AI processing or run a daily scan schedule.
 
-See [CLOUD-SETUP.md](CLOUD-SETUP.md) for environment settings, allowed domains, dependencies, credentials and the first-run prompt. [DAILY-TASK.md](DAILY-TASK.md) is the durable scheduled-task prompt. The cloud environment and schedule still need to be created, tested and activated.
+See [LOCAL-SETUP.md](LOCAL-SETUP.md) for the active execution configuration, dependencies, credentials, test evidence and laptop limitations. [DAILY-TASK.md](DAILY-TASK.md) is the one durable processing prompt. Cloud setup remains documented for a future complete migration; the previous cloud schedule stays paused.
 
 ## What is implemented
 
@@ -22,11 +22,11 @@ On 22 October 2026 the original trial checked 17 listed 2026 agendas and all nin
 
 ## What must be rehearsed before unattended updates
 
-A no-change scan does not exercise a new edition. In the cloud environment, replay a changed edition on a disposable branch and test extraction warnings, row comparison, new minute items, evidence-based issue grouping, historical links, source-bound summaries, complete-history preservation and release inventory/coverage updates. There is no one-command automatic acceptance/import stage yet; the cloud agent must do and verify this editorial work.
+A no-change scan does not exercise a new edition. In the selected execution location, replay a changed edition on a disposable branch and test extraction warnings, row comparison, new minute items, evidence-based issue grouping, historical links, source-bound summaries, complete-history preservation and release inventory/coverage updates. There is no one-command automatic acceptance/import stage yet; the executing agent must do and verify this editorial work.
 
 Coverage date and counts are explicit in the current release. The checked inventory has nine 2026 editions and 221 minute items. A new edition must update the independently derived inventory, coverage date, visible source date and asset cache versions together. Do not remove source-completeness checks to bypass a changed count. Retain existing 2026 issues across New Year; decide scope for new 2027 items explicitly.
 
-After the changed-edition rehearsal passes, activate a cloud task, suggested daily at 07:17 Australia/Sydney. Routine unambiguous updates may be pushed after full validation under that task's authorization. Ambiguity must produce a review proposal without changing accepted production data. Deduplicate pending work by edition and PDF hash.
+After the changed-edition rehearsal passes, activate the configured task daily at 07:17 Australia/Sydney. Routine unambiguous updates may be pushed after full validation under that task's authorization. Ambiguity must produce a review proposal without changing accepted production data. Deduplicate pending work by edition and PDF hash.
 
 ## Evidence and interpretation rules
 

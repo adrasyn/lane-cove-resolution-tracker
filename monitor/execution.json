@@ -1,0 +1,12 @@
+{
+  "location": "local",
+  "localBinding": {
+    "platform": "darwin",
+    "checkout": "~/Documents/Claude/Projects/lanecovetracker/github-repo"
+  },
+  "repository": "adrasyn/lane-cove-resolution-tracker",
+  "branch": "main",
+  "timezone": "Australia/Sydney",
+  "dailyTime": "07:17",
+  "workflow": "docs/DAILY-TASK.md"
+}

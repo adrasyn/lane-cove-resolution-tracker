@@ -4,7 +4,7 @@ An independent website covering every resolution listed in the nine 2026 Resolut
 
 ![The issue browser on desktop](docs/assets/desktop.png)
 
-Not affiliated with Lane Cove Council. Production website: **https://lanecovetracker.wlsn.me/**. GitHub Pages publishes the verified `dist/` files after successful checks on `main`. This repository contains the static website, reviewed source data, a source scanner and a portable PDF row extractor. Read [the cloud setup guide](docs/CLOUD-SETUP.md) and [daily task instructions](docs/DAILY-TASK.md) before enabling scheduled updates. ChatGPT Cloud performs scanning, extraction and AI processing; GitHub Actions checks and deploys the committed result. The daily cloud schedule is not yet active.
+Not affiliated with Lane Cove Council. Production website: **https://lanecovetracker.wlsn.me/**. GitHub Pages publishes the verified `dist/` files after successful checks on `main`. This repository contains the static website, reviewed source data, a source scanner and a portable PDF row extractor. Read [the local setup guide](docs/LOCAL-SETUP.md) and [daily task instructions](docs/DAILY-TASK.md). The local ChatGPT task performs scanning, extraction and AI processing; GitHub Actions checks and deploys the committed result. Execution location is explicit in `monitor/execution.json`; the previous cloud schedule remains paused. The same workflow can move entirely to cloud later.
 
 Run the buildless site locally:
 
@@ -52,7 +52,7 @@ The site uses local HTML/CSS/JavaScript assets and requires JavaScript. No frame
 
 The original PDF research archive is not bundled. `catalogue/structured/` contains the source rows needed to reproduce the site, and `monitor/baseline.json` records hashes of the original PDFs. Preserve accepted future PDFs in a durable archive as described in the update proposal.
 
-For cloud setup, install `requirements-cloud.txt` in `.venv` and run `bash scripts/verify.sh`. The cloud agent still needs to rehearse acceptance of a changed edition before unattended publication: row extraction is staged for review, and the release coverage date/inventory are explicit. Details and the first-run prompt are in [CLOUD-SETUP.md](docs/CLOUD-SETUP.md).
+For either execution location, install the shared pinned dependencies from `requirements-cloud.txt` in `.venv` and run `bash scripts/verify.sh`. The filename is retained for compatibility. Real October PDF extraction and changed-edition acceptance have been rehearsed without publishing simulated data. Row extraction remains staged for agent review; the release inventory is independently checked. See [LOCAL-SETUP.md](docs/LOCAL-SETUP.md) for current operation and [CLOUD-SETUP.md](docs/CLOUD-SETUP.md) for future cloud migration.
 
 Website tracker links use Council's permanent `GenDocLink.asp?RecId=...` document records. Council resolves those records to its current PDF location; saved `documents_TE/` download paths can expire. Page references remain in the source data, but the website opens the whole PDF without a page fragment. A live audit of all 37 cited editions is recorded in `monitor/trials/source-links-2026-10-22.json`.
 
