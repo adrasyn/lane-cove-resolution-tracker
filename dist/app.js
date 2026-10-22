@@ -167,7 +167,7 @@ function renderCheck(id){
 }
 function renderReaderEntry(entry,multiple=false){
   const evidence=VERBATIM[entry.evidence];
-  return `<div class="reader-entry">${multiple?`<h4>${escapeText(entry.title)}</h4>`:''}<p class="ai-label">${entry.kind==='decision'?'Decision':'Update'} ${escapeText(entry.resolution)} · AI summary</p><p class="ai-summary">${escapeText(entry.text)}</p>${evidence.dateNote?`<p class="source-date-note">${escapeText(evidence.dateNote)}</p>`:''}<div class="source-actions"><details class="exact-wording"><summary>Read the exact Council wording</summary><p class="verbatim-label">${escapeText(evidence.label)}</p><blockquote>${escapeText(evidence.text)}</blockquote><p class="wording-note">Original wording and punctuation; PDF line breaks have been normalised.</p>${evidence.versions?.length?`<details class="earlier-wording"><summary>Wording in earlier trackers (${evidence.versions.length})</summary>${evidence.versions.map(version=>`<p>${sourceLink(version.edition,version.pages,TRACKERS[version.edition].label)}</p><blockquote>${escapeText(version.text)}</blockquote>`).join('')}</details>`:''}</details><div class="reader-source">${sourceLink(evidence.edition,evidence.pages)}<span>${escapeText(TRACKERS[evidence.edition].label)} tracker</span></div></div></div>`;
+  return `<div class="reader-entry">${multiple?`<h4>${escapeText(entry.title)}</h4>`:''}<p class="ai-label">${entry.kind==='decision'?'Decision':'Update'} ${escapeText(entry.resolution)} · AI summary</p><p class="ai-summary">${escapeText(entry.text)}</p>${evidence.dateNote?`<p class="source-date-note">${escapeText(evidence.dateNote)}</p>`:''}<div class="source-actions"><details class="exact-wording"><summary>Read the exact Council wording</summary><p class="verbatim-label">${escapeText(evidence.label)}</p><blockquote>${escapeText(evidence.text)}</blockquote><p class="wording-note">Original wording and punctuation; PDF line breaks have been normalised.</p>${evidence.versions?.length?`<details class="earlier-wording"><summary>Wording in earlier trackers (${evidence.versions.length})</summary>${evidence.versions.map(version=>`<p>${sourceLink(version.edition,version.pages,TRACKERS[version.edition].label)}</p><blockquote>${escapeText(version.text)}</blockquote>`).join('')}</details>`:''}</details><div class="reader-source">${sourceLink(evidence.edition,evidence.pages)}</div></div></div>`;
 }
 function scrollToUpdateRow(index){
   document.querySelector(`#update-row-${index}`)?.scrollIntoView({block:'nearest',behavior:motionEnabled()?'smooth':'instant'});
@@ -256,37 +256,24 @@ function attachTimeline(){
   mobileLayout.addEventListener('change',onLayout);layoutTimeline();
   return ()=>{cleanupRipples();observer.disconnect();mobileLayout.removeEventListener('change',onLayout);};
 }
-// A single, small wave hints that the date markers are interactive. No repeating pulse.
+// Keep the affordance visible after entry, with a quiet pause between each wave.
 function attachDotRipples(viewport){
-  const controller=new AbortController(),options={signal:controller.signal},animations=new Set();
-  const rings=[...viewport.querySelectorAll('.dot-ripple')];
-  const easing=getComputedStyle(document.documentElement).getPropertyValue('--ease-out').trim();
-  let introTimer=0;
-  function ripple(ring,delay=0,duration=600){
-    if(mobileLayout.matches||!motionEnabled()||document.hidden)return;
-    // This slow hint never delays an interaction; hover feedback uses a shorter duration.
-    const animation=ring.animate([
-      {transform:'translate(-50%,-50%) scale(.9)',opacity:.28},
-      {transform:'translate(-50%,-50%) scale(1.7)',opacity:0}
-    ],{duration,delay,easing});
-    animations.add(animation);
-    animation.finished.then(()=>animations.delete(animation),()=>animations.delete(animation));
+  const controller=new AbortController(),options={signal:controller.signal};
+  let visible=false;
+  viewport.querySelectorAll('.dot-ripple').forEach((ring,index)=>{
+    ring.style.animationDelay=(900+Math.min(index*60,1100))+'ms';
+  });
+  function sync(){
+    viewport.classList.toggle('dot-hints-active',visible&&!mobileLayout.matches&&motionEnabled()&&!document.hidden);
   }
   const observer=new IntersectionObserver(entries=>{
-    if(!entries.some(entry=>entry.isIntersecting)||mobileLayout.matches||!motionEnabled())return;
-    observer.disconnect();
-    // Let the card flip and supporting content finish entering before the hint begins.
-    introTimer=setTimeout(()=>rings.forEach((ring,index)=>ripple(ring,Math.min(index*40,1100))),900);
+    visible=entries.some(entry=>entry.isIntersecting);sync();
   });
   observer.observe(viewport);
-  rings.forEach(ring=>ring.closest('.update-button').addEventListener('pointerenter',event=>{
-    if(event.pointerType!=='touch'&&pointerMotionEnabled()&&!animations.size)ripple(ring,0,240);
-  },options));
-  function stop(){clearTimeout(introTimer);animations.forEach(animation=>animation.cancel());animations.clear();}
-  window.addEventListener('tracker-motion-change',stop,options);
-  mobileLayout.addEventListener('change',()=>{if(mobileLayout.matches)stop();},options);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();},options);
-  return ()=>{stop();observer.disconnect();controller.abort();};
+  window.addEventListener('tracker-motion-change',sync,options);
+  mobileLayout.addEventListener('change',sync,options);
+  document.addEventListener('visibilitychange',sync,options);
+  return ()=>{observer.disconnect();controller.abort();viewport.classList.remove('dot-hints-active');};
 }
 function attachTileMotion(grid){
   const controller=new AbortController(),options={signal:controller.signal},states=[];
