@@ -18,7 +18,18 @@ spec.loader.exec_module(build)
 class SummaryContextTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.model = json.loads((ROOT / 'catalogue/catalogue-model.json').read_text())
+        # Build the fixture from tracked source rows; no local generated cache is required.
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = pathlib.Path(directory)
+            shutil.copytree(ROOT / 'catalogue/structured', temporary / 'structured')
+            shutil.copyfile(ROOT / 'catalogue/historical-links.json', temporary / 'historical-links.json')
+            original_root = build.ROOT
+            build.ROOT = temporary
+            try:
+                with contextlib.redirect_stdout(io.StringIO()):
+                    cls.model = build.model()
+            finally:
+                build.ROOT = original_root
 
     def compile(self, edit=None, model=None):
         with tempfile.TemporaryDirectory() as directory:
