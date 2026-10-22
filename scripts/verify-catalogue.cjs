@@ -5,8 +5,16 @@ const {issues,documents,evidence,rows}=vm.runInContext('({issues:ISSUES,document
 const sourceDocuments=fs.readdirSync('catalogue/structured').filter(n=>n.endsWith('2026-rows.json')).map(n=>JSON.parse(fs.readFileSync('catalogue/structured/'+n,'utf8')));
 const expected=new Set(sourceDocuments.flatMap(d=>d.records.map(r=>r.key)));
 const represented=new Set(issues.flatMap(i=>i.resolutions.split(' → ')));
-assert.equal(sourceDocuments.length,9,'All nine 2026 editions are present');
-assert.equal(expected.size,221,'Verified 2026 inventory');
+const release=JSON.parse(fs.readFileSync('catalogue/release-inventory.json','utf8'));
+assert.deepEqual([...expected].sort(),release.minuteItems,'Independently reviewed 2026 inventory');
+assert.deepEqual(sourceDocuments.map(d=>d.source.date).sort(),release.documents.filter(d=>d.edition.endsWith('2026')).map(d=>d.edition).sort(),'Every reviewed 2026 edition present');
+const coverage=JSON.parse(fs.readFileSync('dist/coverage.json','utf8'));
+assert.equal(coverage.through,release.through,'Accepted release coverage date');
+assert.deepEqual([...coverage.resolutions2026].sort(),release.minuteItems);
+for(const asset of ['sources.js','data.js','evidence.js','app.js']){
+ const hash=require('crypto').createHash('sha256').update(fs.readFileSync('dist/'+asset)).digest('hex').slice(0,12);
+ assert.ok(fs.readFileSync('dist/index.html','utf8').includes(asset+'?v='+hash),'Cache version follows accepted content');
+}
 assert.deepEqual([...expected].filter(k=>!represented.has(k)),[],'Every 2026 resolution has a page');
 assert.equal(new Set(issues.map(i=>i.id)).size,issues.length,'Unique routes');
 for(const doc of sourceDocuments)for(const row of doc.records){

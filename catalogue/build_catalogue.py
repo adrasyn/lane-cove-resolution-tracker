@@ -256,6 +256,11 @@ def load_note_summaries(m):
  return summaries
 
 def compile_site(m):
+ import sys
+ sys.path.insert(0,str(ROOT.parent/'scripts'))
+ from derive_release_inventory import derive
+ release=load(ROOT/'release-inventory.json')
+ if release!=derive(ROOT):raise ValueError('Release inventory differs from independently inventoried physical rows; review a new candidate')
  editorial={}
  for name in ['editorial-output-0.json','editorial-output-1.json','editorial-output-history.json']:
   if (ROOT/name).exists():editorial.update(load(ROOT/name))
@@ -323,7 +328,18 @@ def compile_site(m):
   (SITE/name).write_text('// Generated from official Council tracker PDFs; see coverage.json.\nconst '+variable+' = '+json.dumps(value,ensure_ascii=False,separators=(',',':'))+';\n')
  js('sources.js','TRACKERS',trackers);js('data.js','ISSUES',issues);js('evidence.js','VERBATIM',evidence)
  with (SITE/'evidence.js').open('a') as f:f.write('const RECORDS = '+json.dumps(rawrows,ensure_ascii=False,separators=(',',':'))+';\n')
- coverage={'through':'2026-10-22','scope':'Every resolution appearing in an available 2026 Resolution Tracker, with related earlier decisions and all available dated comments and tracker rows.','resolutions2026':m['members'],'issues':len(issues),'datedUpdates':sum(len(i['events']) for i in issues),'sourceRows':len(rawrows),'editionsReviewed':len(trackers),'editions2026':[ed for ed in trackers if ed.endswith('2026')],'groups':{i['id']:i['resolutions'].split(' → ') for i in issues},'gaps':[{'edition':'21092023','reason':'Official attachment returns an extraction error; agenda PDF links it but does not embed it.'},{'edition':'07122023','reason':'Agenda links the identical November tracker; not counted as a new snapshot.'}],'method':'Each source row is extracted by physical table columns. Dated officer comments are combined across editions; repeated wording is deduplicated. Status/target changes are dated to publication. Multiple records on a date share one dot but keep separate summaries and original wording. Officer-comment summaries are bound to their minute item, update date and exact source text with whitespace normalised; missing or ambiguous bindings stop the build.'}
+ coverage={'through':release['through'],'scope':'Every resolution appearing in an available 2026 Resolution Tracker, with related earlier decisions and all available dated comments and tracker rows.','resolutions2026':m['members'],'issues':len(issues),'datedUpdates':sum(len(i['events']) for i in issues),'sourceRows':len(rawrows),'editionsReviewed':len(trackers),'editions2026':[ed for ed in trackers if ed.endswith('2026')],'groups':{i['id']:i['resolutions'].split(' → ') for i in issues},'gaps':[{'edition':'21092023','reason':'Official attachment returns an extraction error; agenda PDF links it but does not embed it.'},{'edition':'07122023','reason':'Agenda links the identical November tracker; not counted as a new snapshot.'}],'method':'Each source row is extracted by physical table columns. Dated officer comments are combined across editions; repeated wording is deduplicated. Status/target changes are dated to publication. Multiple records on a date share one dot but keep separate summaries and original wording. Officer-comment summaries are bound to their minute item, update date and exact source text with whitespace normalised; missing or ambiguous bindings stop the build.'}
+ # Publish the accepted coverage date and content-addressed asset cache versions together.
+ index=(SITE/'index.html').read_text()
+ date=dt.date.fromisoformat(release['through'])
+ index=re.sub(r'Records through [^<]+',f'Records through {date.day} {date.strftime("%B %Y")}',index)
+ app=(SITE/'app.js').read_text()
+ app=re.sub(r"const REFERENCE_DATE = '[^']+';",f"const REFERENCE_DATE = '{release['through']}';",app)
+ (SITE/'app.js').write_text(app)
+ for asset in ['sources.js','data.js','evidence.js','app.js']:
+  version=hashlib.sha256((SITE/asset).read_bytes()).hexdigest()[:12]
+  index=re.sub(re.escape(asset)+r'\?v=[^" ]+',asset+'?v='+version,index)
+ (SITE/'index.html').write_text(index)
  (SITE/'coverage.json').write_text(json.dumps(coverage,ensure_ascii=False,indent=2))
  print('Compiled',len(issues),'issues;',len(missing_decisions),'decision summaries and',len(missing_notes),'note summaries pending')
  return issues,evidence,rawrows,coverage

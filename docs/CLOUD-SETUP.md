@@ -91,3 +91,11 @@ The older ChatGPT Sites preview is a separate deployment. Routine cloud updates 
 - [Scheduled tasks and manual testing](https://learn.chatgpt.com/docs/automations)
 - [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [Custom domain configuration](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+
+## Reviewed release inventory
+
+`catalogue/release-inventory.json` is the accepted release contract: exact 2026 minute-item membership, each physical source-file hash and row count, coverage date and membership policy. It is derived independently of issue grouping and summaries. The builder rejects source changes until this inventory is reviewed, and the JavaScript checks compare all 2026 memberships and editions against it. The policy retains 2026 across New Year; review scope explicitly before importing 2027 items.
+
+After source/editorial review, run `.venv/bin/python scripts/derive_release_inventory.py --output scan-output/release-candidate.json`. Inspect its diff against the accepted inventory, including every added/removed minute item and source hash, before copying the candidate to `catalogue/release-inventory.json`. This is approval of already checked sources, not an importer. Run `bash scripts/verify.sh`. The builder sets the reference/visible coverage dates and content-addressed data/source/evidence/app cache versions from accepted content. Never advance coverage on a scan alone.
+
+Cloud shell network commands require the execution tool's network permission as well as the environment allowlist. Preserve the inherited proxy and TLS trust. A sandbox-denied proxy connection does not show that the six configured hosts are blocked.

@@ -34,6 +34,10 @@ class SummaryContextTests(unittest.TestCase):
     def compile(self, edit=None, model=None):
         with tempfile.TemporaryDirectory() as directory:
             temporary = pathlib.Path(directory)
+            shutil.copytree(ROOT / 'catalogue/structured', temporary / 'structured')
+            shutil.copyfile(ROOT / 'catalogue/release-inventory.json', temporary / 'release-inventory.json')
+            for name in ['index.html', 'app.js']:
+                shutil.copyfile(ROOT / 'dist' / name, temporary / name)
             for pattern in ['editorial-output-*.json', 'note-*.json', 'historical-minutes-verification.json']:
                 for source in (ROOT / 'catalogue').glob(pattern):
                     shutil.copyfile(source, temporary / source.name)
@@ -46,6 +50,24 @@ class SummaryContextTests(unittest.TestCase):
                     return build.compile_site(self.model if model is None else model)
             finally:
                 build.ROOT, build.SITE = original_root, original_site
+
+    def test_changed_physical_source_requires_inventory_review(self):
+        def change_source(directory):
+            path=directory/'structured/22102026-rows.json'
+            doc=json.loads(path.read_text())
+            doc['records'][0]['comments']+=' Changed'
+            path.write_text(json.dumps(doc))
+        with self.assertRaisesRegex(ValueError, 'Release inventory differs'):
+            self.compile(change_source)
+
+    def test_unreviewed_inventory_membership_stops_build(self):
+        def change_inventory(directory):
+            path=directory/'release-inventory.json'
+            release=json.loads(path.read_text())
+            release['minuteItems'].pop()
+            path.write_text(json.dumps(release))
+        with self.assertRaisesRegex(ValueError, 'Release inventory differs'):
+            self.compile(change_inventory)
 
     def test_greenwich_gateway_update_does_not_name_austin_crescent(self):
         issues, evidence, _, _ = self.compile()
