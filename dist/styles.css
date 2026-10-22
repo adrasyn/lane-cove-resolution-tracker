@@ -128,9 +128,10 @@ svg { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .node-date { font-size: .69rem; color: var(--muted); display: block; white-space: nowrap; }
 .node-label { display: block; font-size: .77rem; font-weight: 550; line-height: 1.4; margin-top: 4px; }
 .timeline-point:has(.update-button:hover),.timeline-point:has(.update-button:focus-visible) { z-index: 6; }
-.update-button[aria-expanded="true"] .node-dot { background: var(--brand); box-shadow: 0 0 0 4px var(--pale); }
+.update-button[aria-expanded="true"] .node-dot { background: var(--brand); box-shadow: 0 0 0 2px var(--pale); }
 .update-button[aria-expanded="true"] .node-copy { background: var(--pale); }
 .update-button[aria-expanded="true"] .node-label { color: var(--brand); font-weight: 650; }
+.update-button:focus-visible { outline: none; }
 .update-button:focus-visible .node-copy { outline: 2px solid var(--focus); outline-offset: 2px; }
 .reader-placeholder { text-align: center; padding: 18px 20px; margin-top: 12px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); font-size: .83rem; }
 .reader-placeholder svg { width: 22px; height: 22px; margin: 0 auto 10px; color: var(--brand); }
