@@ -1,0 +1,104 @@
+{
+  "testedAt": "2026-10-22T10:04:51.107119+00:00",
+  "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26",
+  "validatorSupport": {
+    "strongETag": true,
+    "sameResource304": true,
+    "lastModifiedAloneUsed": false
+  },
+  "boundedLiveValidation": [
+    {
+      "test": "cold-permanent-link",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26",
+      "resolvedUrl": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651893/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+      "sha256": "17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4",
+      "pages": 65,
+      "metrics": {
+        "requests": 2,
+        "conditionalRequests": 0,
+        "transferredBytes": 634363,
+        "pdfDownloads": 1,
+        "pdfTransferredBytes": 633836,
+        "cacheHits": 0,
+        "cachedBytesReused": 0,
+        "cacheRepairs": 0,
+        "fullPdfWithoutStrongValidator": 0
+      },
+      "diagnostics": []
+    },
+    {
+      "test": "warm-permanent-link",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26",
+      "resolvedUrl": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651894/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+      "sha256": "17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4",
+      "pages": 65,
+      "metrics": {
+        "requests": 2,
+        "conditionalRequests": 0,
+        "transferredBytes": 634363,
+        "pdfDownloads": 1,
+        "pdfTransferredBytes": 633836,
+        "cacheHits": 0,
+        "cachedBytesReused": 0,
+        "cacheRepairs": 0,
+        "fullPdfWithoutStrongValidator": 0
+      },
+      "diagnostics": []
+    },
+    {
+      "test": "revalidate-current-exact-url",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651894/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+      "sha256": "17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4",
+      "pages": 65,
+      "metrics": {
+        "requests": 1,
+        "conditionalRequests": 1,
+        "transferredBytes": 0,
+        "pdfDownloads": 0,
+        "pdfTransferredBytes": 0,
+        "cacheHits": 1,
+        "cachedBytesReused": 633836,
+        "cacheRepairs": 0,
+        "fullPdfWithoutStrongValidator": 0
+      },
+      "diagnostics": []
+    }
+  ],
+  "normalPermanentLinkSavings": {
+    "pdfBytesAvoided": 0,
+    "reason": "Authoritative link generated a new temporary download URL on the warm run; validator was not reused across resources."
+  },
+  "sameExactUrlSavings": {
+    "pdfBytesAvoided": 633836,
+    "pdfBytesTransferred": 0
+  },
+  "metricMeaning": "curl-reported response bodies; HTTP/TLS and possible automatic-retry overhead excluded",
+  "offlineDiscovery": {
+    "fixtures": 41,
+    "allMatchedAcceptedLinks": true,
+    "diagnostics": [
+      {
+        "date": "19022026",
+        "status": "pass",
+        "diagnostics": [
+          {
+            "agenda": "https://lanecove.infocouncil.biz/Open/2026/02/CNL_19022026_AGN_AT.HTM",
+            "event": "Narrative AT reference differs from known explicitly identified tracker attachment; explicit row used",
+            "section": "PDF2_ReportName_21961"
+          }
+        ]
+      }
+    ]
+  },
+  "offlinePdfIdentity": {
+    "pdfs": 20,
+    "allPassed": true
+  },
+  "acceptedData": "Baseline, catalogue and dist unchanged. No simulated edition published.",
+  "schedule": "Existing local daily 07:17 entry unchanged; cloud task remains paused.",
+  "verification": {
+    "unitTests": 55,
+    "fullVerify": "passed",
+    "generatedSiteUnchanged": true
+  }
+}

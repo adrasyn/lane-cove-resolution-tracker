@@ -48,7 +48,7 @@ The interface keeps compact glossy tiles, live search, date-based shading, point
 | `.github/workflows/` | Verification on pushes/PRs, Pages deployment after checks on main, and an optional manual diagnostic scan. No daily scan schedule or AI processing. |
 | `docs/` | Update architecture and screenshot. |
 
-The site uses local HTML/CSS/JavaScript assets and requires JavaScript. No framework, backend, API key or external font is needed. Links to original records open Council's external websites. Python 3 builds catalogue data; Node runs the verification scripts. The optional source scanner uses curl and the pinned Python dependency in `requirements-monitor.txt`; it contacts Council's public servers.
+The site uses local HTML/CSS/JavaScript assets and requires JavaScript. No framework, backend, API key or external font is needed. Links to original records open Council's external websites. Python 3 builds catalogue data; Node runs the verification scripts. The optional source scanner uses curl and the pinned Python dependency in `requirements-monitor.txt`; it contacts Council's public servers. Its [discovery/cache guide](docs/SCANNER.md) explains item-level attachment matching, correction detection and the measured temporary-URL limitation. The ignored `.tracker-http-cache/` is disposable observed transport state, separate from accepted sources.
 
 The original PDF research archive is not bundled. `catalogue/structured/` contains the source rows needed to reproduce the site, and `monitor/baseline.json` records hashes of the original PDFs. Preserve accepted future PDFs in a durable archive as described in the update proposal.
 

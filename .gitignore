@@ -11,3 +11,6 @@ catalogue/missing-decision-editorial.json
 scan-output/
 .env
 .env.*
+
+# Observed HTTP state only; never publish or commit cached PDFs/validators.
+.tracker-http-cache/
