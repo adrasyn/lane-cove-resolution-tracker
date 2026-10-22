@@ -4,6 +4,7 @@
   --ink: oklch(.255 .027 188);
   --muted: oklch(.45 .019 188);
   --brand: oklch(.38 .075 188);
+  --beta-ink: oklch(.44 .09 155);
   --pale: oklch(.96 .018 188);
   --surface: oklch(.98 .004 188);
   --line: oklch(.87 .012 188);
@@ -41,6 +42,7 @@ svg { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .wordmark { text-decoration: none; font-size: 1.35rem; letter-spacing: -.045em; color: var(--ink); white-space: normal; min-width: 0; }
 .wordmark strong,.wordmark > span { color: var(--brand); }
 .wordmark strong { font-weight: 650; }
+.wordmark .beta-label { display: inline-block; vertical-align: middle; margin-left: 5px; padding: 2px 7px; border: 1px solid currentColor; border-radius: 5px; color: var(--beta-ink); font-size: .65rem; font-weight: 600; line-height: 1.3; letter-spacing: 0; white-space: nowrap; }
 .header-tools { flex-shrink: 0; display: flex; gap: 12px; align-items: center; }
 .header-tools button { display: flex; align-items: center; gap: 8px; font-size: .73rem; border-color: transparent; }
 .header-tools button[aria-pressed="true"] { background: var(--pale); border-color: var(--line); }
