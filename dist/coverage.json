@@ -840,5 +840,5 @@
       "reason": "Agenda links the identical November tracker; not counted as a new snapshot."
     }
   ],
-  "method": "Each source row is extracted by physical table columns. Dated officer comments are combined across editions; repeated wording is deduplicated. Status/target changes are dated to publication. Multiple records on a date share one dot but keep separate summaries and original wording."
+  "method": "Each source row is extracted by physical table columns. Dated officer comments are combined across editions; repeated wording is deduplicated. Status/target changes are dated to publication. Multiple records on a date share one dot but keep separate summaries and original wording. Officer-comment summaries are bound to their minute item, update date and exact source text with whitespace normalised; missing or ambiguous bindings stop the build."
 }

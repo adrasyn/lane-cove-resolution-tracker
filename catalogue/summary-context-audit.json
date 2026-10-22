@@ -1,0 +1,1360 @@
+{
+  "checkedOfficerCommentUpdates": 682,
+  "sharedCommentPatterns": 32,
+  "crossMinuteReuseEvents": 58,
+  "changedUpdates": 55,
+  "changedIssues": [
+    "affordable-housing-policy",
+    "anglo-road-closure",
+    "asset-and-reserves-policies",
+    "austin-crescent-1",
+    "austin-crescent-3",
+    "budget-2026-27",
+    "children-and-families-strategy",
+    "civic-art-collection-policy",
+    "climate-emergency-plan",
+    "community-engagement",
+    "ev-charging-policy",
+    "fire-safety-policy",
+    "greenwich-road-177-183",
+    "local-environment-plan-review",
+    "planning-agreements-policy",
+    "resolution-138-2026",
+    "resolution-139-2026",
+    "resolution-152-2026",
+    "resolution-179-2026",
+    "resolution-180-2026",
+    "resolution-183-2026",
+    "resolution-186-2026",
+    "resolution-193-2026",
+    "resolution-197-2026",
+    "resolution-198-2025",
+    "resolution-218-2025",
+    "resolution-271-2025",
+    "resolution-282-2025",
+    "resolution-33-2026",
+    "resolution-34-2026",
+    "resolution-35-2026",
+    "resolution-47-2026",
+    "resolution-59-2026",
+    "resolution-63-2026",
+    "resolution-76-2026",
+    "resolution-83-2026",
+    "st-leonards-contributions",
+    "sustainability-action-plan"
+  ],
+  "review": [
+    {
+      "issue": "community-e-shuttle",
+      "minuteItem": "81/2026",
+      "date": "2026-07-15",
+      "sourceText": "Matter ongoing",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "local-environment-plan-review",
+      "minuteItem": "224+225/2024",
+      "date": "2025-02-13",
+      "sourceText": "– Part 2 completed, report prepared for February Council meeting",
+      "previousSummaryMinuteItem": "251/2024",
+      "old": {
+        "title": "Climate item 2 complete; February report prepared",
+        "text": "Part 2 completed, report prepared for February Council meeting."
+      },
+      "corrected": {
+        "title": "Part 2 completed; February report prepared",
+        "text": "Part 2 completed, report prepared for February Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "children-and-families-strategy",
+      "minuteItem": "267/2025",
+      "date": "2025-12-02",
+      "sourceText": "Consultation to commence in 2026 as per the consultation plan.",
+      "previousSummaryMinuteItem": "267/2025",
+      "old": {
+        "title": "Children and families consultation planned for 2026",
+        "text": "Consultation to commence in 2026 as per the consultation plan."
+      },
+      "corrected": {
+        "title": "Consultation planned for 2026",
+        "text": "Consultation to commence in 2026 as per the consultation plan."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "austin-crescent-3",
+      "minuteItem": "28/2026",
+      "date": "2026-07-14",
+      "sourceText": "Gateway determination received. Staff preparing plans for public exhibition.",
+      "previousSummaryMinuteItem": "28/2026",
+      "old": {
+        "title": "3 Austin Crescent Gateway approval received",
+        "text": "Gateway approval has been received. Staff are preparing for public exhibition."
+      },
+      "corrected": {
+        "title": "Gateway determination received",
+        "text": "Gateway determination has been received. Staff are preparing plans for public exhibition."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "austin-crescent-3",
+      "minuteItem": "28/2026",
+      "date": "2026-08-09",
+      "sourceText": "On public exhibition.",
+      "previousSummaryMinuteItem": "28/2026",
+      "old": {
+        "title": "3 Austin Crescent proposal on exhibition",
+        "text": "On public exhibition."
+      },
+      "corrected": {
+        "title": "Public exhibition underway",
+        "text": "Public exhibition is underway."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "austin-crescent-3",
+      "minuteItem": "224/2026",
+      "date": "2026-10-15",
+      "sourceText": "Sent to DPHI for Gazettal.",
+      "previousSummaryMinuteItem": "224/2026",
+      "old": {
+        "title": "3 Austin Crescent proposal sent for gazettal",
+        "text": "The proposal has been sent to the NSW planning department for gazettal."
+      },
+      "corrected": {
+        "title": "Proposal sent for gazettal",
+        "text": "The proposal has been sent to the NSW planning department for gazettal."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "austin-crescent-1",
+      "minuteItem": "77/2026",
+      "date": "2026-08-09",
+      "sourceText": "On public exhibition.",
+      "previousSummaryMinuteItem": "28/2026",
+      "old": {
+        "title": "3 Austin Crescent proposal on exhibition",
+        "text": "On public exhibition."
+      },
+      "corrected": {
+        "title": "Public exhibition underway",
+        "text": "Public exhibition is underway."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "austin-crescent-1",
+      "minuteItem": "223/2026",
+      "date": "2026-10-15",
+      "sourceText": "Sent to DPHI for Gazettal.",
+      "previousSummaryMinuteItem": "224/2026",
+      "old": {
+        "title": "3 Austin Crescent proposal sent for gazettal",
+        "text": "The proposal has been sent to the NSW planning department for gazettal."
+      },
+      "corrected": {
+        "title": "Proposal sent for gazettal",
+        "text": "The proposal has been sent to the NSW planning department for gazettal."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "ev-charging-policy",
+      "minuteItem": "25/2026",
+      "date": "2026-03-09",
+      "sourceText": "Exhibition underway and closes 30 March 2026.",
+      "previousSummaryMinuteItem": "28/2026",
+      "old": {
+        "title": "3 Austin Crescent consultation underway",
+        "text": "Consultation is underway and closes on 30 March 2026."
+      },
+      "corrected": {
+        "title": "Public exhibition closes 30 March",
+        "text": "Public exhibition is underway and closes on 30 March 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "ev-charging-policy",
+      "minuteItem": "25/2026",
+      "date": "2026-04-14",
+      "sourceText": "Post consultation report prepared for April Council meeting.",
+      "previousSummaryMinuteItem": "24/2026",
+      "old": {
+        "title": "Sustainability consultation report ready",
+        "text": "The consultation report has been prepared for the April Council meeting."
+      },
+      "corrected": {
+        "title": "Consultation report prepared for April",
+        "text": "The consultation report has been prepared for the April Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "sustainability-action-plan",
+      "minuteItem": "24/2026",
+      "date": "2026-04-14",
+      "sourceText": "Post consultation report prepared for April Council meeting.",
+      "previousSummaryMinuteItem": "24/2026",
+      "old": {
+        "title": "Sustainability consultation report ready",
+        "text": "The consultation report has been prepared for the April Council meeting."
+      },
+      "corrected": {
+        "title": "Consultation report prepared for April",
+        "text": "The consultation report has been prepared for the April Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "asset-and-reserves-policies",
+      "minuteItem": "74/2026",
+      "date": "2026-06-08",
+      "sourceText": "The consultation period concluded on 5 June 2026. A post-exhibition report is being prepared for the June Council meeting.",
+      "previousSummaryMinuteItem": "74/2026",
+      "old": {
+        "title": "Reserves consultation closes; report being prepared",
+        "text": "Consultation ended on 5 June 2026. Staff are preparing the report for the June Council meeting."
+      },
+      "corrected": {
+        "title": "Consultation closed; June report being prepared",
+        "text": "Consultation ended on 5 June 2026. Staff are preparing the report for the June Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "budget-2026-27",
+      "minuteItem": "73/2026",
+      "date": "2026-05-12",
+      "sourceText": "Exhibition continues.",
+      "previousSummaryMinuteItem": "73/2026",
+      "old": {
+        "title": "Draft budget consultation continues",
+        "text": "Public exhibition continues."
+      },
+      "corrected": {
+        "title": "Public exhibition continues",
+        "text": "Public exhibition continues."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "budget-2026-27",
+      "minuteItem": "73/2026",
+      "date": "2026-06-08",
+      "sourceText": "The consultation period concluded on 5 June 2026. A post-exhibition report is being prepared for the June Council meeting.",
+      "previousSummaryMinuteItem": "74/2026",
+      "old": {
+        "title": "Reserves consultation closes; report being prepared",
+        "text": "Consultation ended on 5 June 2026. Staff are preparing the report for the June Council meeting."
+      },
+      "corrected": {
+        "title": "Consultation closed; June report being prepared",
+        "text": "Consultation ended on 5 June 2026. Staff are preparing the report for the June Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "greenwich-road-177-183",
+      "minuteItem": "110/2026",
+      "date": "2026-07-14",
+      "sourceText": "Gateway determination received. Staff preparing plans for public exhibition.",
+      "previousSummaryMinuteItem": "28/2026",
+      "old": {
+        "title": "3 Austin Crescent Gateway approval received",
+        "text": "Gateway approval has been received. Staff are preparing for public exhibition."
+      },
+      "corrected": {
+        "title": "Gateway determination received",
+        "text": "Gateway determination has been received. Staff are preparing plans for public exhibition."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "habitat-logs-and-biodiversity",
+      "minuteItem": "48/2026",
+      "date": "2026-06-08",
+      "sourceText": "Report prepared for the June Council meeting.",
+      "previousSummaryMinuteItem": "45/2026",
+      "old": {
+        "title": "June report prepared",
+        "text": "Report prepared for the June Council meeting."
+      },
+      "corrected": {
+        "title": "June report prepared",
+        "text": "Report prepared for the June Council meeting."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "affordable-housing-policy",
+      "minuteItem": "111/2026",
+      "date": "2026-06-09",
+      "sourceText": "Consultation has commenced with feedback closing 21 July 2026.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing consultation closes 21 July",
+        "text": "Consultation has commenced with feedback closing 21 July 2026."
+      },
+      "corrected": {
+        "title": "Consultation closes 21 July",
+        "text": "Consultation has commenced with feedback closing 21 July 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "affordable-housing-policy",
+      "minuteItem": "111/2026",
+      "date": "2026-07-02",
+      "sourceText": "Consultation continues.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing consultation continues",
+        "text": "Consultation continues."
+      },
+      "corrected": {
+        "title": "Consultation continues",
+        "text": "Consultation continues."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "affordable-housing-policy",
+      "minuteItem": "111/2026",
+      "date": "2026-08-09",
+      "sourceText": "Post-exhibition report prepared for August Council meeting.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing report prepared for August",
+        "text": "Post-exhibition report prepared for August Council meeting."
+      },
+      "corrected": {
+        "title": "Post-exhibition report prepared for August",
+        "text": "Post-exhibition report prepared for August Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "fire-safety-policy",
+      "minuteItem": "113/2026",
+      "date": "2026-06-09",
+      "sourceText": "Consultation has commenced with feedback closing 21 July 2026.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing consultation closes 21 July",
+        "text": "Consultation has commenced with feedback closing 21 July 2026."
+      },
+      "corrected": {
+        "title": "Consultation closes 21 July",
+        "text": "Consultation has commenced with feedback closing 21 July 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "fire-safety-policy",
+      "minuteItem": "113/2026",
+      "date": "2026-07-02",
+      "sourceText": "Consultation continues.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing consultation continues",
+        "text": "Consultation continues."
+      },
+      "corrected": {
+        "title": "Consultation continues",
+        "text": "Consultation continues."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "fire-safety-policy",
+      "minuteItem": "113/2026",
+      "date": "2026-08-09",
+      "sourceText": "Post-exhibition report prepared for August Council meeting.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing report prepared for August",
+        "text": "Post-exhibition report prepared for August Council meeting."
+      },
+      "corrected": {
+        "title": "Post-exhibition report prepared for August",
+        "text": "Post-exhibition report prepared for August Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "fire-safety-policy",
+      "minuteItem": "191/2026",
+      "date": "2026-09-09",
+      "sourceText": "Matter completed.",
+      "previousSummaryMinuteItem": "152/2026",
+      "old": {
+        "title": "Council reports data centre advocacy task complete",
+        "text": "Council reports this task complete."
+      },
+      "corrected": {
+        "title": "Council reports task complete",
+        "text": "Council reports this task complete."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "civic-art-collection-policy",
+      "minuteItem": "107/2026",
+      "date": "2026-07-01",
+      "sourceText": "Exhibition continues.",
+      "previousSummaryMinuteItem": "73/2026",
+      "old": {
+        "title": "Draft budget consultation continues",
+        "text": "Public exhibition continues."
+      },
+      "corrected": {
+        "title": "Public exhibition continues",
+        "text": "Public exhibition continues."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "civic-art-collection-policy",
+      "minuteItem": "107/2026",
+      "date": "2026-08-12",
+      "sourceText": "Exhibition has concluded. Post-exhibition report prepared for August Council meeting.",
+      "previousSummaryMinuteItem": "107/2026",
+      "old": {
+        "title": "Civic art consultation report prepared for August",
+        "text": "Exhibition has concluded. Post-exhibition report prepared for August Council meeting."
+      },
+      "corrected": {
+        "title": "Exhibition closed; August report prepared",
+        "text": "Exhibition has concluded. Post-exhibition report prepared for August Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "planning-agreements-policy",
+      "minuteItem": "106/2026",
+      "date": "2026-06-09",
+      "sourceText": "Consultation has commenced with feedback closing 21 July 2026.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing consultation closes 21 July",
+        "text": "Consultation has commenced with feedback closing 21 July 2026."
+      },
+      "corrected": {
+        "title": "Consultation closes 21 July",
+        "text": "Consultation has commenced with feedback closing 21 July 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "planning-agreements-policy",
+      "minuteItem": "106/2026",
+      "date": "2026-07-13",
+      "sourceText": "Consultation continues.",
+      "previousSummaryMinuteItem": "111/2026",
+      "old": {
+        "title": "Affordable housing consultation continues",
+        "text": "Consultation continues."
+      },
+      "corrected": {
+        "title": "Consultation continues",
+        "text": "Consultation continues."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "planning-agreements-policy",
+      "minuteItem": "106/2026",
+      "date": "2026-08-12",
+      "sourceText": "Exhibition has concluded. Post-exhibition report prepared for August Council meeting.",
+      "previousSummaryMinuteItem": "107/2026",
+      "old": {
+        "title": "Civic art consultation report prepared for August",
+        "text": "Exhibition has concluded. Post-exhibition report prepared for August Council meeting."
+      },
+      "corrected": {
+        "title": "Exhibition closed; August report prepared",
+        "text": "Exhibition has concluded. Post-exhibition report prepared for August Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "community-engagement",
+      "minuteItem": "133/2026",
+      "date": "2026-08-12",
+      "sourceText": "Report prepared for August Council meeting.",
+      "previousSummaryMinuteItem": "133/2026",
+      "old": {
+        "title": "Community engagement report prepared for August",
+        "text": "Report prepared for August Council meeting."
+      },
+      "corrected": {
+        "title": "Report prepared for August",
+        "text": "Report prepared for August Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "safe-phone-initiative",
+      "minuteItem": "8/2026",
+      "date": "2026-07-15",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "safe-phone-initiative",
+      "minuteItem": "8/2026",
+      "date": "2026-08-12",
+      "sourceText": "Matter ongoing",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "anglo-road-closure",
+      "minuteItem": "155/2025",
+      "date": "2026-08-12",
+      "sourceText": "Report prepared for August Council meeting.",
+      "previousSummaryMinuteItem": "133/2026",
+      "old": {
+        "title": "Community engagement report prepared for August",
+        "text": "Report prepared for August Council meeting."
+      },
+      "corrected": {
+        "title": "Report prepared for August",
+        "text": "Report prepared for August Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "st-leonards-contributions",
+      "minuteItem": "27/2026",
+      "date": "2026-03-09",
+      "sourceText": "The plan has been adopted and published on the website.",
+      "previousSummaryMinuteItem": "159/2025",
+      "old": {
+        "title": "Contributions plan adopted and published",
+        "text": "The plan has been adopted and published on the website."
+      },
+      "corrected": {
+        "title": "Plan adopted and published",
+        "text": "The plan has been adopted and published on the website."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "st-leonards-contributions",
+      "minuteItem": "159/2025",
+      "date": "2026-03-11",
+      "sourceText": "The plan has been adopted and published on the website.",
+      "previousSummaryMinuteItem": "159/2025",
+      "old": {
+        "title": "Contributions plan adopted and published",
+        "text": "The plan has been adopted and published on the website."
+      },
+      "corrected": {
+        "title": "Plan adopted and published",
+        "text": "The plan has been adopted and published on the website."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "climate-emergency-plan",
+      "minuteItem": "189/2026",
+      "date": "2026-09-09",
+      "sourceText": "On public exhibition",
+      "previousSummaryMinuteItem": "28/2026",
+      "old": {
+        "title": "3 Austin Crescent proposal on exhibition",
+        "text": "On public exhibition."
+      },
+      "corrected": {
+        "title": "Public exhibition underway",
+        "text": "Public exhibition is underway."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "domestic-violence-prevention",
+      "minuteItem": "57/2026",
+      "date": "2026-06-10",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "e-bike-safety",
+      "minuteItem": "175/2026",
+      "date": "2026-09-09",
+      "sourceText": "Road Safety Team have attended a Lime Bike popup at the Plaza. The Youth Team organised a workshop at the Youth Centre with the NSW Police. Staff have convened an internal working group to assist in developing further e-bike safety activities and potential options for the grant.",
+      "previousSummaryMinuteItem": "129/2026",
+      "old": {
+        "title": "E-bike education sessions and working group established",
+        "text": "The Road Safety Team attended a Lime Bike event at the Plaza, and the Youth Team ran a workshop with NSW Police. Staff have formed an internal group to develop further safety activities and grant options."
+      },
+      "corrected": {
+        "title": "E-bike education sessions and working group established",
+        "text": "The Road Safety Team attended a Lime Bike event at the Plaza, and the Youth Team ran a workshop with NSW Police. Staff have formed an internal group to develop further safety activities and grant options."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "canberra-avenue",
+      "minuteItem": "289/2025",
+      "date": "2026-05-14",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "lgnsw-conference-2026",
+      "minuteItem": "217/2026",
+      "date": "2026-10-15",
+      "sourceText": "Motions submitted to the 2026 LGNSW conference.",
+      "previousSummaryMinuteItem": "163/2026",
+      "old": {
+        "title": "LGNSW conference motions submitted",
+        "text": "Motions submitted to the 2026 LGNSW conference."
+      },
+      "corrected": {
+        "title": "LGNSW conference motions submitted",
+        "text": "Motions submitted to the 2026 LGNSW conference."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "advisory-committee-appointments",
+      "minuteItem": "202/2026",
+      "date": "2026-10-15",
+      "sourceText": "Council resolution noted and representatives now in place until September 2028.",
+      "previousSummaryMinuteItem": "201/2026",
+      "old": {
+        "title": "Committee representatives appointed through 2028",
+        "text": "Committee representatives are now in place until September 2028."
+      },
+      "corrected": {
+        "title": "Committee representatives appointed through 2028",
+        "text": "Committee representatives are now in place until September 2028."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "advisory-committee-appointments",
+      "minuteItem": "203/2026",
+      "date": "2026-10-15",
+      "sourceText": "Council resolution noted and representatives now in place until September 2028.",
+      "previousSummaryMinuteItem": "201/2026",
+      "old": {
+        "title": "Committee representatives appointed through 2028",
+        "text": "Committee representatives are now in place until September 2028."
+      },
+      "corrected": {
+        "title": "Committee representatives appointed through 2028",
+        "text": "Committee representatives are now in place until September 2028."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-204-2024",
+      "minuteItem": "204/2024",
+      "date": "2026-04-15",
+      "sourceText": "Matter ongoing",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-204-2024",
+      "minuteItem": "204/2024",
+      "date": "2026-05-14",
+      "sourceText": "Matter ongoing",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-138-2025",
+      "minuteItem": "96/2024",
+      "date": "2025-02-13",
+      "sourceText": "– Update provided to Councillors on the proposed KPIs and notification that the report will come back to Council re: review of policy in the coming months.",
+      "previousSummaryMinuteItem": "158/2024",
+      "old": {
+        "title": "Policy review and performance update provided",
+        "text": "Councillors received an update on proposed performance measures and were advised that a policy review report would return in the coming months."
+      },
+      "corrected": {
+        "title": "Policy review and performance update provided",
+        "text": "Councillors received an update on proposed performance measures and were advised that a policy review report would return in the coming months."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-138-2025",
+      "minuteItem": "96/2024",
+      "date": "2025-05-13",
+      "sourceText": "Councillors briefed at the May workshop on the policy review, proposed changes and finalisation of the reporting KPIs with the view that staff prepare a report to Council in June.",
+      "previousSummaryMinuteItem": "158/2024",
+      "old": {
+        "title": "Councillors briefed on policy review",
+        "text": "Councillors were briefed at the May workshop on proposed policy changes and performance measures. Staff intend to prepare a June Council report."
+      },
+      "corrected": {
+        "title": "Councillors briefed on policy review",
+        "text": "Councillors were briefed at the May workshop on proposed policy changes and performance measures. Staff intend to prepare a June Council report."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-176-2025",
+      "minuteItem": "176/2025",
+      "date": "2026-07-16",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-176-2025",
+      "minuteItem": "176/2025",
+      "date": "2026-08-12",
+      "sourceText": "Matter ongoing",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-176-2025",
+      "minuteItem": "176/2025",
+      "date": "2026-09-17",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-176-2025",
+      "minuteItem": "176/2025",
+      "date": "2026-10-14",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-59-2026",
+      "minuteItem": "59/2026",
+      "date": "2026-08-09",
+      "sourceText": "Matter completed.",
+      "previousSummaryMinuteItem": "152/2026",
+      "old": {
+        "title": "Council reports data centre advocacy task complete",
+        "text": "Council reports this task complete."
+      },
+      "corrected": {
+        "title": "Council reports task complete",
+        "text": "Council reports this task complete."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-152-2026",
+      "minuteItem": "152/2026",
+      "date": "2026-09-09",
+      "sourceText": "Matter Completed.",
+      "previousSummaryMinuteItem": "152/2026",
+      "old": {
+        "title": "Council reports data centre advocacy task complete",
+        "text": "Council reports this task complete."
+      },
+      "corrected": {
+        "title": "Council reports task complete",
+        "text": "Council reports this task complete."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-129-2023",
+      "minuteItem": "129/2023",
+      "date": "2024-08-09",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-129-2023",
+      "minuteItem": "129/2023",
+      "date": "2025-07-01",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-255-2024",
+      "minuteItem": "255/2024",
+      "date": "2026-04-07",
+      "sourceText": "Due to current resourcing the timeframe for the report related to Item 3 will take place in the 2026/27 financial year.",
+      "previousSummaryMinuteItem": "254/2024",
+      "old": {
+        "title": "Report delayed to 2026/27",
+        "text": "Because of current staffing resources, the report requested in item 3 will be prepared in the 2026/27 financial year."
+      },
+      "corrected": {
+        "title": "Report delayed to 2026/27",
+        "text": "Because of current staffing resources, the report requested in item 3 will be prepared in the 2026/27 financial year."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-54-2025",
+      "minuteItem": "54/2025",
+      "date": "2026-07-15",
+      "sourceText": "Matter ongoing.",
+      "previousSummaryMinuteItem": "130/2026",
+      "old": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "corrected": {
+        "title": "Matter remains ongoing",
+        "text": "The tracker reports that the matter is ongoing, without further detail."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-198-2025",
+      "minuteItem": "198/2025",
+      "date": "2026-05-12",
+      "sourceText": "Draft Budget 2026/27 on exhibition until 5 June 2026.",
+      "previousSummaryMinuteItem": "198/2025",
+      "old": {
+        "title": "Library hours budget consultation closes 5 June",
+        "text": "Draft Budget 2026/27 on exhibition until 5 June 2026."
+      },
+      "corrected": {
+        "title": "Draft budget exhibition closes 5 June",
+        "text": "Draft Budget 2026/27 on exhibition until 5 June 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-198-2025",
+      "minuteItem": "198/2025",
+      "date": "2026-06-08",
+      "sourceText": "Draft budget and post- exhibition outcomes being considered by Council at the June Council meeting.",
+      "previousSummaryMinuteItem": "198/2025",
+      "old": {
+        "title": "Budget consultation results due at June meeting",
+        "text": "The draft budget and consultation results are due for consideration at the June Council meeting."
+      },
+      "corrected": {
+        "title": "Budget and consultation outcomes for June meeting",
+        "text": "The draft budget and consultation results are due for consideration at the June Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-218-2025",
+      "minuteItem": "218/2025",
+      "date": "2026-02-11",
+      "sourceText": "Information being prepared as part of 2026/27 budget preparation process",
+      "previousSummaryMinuteItem": "218/2025",
+      "old": {
+        "title": "Spanish moss information being prepared for budget",
+        "text": "Information being prepared as part of 2026/27 budget preparation process."
+      },
+      "corrected": {
+        "title": "Information being prepared for 2026/27 budget",
+        "text": "Information being prepared as part of 2026/27 budget preparation process."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-256-2025",
+      "minuteItem": "256/2025",
+      "date": "2025-12-03",
+      "sourceText": "Staff have commenced reviewing the Strata Schemes Legislation Amendment (Miscellaneous) Bill 2025 which was introduced in November to assist with preparation of a future report.",
+      "previousSummaryMinuteItem": "258/2025",
+      "old": {
+        "title": "Strata legislation review started",
+        "text": "Staff have started reviewing the Strata Schemes Legislation Amendment Miscellaneous Bill 2025, introduced in November, to help prepare a future report."
+      },
+      "corrected": {
+        "title": "Strata legislation review started",
+        "text": "Staff have started reviewing the Strata Schemes Legislation Amendment Miscellaneous Bill 2025, introduced in November, to help prepare a future report."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-271-2025",
+      "minuteItem": "271/2025",
+      "date": "2025-12-02",
+      "sourceText": "Consultation to commence in 2026 as per the consultation plan.",
+      "previousSummaryMinuteItem": "267/2025",
+      "old": {
+        "title": "Children and families consultation planned for 2026",
+        "text": "Consultation to commence in 2026 as per the consultation plan."
+      },
+      "corrected": {
+        "title": "Consultation planned for 2026",
+        "text": "Consultation to commence in 2026 as per the consultation plan."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-271-2025",
+      "minuteItem": "271/2025",
+      "date": "2026-07-15",
+      "sourceText": "No further update.",
+      "previousSummaryMinuteItem": "271/2025",
+      "old": {
+        "title": "No further pedestrian plan update",
+        "text": "No further update."
+      },
+      "corrected": {
+        "title": "No further update",
+        "text": "No further update."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-282-2025",
+      "minuteItem": "282/2025",
+      "date": "2026-02-10",
+      "sourceText": "Information being prepared as part of 2026/27 budget preparation process.",
+      "previousSummaryMinuteItem": "218/2025",
+      "old": {
+        "title": "Spanish moss information being prepared for budget",
+        "text": "Information being prepared as part of 2026/27 budget preparation process."
+      },
+      "corrected": {
+        "title": "Information being prepared for 2026/27 budget",
+        "text": "Information being prepared as part of 2026/27 budget preparation process."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-282-2025",
+      "minuteItem": "282/2025",
+      "date": "2026-05-12",
+      "sourceText": "Draft Budget 2026/27 on exhibition until 5 June 2026.",
+      "previousSummaryMinuteItem": "198/2025",
+      "old": {
+        "title": "Library hours budget consultation closes 5 June",
+        "text": "Draft Budget 2026/27 on exhibition until 5 June 2026."
+      },
+      "corrected": {
+        "title": "Draft budget exhibition closes 5 June",
+        "text": "Draft Budget 2026/27 on exhibition until 5 June 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-33-2026",
+      "minuteItem": "33/2026",
+      "date": "2026-03-10",
+      "sourceText": "Contracts being prepared for execution.",
+      "previousSummaryMinuteItem": "33/2026",
+      "old": {
+        "title": "Tree services contracts being prepared",
+        "text": "Contracts being prepared for execution."
+      },
+      "corrected": {
+        "title": "Contracts being prepared for execution",
+        "text": "Contracts being prepared for execution."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-34-2026",
+      "minuteItem": "34/2026",
+      "date": "2026-03-10",
+      "sourceText": "Contracts being prepared for execution.",
+      "previousSummaryMinuteItem": "33/2026",
+      "old": {
+        "title": "Tree services contracts being prepared",
+        "text": "Contracts being prepared for execution."
+      },
+      "corrected": {
+        "title": "Contracts being prepared for execution",
+        "text": "Contracts being prepared for execution."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-35-2026",
+      "minuteItem": "35/2026",
+      "date": "2026-03-10",
+      "sourceText": "Contracts being prepared for execution.",
+      "previousSummaryMinuteItem": "33/2026",
+      "old": {
+        "title": "Tree services contracts being prepared",
+        "text": "Contracts being prepared for execution."
+      },
+      "corrected": {
+        "title": "Contracts being prepared for execution",
+        "text": "Contracts being prepared for execution."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-47-2026",
+      "minuteItem": "47/2026",
+      "date": "2026-07-15",
+      "sourceText": "No further update.",
+      "previousSummaryMinuteItem": "271/2025",
+      "old": {
+        "title": "No further pedestrian plan update",
+        "text": "No further update."
+      },
+      "corrected": {
+        "title": "No further update",
+        "text": "No further update."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-63-2026",
+      "minuteItem": "63/2026",
+      "date": "2026-04-07",
+      "sourceText": "Staff note the resolution of Council to adopt the minutes of the Local Transport Forum.",
+      "previousSummaryMinuteItem": "63/2026",
+      "old": {
+        "title": "February Transport Forum decision noted",
+        "text": "Staff note the resolution of Council to adopt the minutes of the Local Transport Forum."
+      },
+      "corrected": {
+        "title": "Transport Forum decision noted",
+        "text": "Staff note Council’s decision to adopt the Local Transport Forum minutes."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-76-2026",
+      "minuteItem": "76/2026",
+      "date": "2026-06-08",
+      "sourceText": "Draft budget and post- exhibition outcomes being considered by Council at the June Council meeting.",
+      "previousSummaryMinuteItem": "198/2025",
+      "old": {
+        "title": "Budget consultation results due at June meeting",
+        "text": "The draft budget and consultation results are due for consideration at the June Council meeting."
+      },
+      "corrected": {
+        "title": "Budget and consultation outcomes for June meeting",
+        "text": "The draft budget and consultation results are due for consideration at the June Council meeting."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-83-2026",
+      "minuteItem": "83/2026",
+      "date": "2026-05-12",
+      "sourceText": "Staff note the resolution of Council to adopt the minutes of the Local Transport Forum.",
+      "previousSummaryMinuteItem": "63/2026",
+      "old": {
+        "title": "February Transport Forum decision noted",
+        "text": "Staff note the resolution of Council to adopt the minutes of the Local Transport Forum."
+      },
+      "corrected": {
+        "title": "Transport Forum decision noted",
+        "text": "Staff note Council’s decision to adopt the Local Transport Forum minutes."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-101-2026",
+      "minuteItem": "101/2026",
+      "date": "2026-06-09",
+      "sourceText": "Outcome of May Council meeting and associated resolution noted.",
+      "previousSummaryMinuteItem": "100/2026",
+      "old": {
+        "title": "May Council decision noted",
+        "text": "Council notes the May meeting decision and associated resolution."
+      },
+      "corrected": {
+        "title": "May Council decision noted",
+        "text": "Council notes the May meeting decision and associated resolution."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-90-2026",
+      "minuteItem": "90/2026",
+      "date": "2026-08-12",
+      "sourceText": "No further progress",
+      "previousSummaryMinuteItem": "91/2026",
+      "old": {
+        "title": "No further progress reported",
+        "text": "Council reports no further progress."
+      },
+      "corrected": {
+        "title": "No further progress reported",
+        "text": "Council reports no further progress."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-98-2026",
+      "minuteItem": "98/2026",
+      "date": "2026-06-09",
+      "sourceText": "Outcome of May Council meeting and associated resolution noted.",
+      "previousSummaryMinuteItem": "100/2026",
+      "old": {
+        "title": "May Council decision noted",
+        "text": "Council notes the May meeting decision and associated resolution."
+      },
+      "corrected": {
+        "title": "May Council decision noted",
+        "text": "Council notes the May meeting decision and associated resolution."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-99-2026",
+      "minuteItem": "99/2026",
+      "date": "2026-06-09",
+      "sourceText": "Outcome of May Council meeting and associated resolution noted.",
+      "previousSummaryMinuteItem": "100/2026",
+      "old": {
+        "title": "May Council decision noted",
+        "text": "Council notes the May meeting decision and associated resolution."
+      },
+      "corrected": {
+        "title": "May Council decision noted",
+        "text": "Council notes the May meeting decision and associated resolution."
+      },
+      "wordingChanged": false
+    },
+    {
+      "issue": "resolution-138-2026",
+      "minuteItem": "138/2026",
+      "date": "2026-07-14",
+      "sourceText": "Submission made to Department of Planning, Housing and Infrastructure and copy to be placed on Council’s website.",
+      "previousSummaryMinuteItem": "138/2026",
+      "old": {
+        "title": "Low-rise housing submission lodged",
+        "text": "The submission has been sent to the NSW planning department. A copy is to be placed on Council's website."
+      },
+      "corrected": {
+        "title": "Planning submission lodged",
+        "text": "The submission has been sent to the NSW planning department. A copy is to be placed on Council's website."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-139-2026",
+      "minuteItem": "139/2026",
+      "date": "2026-07-14",
+      "sourceText": "Submission made to Department of Planning, Housing and Infrastructure and copy to be placed on Council’s website.",
+      "previousSummaryMinuteItem": "138/2026",
+      "old": {
+        "title": "Low-rise housing submission lodged",
+        "text": "The submission has been sent to the NSW planning department. A copy is to be placed on Council's website."
+      },
+      "corrected": {
+        "title": "Planning submission lodged",
+        "text": "The submission has been sent to the NSW planning department. A copy is to be placed on Council's website."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-179-2026",
+      "minuteItem": "179/2026",
+      "date": "2026-09-16",
+      "sourceText": "Report noted, no further action required.",
+      "previousSummaryMinuteItem": "179/2026",
+      "old": {
+        "title": "Quarterly delivery report noted; no further action",
+        "text": "Report noted, no further action required."
+      },
+      "corrected": {
+        "title": "Report noted; no further action",
+        "text": "Report noted, no further action required."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-180-2026",
+      "minuteItem": "180/2026",
+      "date": "2026-09-16",
+      "sourceText": "Report noted, no further action required.",
+      "previousSummaryMinuteItem": "179/2026",
+      "old": {
+        "title": "Quarterly delivery report noted; no further action",
+        "text": "Report noted, no further action required."
+      },
+      "corrected": {
+        "title": "Report noted; no further action",
+        "text": "Report noted, no further action required."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-183-2026",
+      "minuteItem": "183/2026",
+      "date": "2026-09-09",
+      "sourceText": "Currently on public exhibition with feedback invited until 16 October 2026.",
+      "previousSummaryMinuteItem": "183/2026",
+      "old": {
+        "title": "Kindy Cove policies exhibition closes 16 October",
+        "text": "Currently on public exhibition with feedback invited until 16 October 2026."
+      },
+      "corrected": {
+        "title": "Public exhibition closes 16 October",
+        "text": "Currently on public exhibition with feedback invited until 16 October 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-186-2026",
+      "minuteItem": "186/2026",
+      "date": "2026-09-09",
+      "sourceText": "Currently on public exhibition with feedback invited until 16 October 2026.",
+      "previousSummaryMinuteItem": "183/2026",
+      "old": {
+        "title": "Kindy Cove policies exhibition closes 16 October",
+        "text": "Currently on public exhibition with feedback invited until 16 October 2026."
+      },
+      "corrected": {
+        "title": "Public exhibition closes 16 October",
+        "text": "Currently on public exhibition with feedback invited until 16 October 2026."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-193-2026",
+      "minuteItem": "193/2026",
+      "date": "2026-09-16",
+      "sourceText": "Noted and actioned as required.",
+      "previousSummaryMinuteItem": "193/2026",
+      "old": {
+        "title": "Transport recommendations actioned as required",
+        "text": "Council reports that the transport recommendations have been actioned as required."
+      },
+      "corrected": {
+        "title": "Council reports item noted and actioned",
+        "text": "Council reports that the matter has been noted and actioned as required."
+      },
+      "wordingChanged": true
+    },
+    {
+      "issue": "resolution-197-2026",
+      "minuteItem": "197/2026",
+      "date": "2026-09-17",
+      "sourceText": "Noted and actioned as required.",
+      "previousSummaryMinuteItem": "193/2026",
+      "old": {
+        "title": "Transport recommendations actioned as required",
+        "text": "Council reports that the transport recommendations have been actioned as required."
+      },
+      "corrected": {
+        "title": "Council reports item noted and actioned",
+        "text": "Council reports that the matter has been noted and actioned as required."
+      },
+      "wordingChanged": true
+    }
+  ]
+}

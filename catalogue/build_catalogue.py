@@ -234,17 +234,32 @@ TIMELINE_LABELS={'market-square':{
  '2026-04-15':'Advice being prepared','2026-05-13':'Region Group meeting scheduled','2026-06-08':'Advice report prepared','2026-06-18':'Manager search approved',
  '2026-07-16':'Manager duties discussed','2026-08-12':'No new update','2026-09-17':'Maintenance tender first','2026-10-14':'Quote documents awaited'}}
 
+def note_binding(minute_item,date,text):
+ return minute_item,date,flat(text)
+
+def load_note_summaries(m):
+ # A repeated comment in another item or on another date is a different editorial record.
+ expected={note_binding(e['key'],e['date'],e['text']) for issue in m['issues'] for day in issue['days'] for e in day['entries'] if e['type']=='note'}
+ summaries={}
+ for record in load(ROOT/'note-summaries.json'):
+  binding=note_binding(record['minuteItem'],record['date'],record['sourceText'])
+  if binding not in expected:
+   raise ValueError('Summary has no matching source comment: '+repr(binding))
+  if binding in summaries:
+   raise ValueError('Duplicate officer-comment summary: '+repr(binding))
+  if not record.get('title','').strip() or not record.get('text','').strip():
+   raise ValueError('Empty officer-comment summary: '+repr(binding))
+  summaries[binding]={'title':record['title'],'text':record['text']}
+ missing=expected-summaries.keys()
+ if missing:
+  raise ValueError('Missing reviewed officer-comment summaries: '+repr(sorted(missing)))
+ return summaries
+
 def compile_site(m):
  editorial={}
  for name in ['editorial-output-0.json','editorial-output-1.json','editorial-output-history.json']:
   if (ROOT/name).exists():editorial.update(load(ROOT/name))
- note_editorial={}
- note_original=load(ROOT/'note-editorial-input.json')
- for index in range(2):
-  path=ROOT/f'note-output-{index}.json'
-  if path.exists():
-   for key,val in load(path).items():note_editorial[fingerprint(note_original[int(key)]['text'])]=val
- if (ROOT/'note-output-extra.json').exists():note_editorial.update(load(ROOT/'note-output-extra.json'))
+ note_editorial=load_note_summaries(m)
  rawrows={};evidence={};issues=[];missing_notes={};missing_decisions={}
  for item in m['issues']:
   rows=item['rows'];keys=item['keys'];latest_by_key={}
@@ -273,11 +288,7 @@ def compile_site(m):
       copy={'title':latest_by_key[e['key']]['title'],'decisionSummary':e['text']}
      title=copy['title'];text=copy['decisionSummary'];kind='decision';label=f'Minute item {e["key"]} — Council wording'
     elif e['type']=='note':
-     copy=note_editorial.get(fingerprint(e['text']))
-     if not copy:
-      missing_notes[fingerprint(e['text'])]={'key':e['key'],'text':e['text']}
-      sentences=re.split(r'(?<=[.!?])\s+',e['text'])
-      copy={'title':sentences[0] if len(sentences[0])<=65 else 'Council update','text':e['text']}
+     copy=note_editorial[note_binding(e['key'],e['date'],e['text'])]
      title,text=copy['title'],copy['text'];kind='update';label=f'Minute item {e["key"]} — officer comment'
     else:
      title='Target date changed' if 'target date from' in e['text'] else 'Tracker status changed'
@@ -312,7 +323,7 @@ def compile_site(m):
   (SITE/name).write_text('// Generated from official Council tracker PDFs; see coverage.json.\nconst '+variable+' = '+json.dumps(value,ensure_ascii=False,separators=(',',':'))+';\n')
  js('sources.js','TRACKERS',trackers);js('data.js','ISSUES',issues);js('evidence.js','VERBATIM',evidence)
  with (SITE/'evidence.js').open('a') as f:f.write('const RECORDS = '+json.dumps(rawrows,ensure_ascii=False,separators=(',',':'))+';\n')
- coverage={'through':'2026-10-22','scope':'Every resolution appearing in an available 2026 Resolution Tracker, with related earlier decisions and all available dated comments and tracker rows.','resolutions2026':m['members'],'issues':len(issues),'datedUpdates':sum(len(i['events']) for i in issues),'sourceRows':len(rawrows),'editionsReviewed':len(trackers),'editions2026':[ed for ed in trackers if ed.endswith('2026')],'groups':{i['id']:i['resolutions'].split(' → ') for i in issues},'gaps':[{'edition':'21092023','reason':'Official attachment returns an extraction error; agenda PDF links it but does not embed it.'},{'edition':'07122023','reason':'Agenda links the identical November tracker; not counted as a new snapshot.'}],'method':'Each source row is extracted by physical table columns. Dated officer comments are combined across editions; repeated wording is deduplicated. Status/target changes are dated to publication. Multiple records on a date share one dot but keep separate summaries and original wording.'}
+ coverage={'through':'2026-10-22','scope':'Every resolution appearing in an available 2026 Resolution Tracker, with related earlier decisions and all available dated comments and tracker rows.','resolutions2026':m['members'],'issues':len(issues),'datedUpdates':sum(len(i['events']) for i in issues),'sourceRows':len(rawrows),'editionsReviewed':len(trackers),'editions2026':[ed for ed in trackers if ed.endswith('2026')],'groups':{i['id']:i['resolutions'].split(' → ') for i in issues},'gaps':[{'edition':'21092023','reason':'Official attachment returns an extraction error; agenda PDF links it but does not embed it.'},{'edition':'07122023','reason':'Agenda links the identical November tracker; not counted as a new snapshot.'}],'method':'Each source row is extracted by physical table columns. Dated officer comments are combined across editions; repeated wording is deduplicated. Status/target changes are dated to publication. Multiple records on a date share one dot but keep separate summaries and original wording. Officer-comment summaries are bound to their minute item, update date and exact source text with whitespace normalised; missing or ambiguous bindings stop the build.'}
  (SITE/'coverage.json').write_text(json.dumps(coverage,ensure_ascii=False,indent=2))
  print('Compiled',len(issues),'issues;',len(missing_decisions),'decision summaries and',len(missing_notes),'note summaries pending')
  return issues,evidence,rawrows,coverage
