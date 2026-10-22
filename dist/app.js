@@ -141,7 +141,7 @@ function renderResolutionTags(issue,item){
 }
 function renderDesktopUpdates(issue){
   const labels=META[issue.id].labels;
-  return `<ol class="desktop-updates" aria-label="Updates, newest first">${issue.events.map((item,index)=>`<li class="desktop-update" id="update-row-${index}"><button type="button" class="update-row" id="row-${index}" data-index="${index}" aria-expanded="false" aria-controls="update-reader"><time datetime="${item.date}">${formatDate(item.date,true)}</time><span class="row-copy"><span class="row-title">${escapeText(labels[index]||item.title)}</span>${renderResolutionTags(issue,item)}</span><span class="row-toggle" aria-hidden="true">+</span></button></li>`).reverse().join('')}</ol>`;
+  return `<ol class="desktop-updates" aria-label="Updates, newest first">${issue.events.map((item,index)=>`<li class="desktop-update" id="update-row-${index}"><button type="button" class="update-row" id="row-${index}" data-index="${index}" aria-expanded="false" aria-controls="update-reader"><time datetime="${item.date}">${formatDate(item.date,true)}</time><span class="row-title">${escapeText(labels[index]||item.title)}</span><span class="row-toggle" aria-hidden="true">+</span></button></li>`).reverse().join('')}</ol>`;
 }
 function renderDetail(issue,focus=false){
   cleanupView();cleanupTiles();activeIssue=issue;selectedIndex=-1;

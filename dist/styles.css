@@ -304,7 +304,9 @@ html.large-text { font-size: 21px; }
 .issue-tile h3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .hero-meta { max-width: 440px; }
 .reader-entry + .reader-entry { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 14px; }
-.reader-entry h4 { font-size: 1.05rem; font-weight: 600; }
+.reader-entry h4 { font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin: 0; padding: 0; }
+.update-reader > h3 + .reader-entry:has(h4) { margin-top: 10px; }
+.reader-entry h4 + .ai-label { margin-top: 6px; }
 .source-date-note { color: var(--muted); font-size: .75rem; line-height: 1.5; margin-top: 10px; max-width: 85ch; }
 .source-row { margin: 7px 0; }
 .source-row > summary,.earlier-wording > summary { padding: 8px 0; color: var(--brand); cursor: pointer; }
