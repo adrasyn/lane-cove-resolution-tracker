@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "provenance": "Hashes of original PDFs used to build the reviewed catalogue; exported 2026-10-22.",
+  "documents": [
+    {
+      "date": "07122023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/12/CNL_07122023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=67842/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651146/TRIM_Resolution%20Tracker%20Report%20for%2023%20November%202023%20Council%20Meeting_1759588.PDF",
+      "pages": 37,
+      "sha256": "63ac8ba5b9b9270f57bd939234c1a8f02ad76c3b7f7476e55da21a12ede288da"
+    },
+    {
+      "date": "11122025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/12/CNL_11122025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=85725/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651132/TRIM_Resolution%20Tracker%20for%2011%20December%202025%20Council%20meeting_1958850.PDF",
+      "pages": 37,
+      "sha256": "38a85c596e8a87260a2f4bf8f80273aae641c689368d6752229adf472db7e53a"
+    },
+    {
+      "date": "12122024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/12/CNL_12122024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=78218/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651121/TRIM_Council%20Resolution%20Tracker%20for%2012%20December%20Council%20Meeting_1857236.PDF",
+      "pages": 19,
+      "sha256": "ec20244efeef1351d59efe42beb3f24ce4019715df61b7322a31fdd23d390b51"
+    },
+    {
+      "date": "18042024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/04/CNL_18042024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=19453/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651114/TRIM_Resolution%20Tracker%20Report%20for%2018%20April%202024%20Council%20Meeting_1791204.PDF",
+      "pages": 53,
+      "sha256": "28d66da9e7043c235a05df77ee23c70f4c3a09c974039be18821f76593c8de0a"
+    },
+    {
+      "date": "18052023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/05/CNL_18052023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=26159/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651138/TRIM_Council%20Resolution%20Tracker%20for%2018%20May%202023%20Council%20Meeting_1712084.PDF",
+      "pages": 28,
+      "sha256": "d088435810387ee99084aa882a70cb91f045467631126ecbdf022064dd899c3d"
+    },
+    {
+      "date": "18062026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/06/CNL_18062026_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=42245/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249318/TRIM_Resolution%20Tracker%20for%2018%20June%202026%20Council%20meeting_2015484.PDF",
+      "pages": 53,
+      "sha256": "10605c4130be40c97566cb9a7905a2b24a645cf46d014c5a87ebca5dc32582f7"
+    },
+    {
+      "date": "18072024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/07/CNL_18072024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=41292/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651117/TRIM_Resolution%20Tracker%20for%2018%20July%20Council%20Meeting_1816002.PDF",
+      "pages": 26,
+      "sha256": "bafce85bcbc0914dc91990f0d9a7b09d4becbee44fbb67f6727d35795a2059d3"
+    },
+    {
+      "date": "18092025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/09/CNL_18092025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=63593/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651129/TRIM_Resolution%20Tracker%20for%2018%20September%202025%20Council%20meeting_1934297.PDF",
+      "pages": 26,
+      "sha256": "d1db90cc77614243e933f7a618cc4ce44a3279da02b9ef00c85bc45a42d469b3"
+    },
+    {
+      "date": "19022026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/02/CNL_19022026_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=8015/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249314/TRIM_Resolution%20Tracker%20for%2019%20February%202026%20Council%20meeting_1977920.PDF",
+      "pages": 46,
+      "sha256": "2406732c8587af88da8de8eb54d8db866e365639419c8d889f9353d8325ee63e"
+    },
+    {
+      "date": "19032026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/03/CNL_19032026_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=15949/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249312/TRIM_Resolution%20Tracker%20for%2019%20March%202026%20Council%20Meeting_1986570.PDF",
+      "pages": 49,
+      "sha256": "791ef6456f4b4972839c31d9d480becaa2063fb7cac2f485f2ef68210969836f"
+    },
+    {
+      "date": "19062025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/06/CNL_19062025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=37369/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651126/TRIM_Resolution%20Tracker%20for%2019%20June%202025%20Council%20meeting_1905006.PDF",
+      "pages": 30,
+      "sha256": "d95fbe571d75be72b2ec471a6e0948016f517138d0e90cf3a4d68a35268c21f9"
+    },
+    {
+      "date": "19102023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/10/CNL_19102023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=60979/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651143/TRIM_Council%20Resolution%20Tracker%20for%2019%20October%202023%20Council%20Meeting_1751776.PDF",
+      "pages": 45,
+      "sha256": "1d7fc67795abd31377b47af57d3cef1ba3cb1a5307dd4a32b06ae749e84d1581"
+    },
+    {
+      "date": "20022025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/02/CNL_20022025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=7554/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651122/TRIM_Resolution%20Tracker%20for%20the%2020%20February%202025%20Council%20Meeting_1871627.PDF",
+      "pages": 28,
+      "sha256": "1f8c42e8e77292a3fd7a83412db58416ee2663438d6c7bb362c3e0c7ee733c82"
+    },
+    {
+      "date": "20032025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/03/CNL_20032025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=14902/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651123/TRIM_Resolution%20Tracker%20for%2020%20March%202025%20Council%20meeting_1879674.PDF",
+      "pages": 30,
+      "sha256": "1bddbcedd06d0f7ebaf1145b1bb464b341579794f44791403dcf278b5d26fcf6"
+    },
+    {
+      "date": "20042023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/04/CNL_20042023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=21305/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651137/TRIM_Council%20Resolution%20Tracker%20for%2020%20April%202023%20Council%20Meeting_1706583.PDF",
+      "pages": 21,
+      "sha256": "822ba3b10297e82359afd2d16116e85b049803d313329271935c19cf598fcb1a"
+    },
+    {
+      "date": "20062024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/06/CNL_20062024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=33126/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651116/TRIM_Resolution%20Tracker%20for%2020%20June%202024%20Council%20Meeting_1806652.PDF",
+      "pages": 27,
+      "sha256": "7eb4e853db416f75830143e10fba3a505d90049417dd6fb0636de05c713c5425"
+    },
+    {
+      "date": "20072023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/07/CNL_20072023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=40982/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651140/TRIM_Council%20Resolution%20Tracker%20for%2020%20July%202023%20Council%20Meeting_1729311.PDF",
+      "pages": 38,
+      "sha256": "e08c615f22773bd0641c3b24419e7bae36fee239252498430e6b9d00993b450d"
+    },
+    {
+      "date": "20082026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/08/CNL_20082026_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=62016/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249320/TRIM_Resolution%20Tracker%20for%2020%20August%202026%20Council%20meeting_2036859.PDF",
+      "pages": 53,
+      "sha256": "6c082af13b09074a29b3ad030d15f9039d79ebe2ae6d4e3bc41c39a6acb92fc8"
+    },
+    {
+      "date": "20112025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/11/CNL_20112025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=79855/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651131/TRIM_Resolution%20Tracker%20for%2020%20November%202025%20Council%20meeting_1952252.PDF",
+      "pages": 35,
+      "sha256": "64929c2b306755a1f759815933f4a47e8f99a4390924742ddd5d8b71f14b3b1b"
+    },
+    {
+      "date": "21032024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/03/CNL_21032024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=14287/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651113/TRIM_Resolution%20Tracker%20Report%20for%2021%20March%202024%20Council%20Meeting_1785247.PDF",
+      "pages": 53,
+      "sha256": "bd9b345f00c1a65653c631ec726fb1c931723bcad4d461774581f39db56a8323"
+    },
+    {
+      "date": "21052026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/05/CNL_21052026_AGN.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=35037/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249317/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2021%20May%202026_2007639.PDF",
+      "pages": 48,
+      "sha256": "2a5694a3976ca80eea531426e335e2bff9479e436ee545a84adaec25337fbd2d"
+    },
+    {
+      "date": "21082025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/08/CNL_21082025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=53392/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651128/TRIM_Resolution%20Tracker%20for%2021%20August%202025%20Council%20meeting_1923146.PDF",
+      "pages": 32,
+      "sha256": "fd34c379d966f2e5323e98c5fa45bb99f239ea8559d2a72444e69c69d58f2828"
+    },
+    {
+      "date": "21112024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/11/CNL_21112024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=70709/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651120/TRIM_Resolution%20Tracker%20for%2021%20November%202024%20Council%20Meeting_1848719.PDF",
+      "pages": 18,
+      "sha256": "98f7417a49c17dff41acc12c023de7cb57425e131fb65a5769c5b09d884fdab5"
+    },
+    {
+      "date": "22022024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/02/CNL_22022024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=8444/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651112/TRIM_Resolution%20Tracker%20Report%20for%2022%20February%202024%20Council%20Meeting_1778559.PDF",
+      "pages": 72,
+      "sha256": "16f3390569a223eb326de923edafc035644e5dfae89df4612721ec49c9f85f77"
+    },
+    {
+      "date": "22052025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/05/CNL_22052025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=31044/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651125/TRIM_Resolution%20Tracker%20for%2022%20May%202025%20Council%20meeting_1897836.PDF",
+      "pages": 27,
+      "sha256": "d75cbf91533478f41b5d34e134369224f8b1eac5e3b7ec0c76c57f9ddbec29a9"
+    },
+    {
+      "date": "22062023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/06/CNL_22062023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=34091/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651139/TRIM_Council%20Resolution%20Tracker%20for%2022%20June%202023%20Council%20Meeting_1721215.PDF",
+      "pages": 31,
+      "sha256": "fd8cfb4e83255c035fd578cde5bfc779b2fc65f5f9fd706c3af17750201f6601"
+    },
+    {
+      "date": "22082024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/08/CNL_22082024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=50355/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651118/TRIM_Resolution%20Tracker%20for%2022%20August%20Council%20Meeting_1825935.PDF",
+      "pages": 23,
+      "sha256": "652a7a84a66f47d67bb39df72c59fb131460d32914b5659211f7a92036dc4e83"
+    },
+    {
+      "date": "22102026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/10/CNL_22102026_AGN.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=80371/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249322/TRIM_Resolution%20Tracker%20for%20Council%20meeting%2022%20October%202026_2056366.PDF",
+      "pages": 65,
+      "sha256": "17be031ef3f9585bedbf10d247085f5edcda251c8cb94b76963c17754117fbd4"
+    },
+    {
+      "date": "23042026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/04/CNL_23042026_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=26012/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249316/TRIM_Resolution%20Tracker%20for%2023%20April%202026%20Council%20meeting_1997720.PDF",
+      "pages": 43,
+      "sha256": "c4057d5aff4c7e48b6a7803304d830d494c81c153156875f17b9d1c8ea69656e"
+    },
+    {
+      "date": "23052024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/05/CNL_23052024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=25830/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651115/TRIM_Resolution%20Tracker%20for%20the%2023%20May%202024%20Council%20Meeting_1798556.PDF",
+      "pages": 39,
+      "sha256": "77b544e7b23e15fec9c1061450fe21c60850a97478a0517250cba1b9ea6f970e"
+    },
+    {
+      "date": "23072026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/07/CNL_23072026_AGN.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=53969/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249319/TRIM_Resolution%20Tracker%20for%2023%20July%202026%20Council%20meeting_2028259.PDF",
+      "pages": 54,
+      "sha256": "fdba69beccd0fe67bfbea6a23ab144e40fe347c3749cdae6f7bd4891e280cc6f"
+    },
+    {
+      "date": "23102025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/10/CNL_23102025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=72226/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651130/TRIM_Resolution%20Tracker%20for%2023%20October%202025%20Council%20meeting_1943891.PDF",
+      "pages": 33,
+      "sha256": "0f27eed21707eb7b7bdf027834d2cabac9bbd899f1a848847a348b719e5aadec"
+    },
+    {
+      "date": "23112023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/11/CNL_23112023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=67842/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651145/TRIM_Resolution%20Tracker%20Report%20for%2023%20November%202023%20Council%20Meeting_1759588.PDF",
+      "pages": 37,
+      "sha256": "63ac8ba5b9b9270f57bd939234c1a8f02ad76c3b7f7476e55da21a12ede288da"
+    },
+    {
+      "date": "24042025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/04/CNL_24042025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=24738/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651124/TRIM_Resolution%20Tracker%20for%2024%20April%202025%20Council%20Meeting_1890789.PDF",
+      "pages": 25,
+      "sha256": "0c08155c7b050a73817a6a04fd244967ad4cd19d2a16b8757d8b473c18ee8d3a"
+    },
+    {
+      "date": "24072025",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2025/07/CNL_24072025_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=46055/25",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651127/TRIM_Resolution%20Tracker%20for%2024%20July%202025%20Council%20meeting_1915113.PDF",
+      "pages": 34,
+      "sha256": "bbbf85e110a748951850cadc5f46fa3da05cc4af32d6761800b7be2c71acc1b9"
+    },
+    {
+      "date": "24082023",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2023/08/CNL_24082023_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=48125/23",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651141/TRIM_Council%20Resolution%20Tracker%20for%2024%20August%202023%20Council%20Meeting_1737179.PDF",
+      "pages": 31,
+      "sha256": "129412b0cd66b7b3697bd774cdec898e1485566a29f5c2d40df0198b1edb64ed"
+    },
+    {
+      "date": "24092026",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2026/09/CNL_24092026_AGN.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=71651/26",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/1021249321/TRIM_Resolution%20Tracker%20for%2024%20September%202026%20Council%20meeting_2045918.PDF",
+      "pages": 58,
+      "sha256": "b8a84eb56490de59b7d1ddcb4765301542da7c92d6d20e3b5bb66c8e1166c942"
+    },
+    {
+      "date": "24102024",
+      "agenda": "https://lanecove.infocouncil.biz/Open/2024/10/CNL_24102024_AGN_AT.HTM",
+      "source": "https://ecouncil.lanecove.nsw.gov.au/trim/GenDocLink.asp?RecId=65944/24",
+      "pdf_url": "https://ecouncil.lanecove.nsw.gov.au/TRIM/documents_TE/161651119/TRIM_Resolution%20Tracker%20for%2024%20October%202024%20Council%20Meeting_1843419.PDF",
+      "pages": 17,
+      "sha256": "0bfe3940bed1a3dfaed0d6784e17e94777ac131471e1749487c26e4d433c3075"
+    }
+  ]
+}

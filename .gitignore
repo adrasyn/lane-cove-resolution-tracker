@@ -1,0 +1,13 @@
+.DS_Store
+*.tar.gz
+*.tgz
+
+__pycache__/
+catalogue/catalogue-model.json
+catalogue/missing-note-editorial.json
+catalogue/missing-decision-editorial.json
+
+.venv/
+scan-output/
+.env
+.env.*

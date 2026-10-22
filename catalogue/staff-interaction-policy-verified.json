@@ -1,0 +1,31 @@
+{
+  "key": "96/2024",
+  "sourceAlias": "unnumbered-2024-05-23-9ddad5",
+  "related2026Key": "138/2025",
+  "verification": {
+    "sourceKeys": [
+      "96/2024",
+      "unnumbered-2024-05-23-9ddad5"
+    ],
+    "canonicalKeys": [
+      "96/2024"
+    ],
+    "meeting": "2024-05-23",
+    "minutes": "https://lanecove.infocouncil.biz/Open/2024/05/CNL_23052024_MIN_WEB.htm",
+    "minutes_pdf": "https://lanecove.infocouncil.biz/Open/2024/05/CNL_23052024_MIN.PDF",
+    "pages": [
+      15
+    ],
+    "finding": "The unnumbered tracker row is resolution 96/2024. Carried 8–0 with Councillor Bryla absent. This is the six-part defer/workshop/changes/review/KPI/legal-advice decision, not a new 2025 decision.",
+    "adoptedResolution": "RESOLVED on the motion moved by Councillor Bennison and seconded by Councillor Brooks-Horn that Council: 1. defer consideration of the report to the June Council Meeting; 2. conduct a Councillor Workshop in June for the purpose of further Councillor consultation on any proposed changes to clauses to the draft policy; 3. request Councillors to submit any proposed changes to clauses to the draft policy by close of business 31 May 2024; 4. review the policy within 6 months of implementation, identifying any process flows or other aspects that could be improved upon to ensure clear and effective communication of information, or to update any processes that may have changed since implementing of the policy; 5. prior to the proposed 6 monthly report mentioned in the policy, a report is to come back to Council proposing the KPI indicators to be reported on; and 6. obtain legal advice in respect of any proposed changes to clauses in the draft policy .",
+    "related2026Key": "138/2025"
+  },
+  "editorial": {
+    "short": "Staff interaction policy deferred",
+    "title": "Staff interaction policy deferred",
+    "description": "Rules for communication and interaction between councillors and Council staff.",
+    "decisionSummary": "Council defers the draft policy to June, requests a workshop and legal advice on proposed changes, and asks for reporting measures and a review after implementation.",
+    "category": "Council & governance",
+    "symbol": "update"
+  }
+}

@@ -1,0 +1,53 @@
+# Lane Cove Council Resolution Tracker
+
+An independent website covering every resolution listed in the nine 2026 Resolution Tracker editions available through 22 October 2026. The catalogue groups 221 in-scope resolutions into 165 issue pages and includes 38 related earlier decisions. It retains 1,014 dated timeline positions and 901 complete tracker rows across 37 distinct editions from April 2023 to October 2026.
+
+![The issue browser on desktop](docs/assets/desktop.png)
+
+Not affiliated with Lane Cove Council. GitHub Pages is not enabled. This repository contains the static website, reviewed source data and a manual trial for detecting new or revised Council trackers. Read [the data update proposal](docs/DATA-UPDATES.md) for the daily scan design, evidence rules and remaining work.
+
+Run the buildless site locally:
+
+```sh
+python3 -m http.server 5173 --bind 127.0.0.1 --directory dist
+```
+
+Rebuild the data and check source coverage:
+
+```sh
+python3 catalogue/build_catalogue.py
+node scripts/verify-catalogue.cjs
+node scripts/verify-route-motion.cjs
+node --check dist/app.js
+```
+
+`catalogue/structured/` retains extracted physical table columns and source metadata. Editorial files contain resident-facing summaries. `catalogue/historical-links.json` records explicit earlier-phase links; minutes verification records document source-number corrections and adoption checks. `dist/coverage.json` is the downloadable coverage inventory. PDFs are linked directly from Council rather than bundled in the website. Rebuilding does not fetch new editions.
+
+The interface keeps compact glossy tiles, live search, date-based shading, pointer tilt and reversible two-face flip transitions. Only visible tiles participate in navigation animation. Desktop timelines use elapsed calendar time, share one dot for records on the same day and show an overview plus an accessible update selector for long histories. Phones keep the vertical list and an inline update reader. Original wording and PDF page links accompany every summary; complete repeated monthly rows remain under the source disclosure.
+
+## Source limits and rules
+
+- September 2023's official attachment returns a file-extraction error. Its agenda links the file but does not embed it. This gap is disclosed, not reconstructed.
+- December 2023 links November's identical PDF and is not counted as a fresh snapshot.
+- Identify resolutions by number **and year**. Some PDFs contain duplicate, blank or malformed numbers; verified aliases retain an explanation and minutes links.
+- Keep decision dates, officer-comment dates and tracker publication dates distinct. Status and target changes are dated to publication, not assumed work-completion dates.
+- A completed resolution can mean a report or administrative task was completed. It does not establish that an entire issue is resolved.
+- A target field is not automatically a delivery commitment. An absent or unchanged entry does not establish inactivity or completion.
+- Preserve source variants and complete rows. Do not silently replace historical wording or treat agenda recommendations as adopted decisions.
+
+## Repository layout
+
+| Directory | Purpose |
+| --- | --- |
+| `dist/` | Complete buildless website; this is the future Pages artifact. |
+| `catalogue/` | Normalized source rows, reviewed summaries, provenance and reproducible builder. |
+| `monitor/` | Accepted PDF identity/hash baseline. |
+| `scripts/` | Catalogue, animation regression and scanner checks. |
+| `.github/workflows/` | Verification on pushes/PRs and a manual source scan. No schedule or deployment. |
+| `docs/` | Update architecture and screenshot. |
+
+The site uses local HTML/CSS/JavaScript assets and requires JavaScript. No framework, backend, API key or external font is needed. Links to original records open Council's external websites. Python 3 builds catalogue data; Node runs the verification scripts. The optional source scanner uses curl and the pinned Python dependency in `requirements-monitor.txt`; it contacts Council's public servers.
+
+The original PDF research archive is not bundled. `catalogue/structured/` contains the source rows needed to reproduce the site, and `monitor/baseline.json` records hashes of the original PDFs. Preserve accepted future PDFs in a durable archive as described in the update proposal.
+
+No reuse license has been selected. Council source material retains its original provenance. This package was exported from the reviewed site source at commit `99e3c0ced388865f17594dbd893f5b721dab3137`; hosting-specific metadata, deployment credentials and source history are excluded.

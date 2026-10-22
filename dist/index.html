@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Follow updates from Lane Cove Council’s Resolution Tracker.">
+  <title>Lane Cove Council Resolution Tracker</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23005250'/%3E%3Cpath d='M18 17v30h29' fill='none' stroke='white' stroke-width='7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=19">
+  <script src="sources.js?v=19" defer></script>
+  <script src="data.js?v=19" defer></script>
+  <script src="evidence.js?v=19" defer></script>
+  <script src="app.js?v=21" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#page-heading">Skip to content</a>
+  <header class="site-header page-width">
+    <a class="wordmark" href="./" data-home>Lane Cove Council <strong>Resolution Tracker</strong></a>
+    <div class="header-tools">
+      <button type="button" id="motion-toggle" aria-pressed="false"><span class="motion-indicator" aria-hidden="true"></span><span>Reduce motion</span></button>
+      <button type="button" id="text-size" aria-pressed="false" aria-label="Larger text"><span aria-hidden="true">Aa</span><span class="size-label">Larger text</span></button>
+    </div>
+  </header>
+  <main id="app"></main>
+  <footer class="site-footer page-width">
+    <p>Not affiliated with Lane Cove Council.<br><span>Records through 22 October 2026</span></p>
+    <details id="about"><summary>About this tracker</summary><div class="about-body"><p>We connect monthly Council records so you can follow one issue over time. The summaries are AI-written explanations; original wording and source links let you check them.</p><p>“Completed” in Council’s tracker can refer to a report or an individual task. It does not necessarily mean an entire issue is resolved.</p><p>Includes every resolution listed in the nine 2026 tracker editions available through 22 October 2026. Related earlier decisions and available comments are included back to 2023 where applicable. <a href="coverage.json" target="_blank" rel="noopener">View the coverage record</a>.</p><p>“First appeared” is the earliest available tracker edition containing a decision on this page. The Council decision itself may be older. Tile shades use the latest dated note or reported status/target change, measured against 22 October 2026.</p><p>The September 2023 attachment is unavailable from Council’s official link. December 2023 links to November’s identical PDF. The website flags these limits and preserves available later records; gaps are not filled with invented updates.</p><p>This website is independent of Council. It reflects the published records reviewed and is not a live service. Recommendations in the latest meeting papers are not treated as adopted decisions.</p><details class="source-library"><summary id="source-count">Source documents reviewed</summary><div id="library-links"></div></details></div></details>
+  </footer>
+  <div class="sr-only" role="status" aria-live="polite" id="announcement"></div>
+  <noscript><p class="page-width">This interactive tracker needs JavaScript. You can read the <a href="https://lanecove.infocouncil.biz/">Council’s original meeting papers</a>.</p></noscript>
+</body>
+</html>
