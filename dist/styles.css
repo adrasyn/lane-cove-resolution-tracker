@@ -49,7 +49,10 @@ svg { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .motion-indicator { width: 13px; height: 13px; border: 1px solid currentColor; border-radius: 50%; position: relative; }
 .motion-indicator:after { content: ''; width: 3px; height: 3px; border-radius: 50%; background: currentColor; position: absolute; top: 4px; left: 4px; }
 .landing-intro { padding-top: 30px; }
-.landing-intro h1 { font-size: 2rem; font-weight: 600; letter-spacing: -.035em; max-width: 32ch; }
+.landing-intro h1 { font-size: 1.65rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.25; }
+.tracker-freshness { display: flex; flex-wrap: wrap; margin-top: 9px; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+.tracker-freshness > span + span:before { content: "·"; margin-inline: .6em; }
+.tracker-freshness time { display: inline-block; }
 .search-area { margin-top: 24px; max-width: 700px; }
 .search-area label { display: block; font-size: .78rem; font-weight: 600; margin-bottom: 9px; }
 .search-field { border: 1px solid oklch(.73 .025 188); display: flex; align-items: center; gap: 13px; padding: 0 17px; border-radius: 11px; background: var(--bg); }
@@ -222,7 +225,7 @@ html.large-text { font-size: 21px; }
   .header-tools { gap: 0; }
   .header-tools button { font-size: .66rem; padding: 8px; }
   .header-tools #text-size .size-label { display: none; }
-  .landing-intro h1 { font-size: 1.85rem; }
+  .landing-intro h1 { font-size: 1.45rem; }
   .collection-heading { align-items: start; flex-direction: column; gap: 12px; }
   .hero-heading h1 { font-size: 1.7rem; }
   .detail-hero { padding: 21px; }
@@ -264,7 +267,10 @@ html.large-text { font-size: 21px; }
   .header-tools button { font-size: .64rem; padding: 7px; }
   .motion-indicator { display: none; }
   .landing-intro { padding-top: 26px; }
-  .landing-intro h1 { font-size: 1.7rem; }
+  .landing-intro h1 { font-size: 1.35rem; }
+  .tracker-freshness { display: block; }
+  .tracker-freshness > span { display: block; }
+  .tracker-freshness > span + span:before { content: none; }
   .search-field { gap: 9px; padding: 0 13px; }
   .search-field input { font-size: .9rem; padding: 16px 0; }
   .search-field svg { width: 19px; height: 19px; }
