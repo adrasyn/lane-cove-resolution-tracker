@@ -17,6 +17,18 @@ assert.ok(facilities.every(issue=>issue.category==='Facilities & places'));
 assert.ok(filter(issues,'market square',new Set(['Facilities & places'])).some(issue=>issue.id==='market-square'));
 assert.equal(filter(issues,'market square',new Set(['Roads & transport'])).length,0);
 assert.ok(filter(issues,'224/2025',categories).some(issue=>issue.id==='market-square'));
+const orderPoints=productionFunction('orderTimelinePoints');
+const timelinePoints=Array.from({length:3},(_,index)=>({querySelector:()=>({dataset:{index:String(index)}})}));
+const selectedReader={text:'Open update'};timelinePoints[1].reader=selectedReader;
+const rail={children:[...timelinePoints],attributes:{},moves:0,querySelectorAll(){return this.children;},setAttribute(name,value){this.attributes[name]=value;},appendChild(point){this.children=this.children.filter(child=>child!==point);this.children.push(point);this.moves++;}};
+orderPoints(rail,true);
+assert.deepEqual(rail.children,timelinePoints.slice().reverse(),'Mobile reading and tab order must put the newest update first');
+assert.equal(rail.attributes['aria-label'],'Updates, newest first');
+const moves=rail.moves;orderPoints(rail,true);assert.equal(rail.moves,moves,'Repeated mobile layout must not move the focused/open update');
+orderPoints(rail,false);
+assert.deepEqual(rail.children,timelinePoints,'Switching to desktop restores chronological axis order');
+assert.equal(rail.attributes['aria-label'],'Updates, oldest first');
+assert.equal(rail.children[1].reader,selectedReader,'Breakpoint changes preserve the existing inline reader');
 const geometry=productionFunction('timelineGeometry');
 const sample=geometry(['2026-03-01','2026-03-11','2026-03-31'],1000,1);
 assert.equal(sample.positions.length,3);
@@ -89,4 +101,4 @@ ripple.cleanup();assert.equal(ripple.timers.size,0);assert.equal(ripple.active()
 for(const settings of [{mobile:true},{reduced:true}]){
  const quiet=dotMotionHarness(settings);quiet.visible(true);assert.equal(quiet.active(),false);quiet.cleanup();
 }
-console.log('Browsing checks passed: filters, elapsed-time overview, update rows and visible desktop dot hints.');
+console.log('Browsing checks passed: filters, mobile timeline order, elapsed-time overview, update rows and visible desktop dot hints.');

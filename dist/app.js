@@ -155,8 +155,10 @@ function renderDetail(issue,focus=false){
     button.addEventListener('keydown',event=>{
       if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
       event.preventDefault();
-      let next=Number(button.dataset.index)+(event.key==='ArrowRight'||event.key==='ArrowDown'?1:-1);
-      if(event.key==='Home')next=0;if(event.key==='End')next=issue.events.length-1;
+      const direction=mobileLayout.matches?-1:1;
+      let next=Number(button.dataset.index)+(event.key==='ArrowRight'||event.key==='ArrowDown'?direction:-direction);
+      if(event.key==='Home')next=mobileLayout.matches?issue.events.length-1:0;
+      if(event.key==='End')next=mobileLayout.matches?0:issue.events.length-1;
       next=Math.max(0,Math.min(issue.events.length-1,next));
       const target=document.querySelector(`#update-${next}`);target.focus({preventScroll:!mobileLayout.matches});
     });
@@ -199,7 +201,7 @@ function selectUpdate(index,keyboard=false,fromTimeline=false){
   if(motionEnabled()&&!keyboard)reader.animate([{opacity:.45,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'cubic-bezier(.23,1,.32,1)'});
   if(keyboard)reader.querySelector('#reader-heading').focus({preventScroll:true});
   if(fromTimeline&&!mobileLayout.matches)scrollToUpdateRow(index);
-  announce(`Opened update ${index+1} of ${activeIssue.events.length}: ${item.title}`);
+  announce(`Opened update ${mobileLayout.matches?activeIssue.events.length-index:index+1} of ${activeIssue.events.length}: ${item.title}`);
 }
 function closeUpdate(restoreFocus=false){
   const previous=selectedIndex;selectedIndex=-1;
@@ -219,12 +221,21 @@ function timelineGeometry(dates,width,fontScale){
   return {start,end,axisY:43*fontScale,height:80*fontScale,
     positions:dates.map(date=>padding+(Date.parse(date)-start)/(end-start)*usable)};
 }
+// Change actual reading/tab order while retaining each event's chronological index.
+function orderTimelinePoints(rail,newestFirst){
+  const points=[...rail.querySelectorAll('.timeline-point')].sort((a,b)=>Number(a.querySelector('.update-button').dataset.index)-Number(b.querySelector('.update-button').dataset.index));
+  const ordered=newestFirst?[...points].reverse():points;
+  if(ordered.some((point,index)=>rail.children[index]!==point))ordered.forEach(point=>rail.appendChild(point));
+  rail.setAttribute('aria-label',newestFirst?'Updates, newest first':'Updates, oldest first');
+  return points;
+}
 function layoutTimeline(){
   const viewport=document.querySelector('#timeline-viewport');
   if(!viewport||!activeIssue)return;
+  const points=orderTimelinePoints(viewport.querySelector('.timeline-rail'),mobileLayout.matches);
   if(mobileLayout.matches){viewport.style.height='';return;}
   const scale=viewport.querySelector('.timeline-scale'),guides=viewport.querySelector('.timeline-guides');
-  const points=[...viewport.querySelectorAll('.timeline-point')],width=viewport.clientWidth,padding=16;
+  const width=viewport.clientWidth,padding=16;
   const fontScale=parseFloat(getComputedStyle(document.documentElement).fontSize)/18;
   const geometry=timelineGeometry(activeIssue.events.map(event=>event.date),width,fontScale);
   const first=new Date(geometry.start),last=new Date(geometry.end-1);
