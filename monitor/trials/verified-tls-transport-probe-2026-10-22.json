@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-22T08:44:39.437541+00:00",
+  "mode": "HTTPS TLS1.2 HTTP1.1 through inherited proxy; verification enabled",
+  "curlExit": 0,
+  "result": "503 0.309781 5.374870",
+  "tlsEvidence": [
+    "* CONNECT tunnel established, response 200",
+    "* SSL connection using TLSv1.2 / ECDHE-ECDSA-CHACHA20-POLY1305 / x25519 / id-ecPublicKey",
+    "*  subjectAltName: host \"ecouncil.lanecove.nsw.gov.au\" matched cert's \"ecouncil.lanecove.nsw.gov.au\"",
+    "*  SSL certificate verify ok."
+  ],
+  "body": "upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
+}
